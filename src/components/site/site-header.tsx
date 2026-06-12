@@ -86,7 +86,7 @@ const SiteHeader = () => {
                                         {SERVICE_CATEGORIES.map((category) => (
                                             <Link
                                                 key={category.slug}
-                                                href={`/services#${category.slug}`}
+                                                href={`/services/${category.slug}`}
                                                 onClick={() => setServicesOpen(false)}
                                                 className='text-ink hover:bg-forest hover:text-cream block px-6 py-3.5 text-[12px] font-medium tracking-[0.16em] uppercase transition-colors duration-200'>
                                                 {category.title}
@@ -156,7 +156,7 @@ const SiteHeader = () => {
                                 {SERVICE_CATEGORIES.map((category) => (
                                     <Link
                                         key={category.slug}
-                                        href={`/services#${category.slug}`}
+                                        href={`/services/${category.slug}`}
                                         onClick={closeAll}
                                         className='text-ink/65 hover:text-moss py-2.5 pl-4 text-[12px] font-medium tracking-[0.16em] uppercase'>
                                         {category.title}

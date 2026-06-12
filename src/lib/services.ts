@@ -6,6 +6,16 @@ export type ServiceCategory = {
     benefits: { title: string; text: string }[];
     subservices: string[];
     image: string;
+    seo: { title: string; description: string; keywords: string[] };
+};
+
+export const getServiceBySlug = (slug: string) => SERVICE_CATEGORIES.find((category) => category.slug === slug);
+
+/** The next three categories in order (wrapping around) — used for the Related Services section. */
+export const getRelatedServices = (slug: string) => {
+    const index = SERVICE_CATEGORIES.findIndex((category) => category.slug === slug);
+
+    return [1, 2, 3].map((offset) => SERVICE_CATEGORIES[(index + offset) % SERVICE_CATEGORIES.length]);
 };
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
@@ -36,7 +46,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Material Selection',
             'Project Planning'
         ],
-        image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1800&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1800&auto=format&fit=crop',
+        seo: {
+            title: "Landscape Design Toronto & GTA | Jayden's Landscaping",
+            description:
+                'Premium landscape design in Toronto and the GTA. Design consultation, site planning, 3D visualization and material selection — one team from concept to construction.',
+            keywords: ['Landscape Design Toronto', 'Landscape Design GTA', 'Landscape Planning Toronto']
+        }
     },
     {
         slug: 'hardscaping',
@@ -66,7 +82,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Natural Stone Installation',
             'Retaining Walls'
         ],
-        image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1800&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1800&auto=format&fit=crop',
+        seo: {
+            title: "Interlocking & Hardscaping Toronto | Jayden's Landscaping",
+            description:
+                'Interlocking driveways, patios, walkways, natural stone and retaining walls in Toronto and the GTA — engineered foundations and craftsman-grade finishing.',
+            keywords: ['Interlocking Toronto', 'Patio Installation Toronto', 'Natural Stone Contractor Toronto']
+        }
     },
     {
         slug: 'outdoor-structures',
@@ -96,7 +118,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Privacy Fences',
             'Custom Structures'
         ],
-        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1800&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1800&auto=format&fit=crop',
+        seo: {
+            title: "Deck Builder & Fence Installation Toronto | Jayden's Landscaping",
+            description:
+                'Custom decks, fences and outdoor structures in Toronto and the GTA. Composite and wood decks, privacy fencing and custom builds — engineered, permitted and built to last.',
+            keywords: ['Deck Builder Toronto', 'Fence Installation Toronto', 'Custom Decks GTA']
+        }
     },
     {
         slug: 'water-features',
@@ -119,7 +147,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             }
         ],
         subservices: ['Ponds', 'Waterfalls', 'Natural Stone Pools', 'Landscape Water Features'],
-        image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop',
+        seo: {
+            title: "Water Features & Pond Construction Toronto | Jayden's Landscaping",
+            description:
+                'Landscape water features in Toronto and the GTA — naturalized ponds, waterfalls and natural stone pools, engineered for our climate and built to be enjoyed year-round.',
+            keywords: ['Landscape Water Features Toronto', 'Pond Construction GTA']
+        }
     },
     {
         slug: 'softscaping',
@@ -151,7 +185,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'New Lawn Installation',
             'Seasonal Planting'
         ],
-        image: 'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1800&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1800&auto=format&fit=crop',
+        seo: {
+            title: "Garden Installation & Planting Toronto | Jayden's Landscaping",
+            description:
+                'Softscaping in Toronto and the GTA — garden bed installation, trees, shrubs, perennials, sod and new lawn installation, composed for four-season beauty.',
+            keywords: ['Garden Installation Toronto', 'Planting Services GTA', 'New Lawn Installation Toronto']
+        }
     },
     {
         slug: 'property-maintenance',
@@ -174,6 +214,12 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             }
         ],
         subservices: ['Lawn Care', 'Lawn Mowing', 'Garden Maintenance', 'Seasonal Maintenance', 'Snow Removal'],
-        image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=1800&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=1800&auto=format&fit=crop',
+        seo: {
+            title: "Lawn Care & Property Maintenance Toronto | Jayden's Landscaping",
+            description:
+                'Year-round property maintenance in Toronto and the GTA — scheduled lawn care, garden maintenance, seasonal programs and reliable snow removal.',
+            keywords: ['Lawn Care Toronto', 'Property Maintenance GTA', 'Snow Removal Toronto']
+        }
     }
 ];

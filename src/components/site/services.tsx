@@ -18,7 +18,7 @@ const Services = () => {
                 <div className='mt-16 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-8'>
                     {SERVICE_CATEGORIES.map((category, index) => (
                         <Reveal key={category.slug} delay={(index % 3) * 0.1}>
-                            <Link href={`/services#${category.slug}`} className='group block'>
+                            <Link href={`/services/${category.slug}`} className='group block'>
                                 <div className='relative aspect-[4/5] overflow-hidden'>
                                     <Image
                                         src={category.image}
