@@ -25,7 +25,7 @@ const CtaBanner = () => {
                     obligation.
                 </p>
                 <Link
-                    href='#contact'
+                    href='/contact'
                     className='bg-cream text-forest hover:bg-beige mt-10 inline-block px-12 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
                     Request A Free Estimate
                 </Link>

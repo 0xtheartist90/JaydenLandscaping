@@ -14,7 +14,17 @@
       "Bash(git commit -m 'Initial commit: Next.js 15 + shadcn/ui starter kit *)",
       "Bash(git push *)",
       "Bash(gh auth *)",
-      "Bash(ssh -T git@github.com -o StrictHostKeyChecking=accept-new -o BatchMode=yes)"
+      "Bash(ssh -T git@github.com -o StrictHostKeyChecking=accept-new -o BatchMode=yes)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000/services -o /dev/null -w \"services: %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/icon.png -o /dev/null -w \"favicon: %{http_code}\\\\n\")",
+      "Read(//private/tmp/**)",
+      "Bash(perl -pi -e \"s\\\\#href='/\\\\#contact'\\\\#href='/contact'\\\\#g; s\\\\#href='/\\\\#projects'\\\\#href='/projects'\\\\#g; s\\\\#href='/\\\\#about'\\\\#href='/about'\\\\#g\" src/components/site/site-header.tsx src/components/site/site-footer.tsx src/app/services/page.tsx)",
+      "Bash(perl -pi -e \"s\\\\#'/\\\\#\\(contact|projects|about\\)'\\\\#'/\\\\$1'\\\\#g\" src/components/site/site-footer.tsx)",
+      "Bash(perl -pi -e \"s\\\\#href='\\\\#contact'\\\\#href='/contact'\\\\#g; s\\\\#href='\\\\#projects'\\\\#href='/projects'\\\\#g\" src/components/site/hero.tsx src/components/site/cta-banner.tsx)",
+      "Bash(curl -s http://localhost:3000/projects)",
+      "Bash(curl -s http://localhost:3000/about)",
+      "Bash(curl -s http://localhost:3000/contact)"
     ]
   }
 }

@@ -36,6 +36,17 @@ const Hero = () => {
             <div className='absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/60' />
 
             <div className='relative z-10 mx-auto max-w-5xl px-6 pt-20 text-center'>
+                <motion.div {...fadeUp(0.1)} className='mb-7 flex justify-center'>
+                    <Image
+                        src='/images/icon-round.png'
+                        alt=''
+                        aria-hidden
+                        width={88}
+                        height={88}
+                        priority
+                        className='h-16 w-16 drop-shadow-lg sm:h-20 sm:w-20'
+                    />
+                </motion.div>
                 <motion.p
                     {...fadeUp(0.2)}
                     className='text-beige mb-6 text-xs font-medium tracking-[0.35em] uppercase sm:text-sm'>
@@ -56,12 +67,12 @@ const Hero = () => {
                     {...fadeUp(0.65)}
                     className='mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row'>
                     <Link
-                        href='#contact'
+                        href='/contact'
                         className='bg-cream text-forest hover:bg-beige w-full px-10 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300 sm:w-auto'>
                         Get A Free Quote
                     </Link>
                     <Link
-                        href='#projects'
+                        href='/projects'
                         className='border-cream/70 text-cream hover:bg-cream/10 w-full border px-10 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300 sm:w-auto'>
                         View Projects
                     </Link>

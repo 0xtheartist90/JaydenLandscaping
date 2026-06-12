@@ -68,19 +68,21 @@ const ProjectCard = ({
     </div>
 );
 
-const Projects = () => {
+const Projects = ({ showHeading = true }: { showHeading?: boolean }) => {
     const [featured, ...rest] = PROJECTS;
 
     return (
         <section id='projects' className='bg-sand/40 scroll-mt-20 px-6 py-24 lg:px-10 lg:py-32'>
             <div className='mx-auto max-w-7xl'>
-                <SectionHeading
-                    eyebrow='Featured Projects'
-                    title='Work That Speaks For Itself'
-                    description='A selection of recent projects across the Greater Toronto Area — each one designed, built and finished by our team.'
-                />
+                {showHeading && (
+                    <SectionHeading
+                        eyebrow='Featured Projects'
+                        title='Work That Speaks For Itself'
+                        description='A selection of recent projects across the Greater Toronto Area — each one designed, built and finished by our team.'
+                    />
+                )}
 
-                <div className='mt-16 lg:mt-20'>
+                <div className={showHeading ? 'mt-16 lg:mt-20' : ''}>
                     <Reveal>
                         <ProjectCard project={featured} aspect='aspect-[16/9]' sizes='(max-width: 1280px) 100vw, 1280px' />
                     </Reveal>

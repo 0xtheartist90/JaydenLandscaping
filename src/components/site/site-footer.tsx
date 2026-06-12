@@ -2,10 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const FOOTER_LINKS = [
-    { href: '#services', label: 'Services' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#about', label: 'About' },
-    { href: '#contact', label: 'Contact' }
+    { href: '/services', label: 'Services' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' }
 ];
 
 const SiteFooter = () => {
