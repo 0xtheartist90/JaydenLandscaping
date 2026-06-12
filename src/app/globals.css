@@ -128,9 +128,25 @@
   }
 }
 
+:root {
+  /* Jayden's Landscaping brand palette */
+  --brand-forest: #38412C;
+  --brand-moss: #677C69;
+  --brand-beige: #D6BC97;
+  --brand-sand: #E3D9BF;
+  --brand-cream: #FAF7F0;
+  --brand-ink: #20251A;
+}
+
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-aboreto);
+  --color-forest: var(--brand-forest);
+  --color-moss: var(--brand-moss);
+  --color-beige: var(--brand-beige);
+  --color-sand: var(--brand-sand);
+  --color-cream: var(--brand-cream);
+  --color-ink: var(--brand-ink);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

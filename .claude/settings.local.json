@@ -12,7 +12,9 @@
       "Bash(git ls-remote *)",
       "Bash(git add *)",
       "Bash(git commit -m 'Initial commit: Next.js 15 + shadcn/ui starter kit *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "Bash(ssh -T git@github.com -o StrictHostKeyChecking=accept-new -o BatchMode=yes)"
     ]
   }
 }
