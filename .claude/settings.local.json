@@ -33,7 +33,8 @@
       "Bash(curl -s http://localhost:3000/)",
       "Bash(git commit -q -m 'Move About next to Home in nav; double hero icon size *)",
       "Bash(echo \"process-on-home: $?\")",
-      "Bash(git commit -q -m 'Condense Why Jayden'\\\\''s into compact banner linking to About *)"
+      "Bash(git commit -q -m 'Condense Why Jayden'\\\\''s into compact banner linking to About *)",
+      "Bash(git commit -q -m 'Replace homepage story section with compact teaser linking to About *)"
     ]
   }
 }

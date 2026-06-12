@@ -1,4 +1,4 @@
-import About from '@/components/site/about';
+import AboutTeaser from '@/components/site/about-teaser';
 import Contact from '@/components/site/contact';
 import CtaBanner from '@/components/site/cta-banner';
 import Hero from '@/components/site/hero';
@@ -13,7 +13,7 @@ const Page = () => {
             <ValueProps />
             <Services />
             <Projects />
-            <About />
+            <AboutTeaser />
             <CtaBanner />
             <Contact />
         </>
