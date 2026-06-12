@@ -11,9 +11,9 @@ import { ChevronDown } from 'lucide-react';
 
 const NAV_LINKS = [
     { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
     { href: '/services', label: 'Services', dropdown: true },
     { href: '/projects', label: 'Projects' },
-    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' }
 ];
 
@@ -145,6 +145,12 @@ const SiteHeader = () => {
                             className='text-ink hover:text-moss border-sand/60 border-b py-4 text-sm font-medium tracking-[0.18em] uppercase'>
                             Home
                         </Link>
+                        <Link
+                            href='/about'
+                            onClick={closeAll}
+                            className='text-ink hover:text-moss border-sand/60 border-b py-4 text-sm font-medium tracking-[0.18em] uppercase'>
+                            About
+                        </Link>
                         <div className='border-sand/60 border-b py-4'>
                             <Link
                                 href='/services'
@@ -164,7 +170,9 @@ const SiteHeader = () => {
                                 ))}
                             </div>
                         </div>
-                        {NAV_LINKS.filter((link) => !link.dropdown && link.href !== '/').map((link) => (
+                        {NAV_LINKS.filter(
+                            (link) => !link.dropdown && link.href !== '/' && link.href !== '/about'
+                        ).map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}

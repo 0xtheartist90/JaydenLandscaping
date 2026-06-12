@@ -27,7 +27,11 @@
       "Bash(curl -s http://localhost:3000/contact)",
       "Bash(curl -s http://localhost:3000/services/hardscaping)",
       "Bash(curl -s http://localhost:3000/services)",
-      "Bash(git commit -q -m 'Restructure services into hub page and six dedicated service pages *)"
+      "Bash(git commit -q -m 'Restructure services into hub page and six dedicated service pages *)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:3000/ -o /dev/null -w \"home: %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(git commit -q -m 'Move About next to Home in nav; double hero icon size *)"
     ]
   }
 }

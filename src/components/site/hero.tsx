@@ -41,10 +41,10 @@ const Hero = () => {
                         src='/images/icon-round.png'
                         alt=''
                         aria-hidden
-                        width={88}
-                        height={88}
+                        width={176}
+                        height={176}
                         priority
-                        className='h-16 w-16 drop-shadow-lg sm:h-20 sm:w-20'
+                        className='h-32 w-32 drop-shadow-lg sm:h-40 sm:w-40'
                     />
                 </motion.div>
                 <motion.p
