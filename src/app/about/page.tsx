@@ -18,7 +18,9 @@ const AboutPage = () => {
             <PageHero
                 eyebrow='About Us'
                 title='Built On Dedication & Craftsmanship'
-                image='https://images.unsplash.com/photo-1558036117-15d82a90b9b1?q=80&w=2400&auto=format&fit=crop'
+                image='/images/about-hero.webp'
+                video={false}
+                imagePosition='object-top'
                 imageAlt='A custom home with landscaped grounds at sunset'
             />
             <About />
