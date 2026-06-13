@@ -55,7 +55,7 @@ const Services = () => {
                         />
                     </motion.div>
                 ))}
-                <div className='absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/40' />
+                <div className='absolute inset-0 bg-[radial-gradient(70%_80%_at_top_left,rgba(0,0,0,0.75),transparent_62%)]' />
             </div>
 
             <div className='relative flex w-full flex-col gap-12 px-6 py-16 lg:h-svh lg:flex-row lg:items-stretch lg:justify-between lg:gap-16 lg:px-20 lg:py-0 xl:px-28'>
@@ -73,8 +73,8 @@ const Services = () => {
                     </p>
                 </div>
 
-                {/* Service index (bottom right) */}
-                <ul className='lg:w-96 lg:self-end lg:pb-16'>
+                {/* Service index (bottom right) — on a very see-through frosted card */}
+                <ul className='lg:w-96 lg:self-end lg:mb-16 md:bg-black/20 md:p-6 md:backdrop-blur-md'>
                     {SERVICE_CATEGORIES.map((category, index) => {
                         const isActive = active === index;
                         const Icon = SERVICE_ICONS[category.slug];

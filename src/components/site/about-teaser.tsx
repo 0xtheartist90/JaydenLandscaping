@@ -12,7 +12,7 @@ const AboutTeaser = () => {
                 <Reveal>
                     <div className='relative aspect-[3/2] overflow-hidden'>
                         <Image
-                            src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop'
+                            src='/images/aboutjayden.webp'
                             alt='Jayden, founder of Jayden&apos;s Landscaping'
                             fill
                             sizes='(max-width: 1024px) 100vw, 50vw'

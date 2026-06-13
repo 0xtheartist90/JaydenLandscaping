@@ -9,32 +9,32 @@ import { ArrowUpRight } from 'lucide-react';
 
 const FEATURED = [
     {
-        name: 'The Courtyard Estate',
-        location: 'Markham',
+        name: 'New Market',
+        location: 'Greater Toronto Area',
         tags: ['Landscape Design', 'Natural Stone', 'Lighting'],
         description: 'A formal courtyard reimagined with natural stone, layered planting and architectural lighting.',
-        image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1800&auto=format&fit=crop'
+        image: '/images/newmarket.webp'
     },
     {
-        name: 'Hillside Retreat',
-        location: 'Richmond Hill',
+        name: '64',
+        location: 'Greater Toronto Area',
         tags: ['Interlocking', 'Decks', 'Garden Design'],
         description: 'Terraced interlocking and cedar decks that turn a steep slope into usable living space.',
-        image: 'https://images.unsplash.com/photo-1558036117-15d82a90b9b1?q=80&w=1800&auto=format&fit=crop'
+        image: '/images/64.webp'
     },
     {
-        name: 'The Estate Garden',
-        location: 'Vaughan',
+        name: 'Woolbridge',
+        location: 'Greater Toronto Area',
         tags: ['Design & Build', 'Fencing', 'Planting'],
         description: 'A full design-build transformation framed by custom fencing and four-season planting.',
-        image: 'https://images.unsplash.com/photo-1598228723793-52759bba239c?q=80&w=1800&auto=format&fit=crop'
+        image: '/images/woolbridge.webp'
     },
     {
-        name: 'Lakeside Terrace',
-        location: 'Newmarket',
+        name: 'Oakville',
+        location: 'Greater Toronto Area',
         tags: ['Natural Stone', 'Pools & Ponds'],
         description: 'A waterfront terrace of natural stone, with a pond that mirrors the open sky.',
-        image: 'https://images.unsplash.com/photo-1597211833712-5e41faa202ea?q=80&w=1800&auto=format&fit=crop'
+        image: '/images/oakville.webp'
     }
 ];
 
