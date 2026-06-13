@@ -4,6 +4,8 @@ export type Project = {
     tags: string[];
     description: string;
     image: string;
+    // Additional images for the projects-page gallery (3 per project).
+    gallery?: string[];
 };
 
 export const PROJECTS: Project[] = [

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import { SERVICE_CATEGORIES } from '@/lib/services';
 
@@ -12,7 +13,7 @@ import { ChevronDown } from 'lucide-react';
 const NAV_LINKS = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/services', label: 'Services', dropdown: true },
+    { href: '/services/landscape-design', label: 'Services', dropdown: true },
     { href: '/projects', label: 'Projects' },
     { href: '/contact', label: 'Contact' }
 ];
@@ -21,6 +22,8 @@ const SiteHeader = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [servicesOpen, setServicesOpen] = useState(false);
+    const pathname = usePathname();
+    const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 24);
@@ -48,7 +51,7 @@ const SiteHeader = () => {
             }`}>
             <div
                 className={`mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-500 lg:px-10 ${
-                    solid ? 'h-14 lg:h-16' : 'h-16 lg:h-20'
+                    solid ? 'h-12 lg:h-14' : 'h-14 lg:h-16'
                 }`}>
                 <Link href='/' aria-label="Jayden's Landscaping — Home" onClick={closeAll}>
                     <Image
@@ -57,11 +60,11 @@ const SiteHeader = () => {
                         width={177}
                         height={60}
                         priority
-                        className={`w-auto transition-all duration-500 ${solid ? 'h-7 lg:h-8' : 'h-8 lg:h-9'}`}
+                        className={`w-auto transition-all duration-500 ${solid ? 'h-7 lg:h-8' : 'h-9 lg:h-10'}`}
                     />
                 </Link>
 
-                <nav className='hidden items-center gap-9 lg:flex' aria-label='Main navigation'>
+                <nav className='hidden items-center gap-8 lg:flex' aria-label='Main navigation'>
                     {NAV_LINKS.map((link) =>
                         link.dropdown ? (
                             <div
@@ -72,9 +75,9 @@ const SiteHeader = () => {
                                 <Link
                                     href={link.href}
                                     aria-expanded={servicesOpen}
-                                    className={`relative flex items-center gap-1.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 ${underline} ${
-                                        solid ? 'text-ink/80 hover:text-ink' : 'text-cream/85 hover:text-cream'
-                                    }`}>
+                                    className={`relative flex items-center gap-1.5 text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 ${underline} ${
+                                        isActive('/services') ? 'after:scale-x-100' : ''
+                                    } ${solid ? 'text-ink/80 hover:text-ink' : 'text-cream/85 hover:text-cream'}`}>
                                     {link.label}
                                     <ChevronDown
                                         className={`h-3 w-3 transition-transform duration-300 ${
@@ -106,16 +109,16 @@ const SiteHeader = () => {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`relative text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 ${underline} ${
-                                    solid ? 'text-ink/80 hover:text-ink' : 'text-cream/85 hover:text-cream'
-                                }`}>
+                                className={`relative text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 ${underline} ${
+                                    isActive(link.href) ? 'after:scale-x-100' : ''
+                                } ${solid ? 'text-ink/80 hover:text-ink' : 'text-cream/85 hover:text-cream'}`}>
                                 {link.label}
                             </Link>
                         )
                     )}
                     <Link
                         href='/contact'
-                        className='bg-beige text-forest hover:bg-beige/85 ml-2 px-5 py-2.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300'>
+                        className='bg-beige text-forest hover:bg-beige/85 ml-1 px-4 py-2 text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300'>
                         Get A Free Quote
                     </Link>
                 </nav>
@@ -141,7 +144,7 @@ const SiteHeader = () => {
 
             {menuOpen && (
                 <nav
-                    className='bg-cream/95 border-sand max-h-[calc(100svh-3.5rem)] overflow-y-auto border-t backdrop-blur-md lg:hidden'
+                    className='bg-cream/95 border-sand max-h-[calc(100svh-3rem)] overflow-y-auto border-t backdrop-blur-md lg:hidden'
                     aria-label='Mobile navigation'>
                     <div className='flex flex-col px-6 py-5'>
                         <Link
@@ -158,7 +161,7 @@ const SiteHeader = () => {
                         </Link>
                         <div className='border-sand/50 border-b py-3.5'>
                             <Link
-                                href='/services'
+                                href='/services/landscape-design'
                                 onClick={closeAll}
                                 className='text-ink hover:text-moss text-[13px] font-medium tracking-[0.2em] uppercase'>
                                 Services

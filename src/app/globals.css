@@ -138,6 +138,13 @@
   --brand-ink: #20251A;
 }
 
+/* Seamless image marquee (used on the About page) */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @theme inline {
   --font-sans: var(--font-inter);
   --font-display: var(--font-aboreto);

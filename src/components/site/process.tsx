@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import Reveal from '@/components/site/reveal';
 import SectionHeading from '@/components/site/section-heading';
 
@@ -32,8 +34,17 @@ const STEPS = [
 
 const Process = () => {
     return (
-        <section className='bg-forest px-6 py-24 lg:px-10 lg:py-32'>
-            <div className='mx-auto max-w-7xl'>
+        <section className='bg-forest relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32'>
+            {/* LeafBG texture blended into the green */}
+            <Image
+                src='/images/leafbg.webp'
+                alt=''
+                aria-hidden
+                fill
+                sizes='100vw'
+                className='pointer-events-none object-cover opacity-[0.05]'
+            />
+            <div className='relative z-10 mx-auto max-w-7xl'>
                 <SectionHeading
                     eyebrow='Our Process'
                     title='From First Sketch To Final Stone'

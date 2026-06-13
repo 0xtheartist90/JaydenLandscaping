@@ -3,10 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import Marquee from '@/components/site/marquee';
+import OtherServices from '@/components/site/other-services';
 import Reveal from '@/components/site/reveal';
-import { SERVICE_CATEGORIES, getRelatedServices, getServiceBySlug } from '@/lib/services';
+import { SERVICE_CATEGORIES, getServiceBySlug } from '@/lib/services';
 
-import { ArrowRight, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -35,8 +37,6 @@ const ServicePage = async ({ params }: ServicePageProps) => {
     const { slug } = await params;
     const category = getServiceBySlug(slug);
     if (!category) notFound();
-
-    const related = getRelatedServices(slug);
 
     const structuredData = {
         '@context': 'https://schema.org',
@@ -92,9 +92,6 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                     <h1 className='font-display text-cream text-4xl leading-[1.15] sm:text-5xl lg:text-6xl'>
                         {category.title}
                     </h1>
-                    <p className='text-cream/85 mx-auto mt-8 max-w-2xl text-base leading-relaxed font-light sm:text-lg'>
-                        {category.shortDescription}
-                    </p>
                     <Link
                         href='/contact'
                         className='bg-cream text-forest hover:bg-beige mt-10 inline-block px-10 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
@@ -102,6 +99,8 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                     </Link>
                 </div>
             </section>
+
+            <OtherServices currentSlug={category.slug} />
 
             {/* Overview */}
             <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
@@ -136,9 +135,20 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                 </div>
             </section>
 
+            <Marquee />
+
             {/* Included services */}
-            <section className='bg-forest px-6 py-24 lg:px-10 lg:py-32'>
-                <div className='mx-auto max-w-7xl'>
+            <section className='bg-forest relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32'>
+                {/* LeafBG texture blended into the green */}
+                <Image
+                    src='/images/leafbg.webp'
+                    alt=''
+                    aria-hidden
+                    fill
+                    sizes='100vw'
+                    className='pointer-events-none object-cover opacity-[0.05]'
+                />
+                <div className='relative z-10 mx-auto max-w-7xl'>
                     <Reveal className='mx-auto max-w-3xl text-center'>
                         <p className='text-beige mb-5 text-xs font-medium tracking-[0.35em] uppercase'>
                             What&apos;s Included
@@ -164,54 +174,6 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                             Get A Free Quote
                         </Link>
                     </Reveal>
-                </div>
-            </section>
-
-            {/* Related services */}
-            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
-                <Image
-                    src='/images/BGbeige.webp'
-                    alt=''
-                    aria-hidden
-                    fill
-                    sizes='100vw'
-                    className='pointer-events-none object-cover opacity-[0.03]'
-                />
-                <div className='relative z-10 mx-auto max-w-7xl'>
-                    <Reveal className='mx-auto max-w-3xl text-center'>
-                        <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>
-                            Explore More
-                        </p>
-                        <h2 className='font-display text-forest text-3xl leading-snug sm:text-4xl'>
-                            Related Services
-                        </h2>
-                    </Reveal>
-                    <div className='mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3'>
-                        {related.map((service, index) => (
-                            <Reveal key={service.slug} delay={index * 0.1}>
-                                <Link href={`/services/${service.slug}`} className='group block'>
-                                    <div className='relative aspect-[4/3] overflow-hidden'>
-                                        <Image
-                                            src={service.image}
-                                            alt={service.title}
-                                            fill
-                                            sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                                            className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
-                                        />
-                                        <div className='absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/15' />
-                                    </div>
-                                    <h3 className='font-display text-forest mt-5 text-lg'>{service.title}</h3>
-                                    <p className='text-ink/65 mt-2 text-sm leading-relaxed'>
-                                        {service.shortDescription}
-                                    </p>
-                                    <span className='text-moss group-hover:text-forest mt-4 inline-flex items-center gap-2 text-[12px] font-medium tracking-[0.2em] uppercase transition-colors duration-300'>
-                                        Learn More
-                                        <ArrowRight className='h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1' />
-                                    </span>
-                                </Link>
-                            </Reveal>
-                        ))}
-                    </div>
                 </div>
             </section>
         </>
