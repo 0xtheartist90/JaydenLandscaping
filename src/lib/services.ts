@@ -46,7 +46,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Material Selection',
             'Project Planning'
         ],
-        image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1800&auto=format&fit=crop',
+        image: '/images/landscape-design.webp',
         seo: {
             title: "Landscape Design Toronto & GTA | Jayden's Landscaping",
             description:
@@ -82,7 +82,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Natural Stone Installation',
             'Retaining Walls'
         ],
-        image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1800&auto=format&fit=crop',
+        image: '/images/hardscaping.webp',
         seo: {
             title: "Interlocking & Hardscaping Toronto | Jayden's Landscaping",
             description:
@@ -118,7 +118,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Privacy Fences',
             'Custom Structures'
         ],
-        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1800&auto=format&fit=crop',
+        image: '/images/outdoor-structures.webp',
         seo: {
             title: "Deck Builder & Fence Installation Toronto | Jayden's Landscaping",
             description:
@@ -147,7 +147,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             }
         ],
         subservices: ['Ponds', 'Waterfalls', 'Natural Stone Pools', 'Landscape Water Features'],
-        image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop',
+        image: '/images/water-features.webp',
         seo: {
             title: "Water Features & Pond Construction Toronto | Jayden's Landscaping",
             description:
@@ -185,7 +185,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'New Lawn Installation',
             'Seasonal Planting'
         ],
-        image: 'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1800&auto=format&fit=crop',
+        image: '/images/softscaping.webp',
         seo: {
             title: "Garden Installation & Planting Toronto | Jayden's Landscaping",
             description:

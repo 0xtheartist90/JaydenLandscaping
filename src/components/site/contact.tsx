@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
+
 import Reveal from '@/components/site/reveal';
 
 import { Mail, MapPin, Phone } from 'lucide-react';
@@ -47,8 +49,18 @@ const Contact = () => {
     };
 
     return (
-        <section id='contact' className='bg-cream scroll-mt-20 px-6 py-24 lg:px-10 lg:py-32'>
-            <div className='mx-auto grid max-w-7xl gap-14 lg:grid-cols-5 lg:gap-20'>
+        <section id='contact' className='bg-cream relative scroll-mt-20 overflow-hidden px-6 py-24 lg:px-10 lg:py-32'>
+            {/* Subtle BGbeige texture */}
+            <Image
+                src='/images/BGbeige.webp'
+                alt=''
+                aria-hidden
+                fill
+                sizes='100vw'
+                className='pointer-events-none object-cover opacity-[0.03]'
+            />
+
+            <div className='relative z-10 mx-auto grid max-w-7xl gap-14 lg:grid-cols-5 lg:gap-20'>
                 <Reveal className='lg:col-span-2'>
                     <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>Get In Touch</p>
                     <h2 className='font-display text-forest text-3xl leading-snug sm:text-4xl'>

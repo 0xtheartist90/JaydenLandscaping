@@ -16,7 +16,7 @@ const SiteFooter = () => {
                     <div className='text-center md:text-left'>
                         <Link href='/' aria-label="Jayden's Landscaping — Home">
                             <Image
-                                src='/images/logo-white.png'
+                                src='/images/logo-white.webp'
                                 alt="Jayden's Landscaping"
                                 width={177}
                                 height={60}

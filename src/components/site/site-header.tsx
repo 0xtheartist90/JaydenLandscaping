@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 import { SERVICE_CATEGORIES } from '@/lib/services';
 
-import { ChevronDown } from 'lucide-react';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
 
 const NAV_LINKS = [
     { href: '/', label: 'Home' },
@@ -37,24 +37,31 @@ const SiteHeader = () => {
         setServicesOpen(false);
     };
 
+    // Animated underline shared by every desktop link
+    const underline =
+        'after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100';
+
     return (
         <header
             className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-                solid ? 'bg-cream/95 shadow-[0_1px_0_0_rgba(56,65,44,0.08)] backdrop-blur-md' : 'bg-transparent'
+                solid ? 'bg-cream/85 border-sand/50 border-b backdrop-blur-md' : 'border-b border-transparent bg-transparent'
             }`}>
-            <div className='mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10'>
+            <div
+                className={`mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-500 lg:px-10 ${
+                    solid ? 'h-14 lg:h-16' : 'h-16 lg:h-20'
+                }`}>
                 <Link href='/' aria-label="Jayden's Landscaping — Home" onClick={closeAll}>
                     <Image
-                        src={solid ? '/images/logo-dark.png' : '/images/logo-white.png'}
+                        src={solid ? '/images/logo-dark.webp' : '/images/logo-white.webp'}
                         alt="Jayden's Landscaping"
                         width={177}
                         height={60}
                         priority
-                        className='h-10 w-auto lg:h-12'
+                        className={`w-auto transition-all duration-500 ${solid ? 'h-7 lg:h-8' : 'h-8 lg:h-9'}`}
                     />
                 </Link>
 
-                <nav className='hidden items-center gap-10 lg:flex' aria-label='Main navigation'>
+                <nav className='hidden items-center gap-9 lg:flex' aria-label='Main navigation'>
                     {NAV_LINKS.map((link) =>
                         link.dropdown ? (
                             <div
@@ -65,30 +72,30 @@ const SiteHeader = () => {
                                 <Link
                                     href={link.href}
                                     aria-expanded={servicesOpen}
-                                    className={`flex items-center gap-1.5 py-2 text-[13px] font-medium tracking-[0.18em] uppercase transition-colors duration-300 ${
-                                        solid ? 'text-ink hover:text-moss' : 'text-cream/90 hover:text-cream'
+                                    className={`relative flex items-center gap-1.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 ${underline} ${
+                                        solid ? 'text-ink/80 hover:text-ink' : 'text-cream/85 hover:text-cream'
                                     }`}>
                                     {link.label}
                                     <ChevronDown
-                                        className={`h-3.5 w-3.5 transition-transform duration-300 ${
+                                        className={`h-3 w-3 transition-transform duration-300 ${
                                             servicesOpen ? 'rotate-180' : ''
                                         }`}
-                                        strokeWidth={2}
+                                        strokeWidth={1.5}
                                     />
                                 </Link>
                                 <div
-                                    className={`absolute top-full left-1/2 w-64 -translate-x-1/2 pt-3 transition-all duration-300 ${
+                                    className={`absolute top-full left-1/2 w-60 -translate-x-1/2 pt-4 transition-all duration-300 ${
                                         servicesOpen
                                             ? 'pointer-events-auto translate-y-0 opacity-100'
                                             : 'pointer-events-none -translate-y-2 opacity-0'
                                     }`}>
-                                    <div className='bg-cream border-sand border shadow-[0_18px_40px_-12px_rgba(32,37,26,0.25)]'>
+                                    <div className='bg-cream/95 border-sand/70 border shadow-[0_18px_40px_-12px_rgba(32,37,26,0.22)] backdrop-blur-md'>
                                         {SERVICE_CATEGORIES.map((category) => (
                                             <Link
                                                 key={category.slug}
                                                 href={`/services/${category.slug}`}
                                                 onClick={() => setServicesOpen(false)}
-                                                className='text-ink hover:bg-forest hover:text-cream block px-6 py-3.5 text-[12px] font-medium tracking-[0.16em] uppercase transition-colors duration-200'>
+                                                className='text-ink/75 hover:bg-forest hover:text-cream block px-5 py-3 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors duration-200'>
                                                 {category.title}
                                             </Link>
                                         ))}
@@ -99,8 +106,8 @@ const SiteHeader = () => {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`text-[13px] font-medium tracking-[0.18em] uppercase transition-colors duration-300 ${
-                                    solid ? 'text-ink hover:text-moss' : 'text-cream/90 hover:text-cream'
+                                className={`relative text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 ${underline} ${
+                                    solid ? 'text-ink/80 hover:text-ink' : 'text-cream/85 hover:text-cream'
                                 }`}>
                                 {link.label}
                             </Link>
@@ -108,28 +115,27 @@ const SiteHeader = () => {
                     )}
                     <Link
                         href='/contact'
-                        className={`border px-6 py-3 text-[13px] font-medium tracking-[0.18em] uppercase transition-all duration-300 ${
-                            solid
-                                ? 'border-forest bg-forest text-cream hover:bg-transparent hover:text-forest'
-                                : 'border-cream/70 text-cream hover:bg-cream hover:text-forest'
+                        className={`relative ml-1 inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 ${underline} ${
+                            solid ? 'text-forest hover:text-moss' : 'text-cream hover:text-cream/80'
                         }`}>
                         Get A Free Quote
+                        <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
                     </Link>
                 </nav>
 
                 <button
                     type='button'
-                    className='flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden'
+                    className='flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden'
                     aria-expanded={menuOpen}
                     aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                     onClick={() => setMenuOpen((open) => !open)}>
                     <span
-                        className={`h-px w-6 transition-all duration-300 ${solid ? 'bg-ink' : 'bg-cream'} ${
+                        className={`h-px w-5 transition-all duration-300 ${solid ? 'bg-ink' : 'bg-cream'} ${
                             menuOpen ? 'translate-y-[3.5px] rotate-45' : ''
                         }`}
                     />
                     <span
-                        className={`h-px w-6 transition-all duration-300 ${solid ? 'bg-ink' : 'bg-cream'} ${
+                        className={`h-px w-5 transition-all duration-300 ${solid ? 'bg-ink' : 'bg-cream'} ${
                             menuOpen ? '-translate-y-[3.5px] -rotate-45' : ''
                         }`}
                     />
@@ -137,34 +143,36 @@ const SiteHeader = () => {
             </div>
 
             {menuOpen && (
-                <nav className='bg-cream border-sand max-h-[calc(100svh-5rem)] overflow-y-auto border-t lg:hidden' aria-label='Mobile navigation'>
-                    <div className='flex flex-col px-6 py-6'>
+                <nav
+                    className='bg-cream/95 border-sand max-h-[calc(100svh-3.5rem)] overflow-y-auto border-t backdrop-blur-md lg:hidden'
+                    aria-label='Mobile navigation'>
+                    <div className='flex flex-col px-6 py-5'>
                         <Link
                             href='/'
                             onClick={closeAll}
-                            className='text-ink hover:text-moss border-sand/60 border-b py-4 text-sm font-medium tracking-[0.18em] uppercase'>
+                            className='text-ink hover:text-moss border-sand/50 border-b py-3.5 text-[13px] font-medium tracking-[0.2em] uppercase'>
                             Home
                         </Link>
                         <Link
                             href='/about'
                             onClick={closeAll}
-                            className='text-ink hover:text-moss border-sand/60 border-b py-4 text-sm font-medium tracking-[0.18em] uppercase'>
+                            className='text-ink hover:text-moss border-sand/50 border-b py-3.5 text-[13px] font-medium tracking-[0.2em] uppercase'>
                             About
                         </Link>
-                        <div className='border-sand/60 border-b py-4'>
+                        <div className='border-sand/50 border-b py-3.5'>
                             <Link
                                 href='/services'
                                 onClick={closeAll}
-                                className='text-ink hover:text-moss text-sm font-medium tracking-[0.18em] uppercase'>
+                                className='text-ink hover:text-moss text-[13px] font-medium tracking-[0.2em] uppercase'>
                                 Services
                             </Link>
-                            <div className='mt-3 flex flex-col'>
+                            <div className='mt-2 flex flex-col'>
                                 {SERVICE_CATEGORIES.map((category) => (
                                     <Link
                                         key={category.slug}
                                         href={`/services/${category.slug}`}
                                         onClick={closeAll}
-                                        className='text-ink/65 hover:text-moss py-2.5 pl-4 text-[12px] font-medium tracking-[0.16em] uppercase'>
+                                        className='text-ink/60 hover:text-moss py-2 pl-4 text-[11px] font-medium tracking-[0.16em] uppercase'>
                                         {category.title}
                                     </Link>
                                 ))}
@@ -177,15 +185,16 @@ const SiteHeader = () => {
                                 key={link.href}
                                 href={link.href}
                                 onClick={closeAll}
-                                className='text-ink hover:text-moss border-sand/60 border-b py-4 text-sm font-medium tracking-[0.18em] uppercase last:border-0'>
+                                className='text-ink hover:text-moss border-sand/50 border-b py-3.5 text-[13px] font-medium tracking-[0.2em] uppercase last:border-0'>
                                 {link.label}
                             </Link>
                         ))}
                         <Link
                             href='/contact'
                             onClick={closeAll}
-                            className='bg-forest text-cream mt-4 px-6 py-4 text-center text-sm font-medium tracking-[0.18em] uppercase'>
+                            className='text-forest hover:text-moss mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium tracking-[0.2em] uppercase'>
                             Get A Free Quote
+                            <ArrowUpRight className='h-4 w-4' strokeWidth={1.5} />
                         </Link>
                     </div>
                 </nav>
