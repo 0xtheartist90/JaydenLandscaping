@@ -4,41 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { PROJECTS as FEATURED } from '@/lib/projects';
+
 import { ArrowUpRight } from 'lucide-react';
-
-const FEATURED = [
-    {
-        name: 'New Market',
-        location: 'Greater Toronto Area',
-        tags: ['Landscape Design', 'Natural Stone', 'Lighting'],
-        description: 'A formal courtyard reimagined with natural stone, layered planting and architectural lighting.',
-        image: '/images/newmarket.webp'
-    },
-    {
-        name: '64',
-        location: 'Greater Toronto Area',
-        tags: ['Interlocking', 'Decks', 'Garden Design'],
-        description: 'Terraced interlocking and cedar decks that turn a steep slope into usable living space.',
-        image: '/images/64.webp'
-    },
-    {
-        name: 'Woolbridge',
-        location: 'Greater Toronto Area',
-        tags: ['Design & Build', 'Fencing', 'Planting'],
-        description: 'A full design-build transformation framed by custom fencing and four-season planting.',
-        image: '/images/woolbridge.webp'
-    },
-    {
-        name: 'Oakville',
-        location: 'Greater Toronto Area',
-        tags: ['Natural Stone', 'Pools & Ponds'],
-        description: 'A waterfront terrace of natural stone, with a pond that mirrors the open sky.',
-        image: '/images/oakville.webp'
-    }
-];
-
-const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 
 const ArrowBadge = () => (
     <span className='border-cream/50 text-cream absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur-sm transition-colors duration-300'>
@@ -50,7 +18,7 @@ const FeaturedProjects = () => {
     const [active, setActive] = useState(0);
 
     return (
-        <section id='projects' className='bg-cream relative scroll-mt-20 overflow-hidden px-6 py-24 lg:px-10 lg:py-28'>
+        <section id='projects' className='relative scroll-mt-20 overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-28'>
             {/* Subtle BGbeige texture */}
             <Image
                 src='/images/BGbeige.webp'
@@ -91,7 +59,7 @@ const FeaturedProjects = () => {
                                 href='/projects'
                                 onMouseEnter={() => setActive(index)}
                                 onFocus={() => setActive(index)}
-                                className={`group relative min-w-[8rem] overflow-hidden transition-all duration-700 ease-out lg:min-w-[11rem] ${
+                                className={`group relative min-w-[8rem] overflow-hidden transition-all duration-[850ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:min-w-[11rem] ${
                                     isActive ? 'flex-[5]' : 'flex-[1]'
                                 }`}>
                                 <Image
@@ -99,59 +67,50 @@ const FeaturedProjects = () => {
                                     alt={`${project.name} — landscaping project in ${project.location}`}
                                     fill
                                     sizes='(max-width: 1280px) 70vw, 860px'
-                                    className='object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105'
+                                    className={`object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                                        isActive ? 'scale-105' : 'scale-100'
+                                    }`}
                                 />
                                 <div className='absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/25' />
+                                <div
+                                    className={`bg-forest/40 absolute inset-0 transition-opacity duration-[850ms] ease-out ${
+                                        isActive ? 'opacity-0' : 'opacity-100'
+                                    }`}
+                                />
 
                                 <ArrowBadge />
 
-                                {/* Content — bottom left */}
-                                <div className='absolute inset-x-0 bottom-0 p-6 lg:p-8'>
-                                    {/* Tags — only when expanded */}
-                                    <AnimatePresence initial={false}>
-                                        {isActive && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 8 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: 8 }}
-                                                transition={{ duration: 0.4, ease: EASE }}
-                                                className='mb-4 flex flex-wrap gap-2'>
-                                                {project.tags.map((tag) => (
-                                                    <span
-                                                        key={tag}
-                                                        className='border-cream/40 text-cream/90 rounded-full border px-3 py-1 text-[10px] font-medium tracking-[0.14em] whitespace-nowrap uppercase backdrop-blur-sm'>
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                {/* Collapsed: just the title (fades out on expand) */}
+                                <h3
+                                    className={`font-display text-cream absolute inset-x-0 bottom-0 p-6 text-base whitespace-nowrap [text-shadow:0_2px_20px_rgba(0,0,0,0.45)] transition-opacity duration-300 lg:p-8 lg:text-lg ${
+                                        isActive ? 'opacity-0' : 'opacity-100'
+                                    }`}>
+                                    {project.name}
+                                </h3>
 
-                                    <h3
-                                        className={`font-display text-cream leading-[1.05] whitespace-nowrap [text-shadow:0_2px_20px_rgba(0,0,0,0.45)] transition-all duration-500 ${
-                                            isActive ? 'text-4xl lg:text-5xl' : 'text-sm lg:text-base'
-                                        }`}>
+                                {/* Expanded: full detail — fades and rises in (no font-size jump) */}
+                                <div
+                                    className={`absolute inset-x-0 bottom-0 p-6 transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:p-8 ${
+                                        isActive ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-5 opacity-0'
+                                    }`}>
+                                    <div className='mb-4 flex flex-wrap gap-2'>
+                                        {project.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className='border-cream/40 text-cream/90 rounded-full border px-3 py-1 text-[10px] font-medium tracking-[0.14em] whitespace-nowrap uppercase backdrop-blur-sm'>
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <h3 className='font-display text-cream text-4xl leading-[1.05] [text-shadow:0_2px_20px_rgba(0,0,0,0.45)] sm:text-5xl'>
                                         {project.name}
                                     </h3>
-
-                                    {/* Description + location — only when expanded */}
-                                    <AnimatePresence initial={false}>
-                                        {isActive && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                transition={{ duration: 0.4, ease: EASE }}
-                                                className='overflow-hidden'>
-                                                <p className='text-cream/85 mt-4 max-w-md text-sm leading-relaxed font-light [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]'>
-                                                    {project.description}
-                                                </p>
-                                                <p className='text-beige mt-3 text-[11px] font-medium tracking-[0.22em] uppercase'>
-                                                    {project.location}
-                                                </p>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                    <p className='text-cream/85 mt-4 max-w-md text-sm leading-relaxed font-light [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]'>
+                                        {project.description}
+                                    </p>
+                                    <p className='text-beige mt-3 text-[11px] font-medium tracking-[0.22em] uppercase'>
+                                        {project.location}
+                                    </p>
                                 </div>
                             </Link>
                         );

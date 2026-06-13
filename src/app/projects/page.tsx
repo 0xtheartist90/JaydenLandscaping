@@ -20,7 +20,7 @@ const ProjectsPage = () => {
                 image='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2400&auto=format&fit=crop'
                 imageAlt='A luxury home with custom pool and landscaped gardens'
             />
-            <Projects showHeading={false} />
+            <Projects />
             <CtaBanner />
         </>
     );

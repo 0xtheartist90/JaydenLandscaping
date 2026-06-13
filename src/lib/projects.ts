@@ -1,0 +1,38 @@
+export type Project = {
+    name: string;
+    location: string;
+    tags: string[];
+    description: string;
+    image: string;
+};
+
+export const PROJECTS: Project[] = [
+    {
+        name: 'New Market',
+        location: 'Greater Toronto Area',
+        tags: ['Landscape Design', 'Natural Stone', 'Lighting'],
+        description: 'A formal courtyard reimagined with natural stone, layered planting and architectural lighting.',
+        image: '/images/newmarket.webp'
+    },
+    {
+        name: '64',
+        location: 'Greater Toronto Area',
+        tags: ['Interlocking', 'Decks', 'Garden Design'],
+        description: 'Terraced interlocking and cedar decks that turn a steep slope into usable living space.',
+        image: '/images/64.webp'
+    },
+    {
+        name: 'Woolbridge',
+        location: 'Greater Toronto Area',
+        tags: ['Design & Build', 'Fencing', 'Planting'],
+        description: 'A full design-build transformation framed by custom fencing and four-season planting.',
+        image: '/images/woolbridge.webp'
+    },
+    {
+        name: 'Oakville',
+        location: 'Greater Toronto Area',
+        tags: ['Natural Stone', 'Pools & Ponds'],
+        description: 'A waterfront terrace of natural stone, with a pond that mirrors the open sky.',
+        image: '/images/oakville.webp'
+    }
+];

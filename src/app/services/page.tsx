@@ -39,8 +39,16 @@ const ServicesPage = () => {
                 imageAlt='A custom-built home with landscaped grounds at sunset'
             />
 
-            <section className='bg-cream px-6 py-24 lg:px-10 lg:py-32'>
-                <div className='mx-auto max-w-7xl'>
+            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
+                <Image
+                    src='/images/BGbeige.webp'
+                    alt=''
+                    aria-hidden
+                    fill
+                    sizes='100vw'
+                    className='pointer-events-none object-cover opacity-[0.03]'
+                />
+                <div className='relative z-10 mx-auto max-w-7xl'>
                     <div className='grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3'>
                         {SERVICE_CATEGORIES.map((category, index) => (
                             <Reveal key={category.slug} delay={(index % 3) * 0.1}>

@@ -66,7 +66,7 @@ const Hero = () => {
                             width={256}
                             height={256}
                             priority
-                            className='h-32 w-32 drop-shadow-[0_2px_28px_rgba(0,0,0,0.45)] xl:h-40 xl:w-40'
+                            className='h-24 w-24 drop-shadow-[0_2px_28px_rgba(0,0,0,0.45)] xl:h-[7.5rem] xl:w-[7.5rem]'
                         />
                     </motion.div>
                     <motion.span
@@ -94,7 +94,7 @@ const Hero = () => {
                         width={256}
                         height={256}
                         priority
-                        className='h-36 w-36 drop-shadow-[0_2px_28px_rgba(0,0,0,0.45)] sm:h-[10.5rem] sm:w-[10.5rem]'
+                        className='h-[6.75rem] w-[6.75rem] drop-shadow-[0_2px_28px_rgba(0,0,0,0.45)] sm:h-[7.875rem] sm:w-[7.875rem]'
                     />
                 </motion.div>
 
@@ -123,12 +123,12 @@ const Hero = () => {
                             className='mt-9 flex flex-col gap-4 sm:flex-row sm:items-center'>
                             <Link
                                 href='/contact'
-                                className='bg-forest text-cream hover:bg-moss px-10 py-4 text-center text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
+                                className='bg-beige text-forest hover:bg-beige/85 px-8 py-3 text-center text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
                                 Get A Free Quote
                             </Link>
                             <Link
                                 href='/projects'
-                                className='border-cream/70 text-cream hover:bg-cream/10 border px-10 py-4 text-center text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
+                                className='border-cream/70 text-cream hover:bg-cream/10 border px-8 py-3 text-center text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
                                 View Projects
                             </Link>
                         </motion.div>

@@ -7,7 +7,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 const AboutTeaser = () => {
     return (
-        <section className='bg-cream relative overflow-hidden px-6 py-16 lg:px-10 lg:py-20'>
+        <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-20'>
             {/* Subtle BGbeige texture */}
             <Image
                 src='/images/BGbeige.webp'

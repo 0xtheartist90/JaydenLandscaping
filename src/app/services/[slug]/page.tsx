@@ -104,8 +104,16 @@ const ServicePage = async ({ params }: ServicePageProps) => {
             </section>
 
             {/* Overview */}
-            <section className='bg-cream px-6 py-24 lg:px-10 lg:py-32'>
-                <div className='mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2 lg:gap-20'>
+            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
+                <Image
+                    src='/images/BGbeige.webp'
+                    alt=''
+                    aria-hidden
+                    fill
+                    sizes='100vw'
+                    className='pointer-events-none object-cover opacity-[0.03]'
+                />
+                <div className='relative z-10 mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2 lg:gap-20'>
                     <Reveal>
                         <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>Overview</p>
                         <h2 className='font-display text-forest text-3xl leading-snug sm:text-4xl'>
@@ -129,22 +137,22 @@ const ServicePage = async ({ params }: ServicePageProps) => {
             </section>
 
             {/* Included services */}
-            <section className='bg-sand/40 px-6 py-24 lg:px-10 lg:py-32'>
+            <section className='bg-forest px-6 py-24 lg:px-10 lg:py-32'>
                 <div className='mx-auto max-w-7xl'>
                     <Reveal className='mx-auto max-w-3xl text-center'>
-                        <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>
+                        <p className='text-beige mb-5 text-xs font-medium tracking-[0.35em] uppercase'>
                             What&apos;s Included
                         </p>
-                        <h2 className='font-display text-forest text-3xl leading-snug sm:text-4xl'>
+                        <h2 className='font-display text-cream text-3xl leading-snug sm:text-4xl'>
                             {category.title} Services
                         </h2>
                     </Reveal>
                     <Reveal delay={0.15} className='mt-14'>
                         <ul className='mx-auto grid max-w-4xl gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-3'>
                             {category.subservices.map((subservice) => (
-                                <li key={subservice} className='border-sand bg-cream flex items-center gap-3 border px-5 py-4'>
-                                    <Check className='text-moss h-4 w-4 shrink-0' strokeWidth={2} />
-                                    <span className='text-ink/80 text-sm'>{subservice}</span>
+                                <li key={subservice} className='border-cream/20 bg-cream/5 flex items-center gap-3 border px-5 py-4'>
+                                    <Check className='text-beige h-4 w-4 shrink-0' strokeWidth={2} />
+                                    <span className='text-cream/85 text-sm'>{subservice}</span>
                                 </li>
                             ))}
                         </ul>
@@ -152,7 +160,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                     <Reveal delay={0.25} className='mt-14 text-center'>
                         <Link
                             href='/contact'
-                            className='bg-forest text-cream hover:bg-moss inline-block px-10 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
+                            className='bg-cream text-forest hover:bg-beige inline-block px-10 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
                             Get A Free Quote
                         </Link>
                     </Reveal>
@@ -160,8 +168,16 @@ const ServicePage = async ({ params }: ServicePageProps) => {
             </section>
 
             {/* Related services */}
-            <section className='bg-cream px-6 py-24 lg:px-10 lg:py-32'>
-                <div className='mx-auto max-w-7xl'>
+            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
+                <Image
+                    src='/images/BGbeige.webp'
+                    alt=''
+                    aria-hidden
+                    fill
+                    sizes='100vw'
+                    className='pointer-events-none object-cover opacity-[0.03]'
+                />
+                <div className='relative z-10 mx-auto max-w-7xl'>
                     <Reveal className='mx-auto max-w-3xl text-center'>
                         <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>
                             Explore More

@@ -23,12 +23,20 @@ const MILESTONES = [
 
 const About = () => {
     return (
-        <section id='about' className='bg-cream scroll-mt-20 px-6 py-24 lg:px-10 lg:py-32'>
-            <div className='mx-auto grid max-w-7xl items-start gap-14 lg:grid-cols-2 lg:gap-20'>
+        <section id='about' className='relative scroll-mt-20 overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
+            <Image
+                src='/images/BGbeige.webp'
+                alt=''
+                aria-hidden
+                fill
+                sizes='100vw'
+                className='pointer-events-none object-cover opacity-[0.03]'
+            />
+            <div className='relative z-10 mx-auto grid max-w-7xl items-start gap-14 lg:grid-cols-2 lg:gap-20'>
                 <Reveal className='lg:sticky lg:top-32'>
-                    <div className='relative aspect-[4/5] overflow-hidden'>
+                    <div className='relative aspect-[3/2] overflow-hidden'>
                         <Image
-                            src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop'
+                            src='/images/aboutjayden.webp'
                             alt='Jayden, founder of Jayden&apos;s Landscaping'
                             fill
                             sizes='(max-width: 1024px) 100vw, 50vw'

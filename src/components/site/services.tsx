@@ -2,12 +2,22 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { SERVICE_CATEGORIES } from '@/lib/services';
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { BrickWall, Fence, PencilRuler, Shovel, Sprout, Waves, type LucideIcon } from 'lucide-react';
+import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion';
+import {
+    ArrowUpRight,
+    BrickWall,
+    ChevronDown,
+    Fence,
+    PencilRuler,
+    Shovel,
+    Sprout,
+    Waves,
+    type LucideIcon
+} from 'lucide-react';
 
 // Small editorial category labels for the index — presentational, paired by slug.
 const CATEGORY_LABELS: Record<string, string> = {
@@ -32,134 +42,134 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
 const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 
 const Services = () => {
+    const total = SERVICE_CATEGORIES.length;
+    const ref = useRef<HTMLDivElement>(null);
+    const reduceMotion = useReducedMotion();
     const [active, setActive] = useState(0);
 
+    // Pin the section and drive the active service from scroll progress.
+    const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+    useMotionValueEvent(scrollYProgress, 'change', (value) => {
+        const next = Math.max(0, Math.min(total - 1, Math.floor(value * total)));
+        setActive((prev) => (prev === next ? prev : next));
+    });
+
+    const current = SERVICE_CATEGORIES[active];
+    const Icon = SERVICE_ICONS[current.slug];
+
     return (
-        <section id='services' className='bg-forest relative scroll-mt-20 overflow-hidden'>
-            {/* Background images — crossfade to the hovered service (desktop only) */}
-            <div className='absolute inset-0 hidden md:block'>
+        <section
+            ref={ref}
+            id='services'
+            className='bg-forest relative scroll-mt-20'
+            style={{ height: `${total * 100}svh` }}>
+            <div className='sticky top-0 h-svh overflow-hidden'>
+                {/* Cross-fading background images */}
                 {SERVICE_CATEGORIES.map((category, index) => (
                     <motion.div
                         key={category.slug}
                         className='absolute inset-0'
                         initial={false}
-                        animate={{ opacity: active === index ? 1 : 0 }}
-                        transition={{ duration: 0.8, ease: 'easeInOut' }}>
+                        animate={{
+                            opacity: active === index ? 1 : 0,
+                            scale: reduceMotion ? 1 : active === index ? 1 : 1.06
+                        }}
+                        transition={{
+                            opacity: { duration: 1.1, ease: EASE },
+                            scale: { duration: 1.8, ease: 'easeOut' }
+                        }}>
                         <Image
                             src={category.image}
                             alt=''
                             aria-hidden
                             fill
+                            priority={index === 0}
                             sizes='100vw'
                             className='object-cover'
                         />
                     </motion.div>
                 ))}
-                <div className='absolute inset-0 bg-[radial-gradient(70%_80%_at_top_left,rgba(0,0,0,0.75),transparent_62%)]' />
-            </div>
+                <div className='absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/45' />
 
-            <div className='relative flex w-full flex-col gap-12 px-6 py-16 lg:h-svh lg:flex-row lg:items-stretch lg:justify-between lg:gap-16 lg:px-20 lg:py-0 xl:px-28'>
-                {/* Heading (top left) */}
-                <div className='lg:max-w-md lg:self-start lg:pt-28'>
-                    <p className='text-beige text-[11px] font-medium tracking-[0.35em] uppercase'>What We Do</p>
-                    <h2 className='font-display text-cream mt-4 text-3xl leading-[1.1] lg:text-4xl'>
-                        Six crafts,
-                        <br />
-                        one landscape.
-                    </h2>
-                    <p className='text-cream/70 mt-5 max-w-sm text-sm leading-relaxed font-light'>
-                        From the first sketch to the final cut of the season, every discipline lives under one roof — and
-                        one standard of care.
-                    </p>
-                </div>
+                <div className='relative mx-auto flex h-full max-w-7xl flex-col px-6 pt-28 pb-14 lg:px-10 lg:pb-16'>
+                    {/* Top: label + index (left) · counter (right) */}
+                    <div className='flex items-start justify-between gap-6'>
+                        <div>
+                            <p className='text-beige text-sm font-medium tracking-[0.35em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.5)] lg:text-base'>
+                                What We Do
+                            </p>
 
-                {/* Service index (bottom right) — on a very see-through frosted card */}
-                <ul className='lg:w-96 lg:self-end lg:mb-16 md:bg-black/20 md:p-6 md:backdrop-blur-md'>
-                    {SERVICE_CATEGORIES.map((category, index) => {
-                        const isActive = active === index;
-                        const Icon = SERVICE_ICONS[category.slug];
+                            {/* Live chapter index */}
+                            <div className='mt-6 hidden flex-col gap-3 lg:flex'>
+                                {SERVICE_CATEGORIES.map((category, index) => {
+                                    const ItemIcon = SERVICE_ICONS[category.slug];
 
-                        return (
-                            <li key={category.slug}>
-                                <Link
-                                    href={`/services/${category.slug}`}
-                                    onMouseEnter={() => setActive(index)}
-                                    onFocus={() => setActive(index)}
-                                    className='block py-2.5 transition-colors duration-500 lg:py-3'>
-                                    {/* Mobile: inline image (no hover on touch) */}
-                                    <div className='relative mb-5 aspect-[16/10] overflow-hidden md:hidden'>
-                                        <Image
-                                            src={category.image}
-                                            alt={category.title}
-                                            fill
-                                            sizes='100vw'
-                                            className='object-cover'
-                                        />
-                                        <div className='bg-forest/20 absolute inset-0' />
-                                    </div>
-
-                                    <div className='flex items-start justify-between gap-5'>
-                                        <div className='min-w-0'>
-                                            <p
-                                                className={`text-beige text-[11px] font-medium tracking-[0.3em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.4)] transition-colors duration-500 ${
-                                                    isActive ? '' : 'md:text-cream/40'
+                                    return (
+                                        <div key={category.slug} className='flex items-center gap-2.5'>
+                                            <ItemIcon
+                                                className={`h-4 w-4 shrink-0 transition-colors duration-500 ${
+                                                    active === index ? 'text-beige' : 'text-cream/30'
+                                                }`}
+                                                strokeWidth={1.25}
+                                            />
+                                            <span
+                                                className={`font-display text-sm transition-colors duration-500 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)] ${
+                                                    active === index ? 'text-cream' : 'text-cream/35'
                                                 }`}>
-                                                {CATEGORY_LABELS[category.slug]}
-                                            </p>
-                                            <h3
-                                                className={`font-display text-cream mt-1 flex items-center gap-2.5 text-[15px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.4)] transition-colors duration-500 sm:text-base lg:text-lg ${
-                                                    isActive ? '' : 'md:text-cream/45'
-                                                }`}>
-                                                <Icon
-                                                    className='h-4 w-4 shrink-0 lg:h-[18px] lg:w-[18px]'
-                                                    strokeWidth={1.25}
-                                                />
                                                 {category.title}
-                                            </h3>
+                                            </span>
                                         </div>
-                                        <span
-                                            className={`font-display hidden shrink-0 pt-2 text-sm tracking-widest transition-colors duration-500 md:block ${
-                                                isActive ? 'text-beige' : 'text-cream/30'
-                                            }`}>
-                                            {String(index + 1).padStart(2, '0')}
-                                        </span>
-                                    </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
 
-                                    {/* Animated line — draws in on the active (hovered) item */}
-                                    <span
-                                        className={`bg-beige mt-3 hidden h-px origin-left transition-transform duration-500 ease-out md:block ${
-                                            isActive ? 'scale-x-100' : 'scale-x-0'
-                                        }`}
-                                    />
+                        <p className='font-display text-cream/80 shrink-0 text-xl tracking-[0.2em] [text-shadow:0_1px_10px_rgba(0,0,0,0.5)] lg:text-2xl'>
+                            {String(active + 1).padStart(2, '0')}
+                            <span className='text-cream/40'> / {String(total).padStart(2, '0')}</span>
+                        </p>
+                    </div>
 
-                                    {/* Description — reveals on hover (desktop) */}
-                                    <div className='hidden md:block'>
-                                        <AnimatePresence initial={false}>
-                                            {isActive && (
-                                                <motion.div
-                                                    key='desc'
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    transition={{ duration: 0.4, ease: EASE }}
-                                                    className='overflow-hidden'>
-                                                    <p className='text-cream/80 mt-3 max-w-md text-[13px] leading-relaxed font-light [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]'>
-                                                        {category.shortDescription}
-                                                    </p>
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
-                                    </div>
-
-                                    {/* Description — always visible on mobile */}
-                                    <p className='text-cream/80 mt-4 max-w-md text-sm leading-relaxed font-light md:hidden'>
-                                        {category.shortDescription}
-                                    </p>
+                    {/* Bottom: active service — cross-fades on change */}
+                    <div className='mt-auto ml-auto max-w-2xl text-right'>
+                        <AnimatePresence mode='wait'>
+                            <motion.div
+                                key={current.slug}
+                                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -18 }}
+                                transition={{ duration: 0.55, ease: EASE }}>
+                                <Icon
+                                    className='text-cream ml-auto block h-9 w-9 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] lg:h-11 lg:w-11'
+                                    strokeWidth={1}
+                                />
+                                <p className='text-beige mt-5 text-[11px] font-medium tracking-[0.3em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]'>
+                                    {CATEGORY_LABELS[current.slug]}
+                                </p>
+                                <h2 className='font-display text-cream mt-3 text-4xl leading-[1.05] [text-shadow:0_2px_24px_rgba(0,0,0,0.5)] sm:text-5xl lg:text-6xl'>
+                                    {current.title}
+                                </h2>
+                                <p className='text-cream/85 mt-5 ml-auto max-w-md text-sm leading-relaxed font-light [text-shadow:0_1px_12px_rgba(0,0,0,0.5)] sm:text-base'>
+                                    {current.shortDescription}
+                                </p>
+                                <Link
+                                    href={`/services/${current.slug}`}
+                                    className='text-cream hover:text-beige relative mt-7 inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100'>
+                                    Explore {current.title}
+                                    <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
                                 </Link>
-                            </li>
-                        );
-                    })}
-                </ul>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+
+                    {/* Scroll hint — bottom right */}
+                    <div className='text-cream/75 pointer-events-none absolute bottom-8 left-6 hidden items-center gap-2.5 lg:left-10 lg:flex'>
+                        <span className='text-[10px] tracking-[0.3em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]'>
+                            Scroll to explore
+                        </span>
+                        <ChevronDown className='h-5 w-5 animate-bounce' strokeWidth={1.5} />
+                    </div>
+                </div>
             </div>
         </section>
     );
