@@ -1,20 +1,19 @@
-'use client';
-
-import { useState } from 'react';
-
 import Image from 'next/image';
 
 import Reveal from '@/components/site/reveal';
 
 import { Mail, MapPin, Phone } from 'lucide-react';
-import { toast } from 'sonner';
+
+const MAP_QUERY = 'Unit 3, 115 Commander Blvd, Scarborough, ON M1S 3M7, Canada';
+const MAP_SRC = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`;
+const MAP_LINK = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}`;
 
 const CONTACT_DETAILS = [
     {
         icon: Phone,
         label: 'Phone',
-        value: '(416) 555-0123',
-        href: 'tel:+14165550123'
+        value: '+1 647-621-4219',
+        href: 'tel:+16476214219'
     },
     {
         icon: Mail,
@@ -24,30 +23,13 @@ const CONTACT_DETAILS = [
     },
     {
         icon: MapPin,
-        label: 'Service Area',
-        value: 'Toronto · Markham · Richmond Hill · Vaughan · Newmarket · Oakville',
-        href: undefined
+        label: 'Address',
+        value: 'Unit 3, 115 Commander Blvd, Scarborough, ON M1S 3M7',
+        href: MAP_LINK
     }
 ];
 
-const inputClasses =
-    'w-full border border-sand bg-white/60 px-5 py-4 text-sm text-ink placeholder:text-ink/40 focus:border-moss focus:outline-none transition-colors duration-300';
-
 const Contact = () => {
-    const [submitting, setSubmitting] = useState(false);
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setSubmitting(true);
-
-        // TODO: wire up to a real endpoint (e.g. Resend, Formspree or an API route)
-        setTimeout(() => {
-            setSubmitting(false);
-            (event.target as HTMLFormElement).reset();
-            toast.success("Thank you — we'll be in touch within one business day.");
-        }, 800);
-    };
-
     return (
         <section id='contact' className='bg-cream relative scroll-mt-20 overflow-hidden px-6 py-24 lg:px-10 lg:py-32'>
             {/* Subtle BGbeige texture */}
@@ -93,54 +75,16 @@ const Contact = () => {
                 </Reveal>
 
                 <Reveal delay={0.15} className='lg:col-span-3'>
-                    <form onSubmit={handleSubmit} className='grid gap-5 sm:grid-cols-2'>
-                        <div>
-                            <label htmlFor='name' className='sr-only'>
-                                Name
-                            </label>
-                            <input id='name' name='name' required placeholder='Name' className={inputClasses} />
-                        </div>
-                        <div>
-                            <label htmlFor='phone' className='sr-only'>
-                                Phone
-                            </label>
-                            <input id='phone' name='phone' type='tel' placeholder='Phone' className={inputClasses} />
-                        </div>
-                        <div className='sm:col-span-2'>
-                            <label htmlFor='email' className='sr-only'>
-                                Email
-                            </label>
-                            <input
-                                id='email'
-                                name='email'
-                                type='email'
-                                required
-                                placeholder='Email'
-                                className={inputClasses}
-                            />
-                        </div>
-                        <div className='sm:col-span-2'>
-                            <label htmlFor='message' className='sr-only'>
-                                Tell us about your project
-                            </label>
-                            <textarea
-                                id='message'
-                                name='message'
-                                required
-                                rows={6}
-                                placeholder='Tell us about your project — property location, scope, and timeline.'
-                                className={`${inputClasses} resize-none`}
-                            />
-                        </div>
-                        <div className='sm:col-span-2'>
-                            <button
-                                type='submit'
-                                disabled={submitting}
-                                className='bg-forest text-cream hover:bg-moss w-full px-10 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300 disabled:opacity-60 sm:w-auto'>
-                                {submitting ? 'Sending…' : 'Send Message'}
-                            </button>
-                        </div>
-                    </form>
+                    <div className='border-sand h-full min-h-[360px] overflow-hidden border lg:min-h-[460px]'>
+                        <iframe
+                            title="Jayden's Landscaping — Scarborough location"
+                            src={MAP_SRC}
+                            className='h-full min-h-[360px] w-full border-0 lg:min-h-[460px]'
+                            loading='lazy'
+                            referrerPolicy='no-referrer-when-downgrade'
+                            allowFullScreen
+                        />
+                    </div>
                 </Reveal>
             </div>
         </section>

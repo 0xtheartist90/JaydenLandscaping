@@ -7,8 +7,18 @@ import { ArrowUpRight } from 'lucide-react';
 
 const AboutTeaser = () => {
     return (
-        <section className='bg-sand px-6 py-16 lg:px-10 lg:py-20'>
-            <div className='mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16'>
+        <section className='bg-cream relative overflow-hidden px-6 py-16 lg:px-10 lg:py-20'>
+            {/* Subtle BGbeige texture */}
+            <Image
+                src='/images/BGbeige.webp'
+                alt=''
+                aria-hidden
+                fill
+                sizes='100vw'
+                className='pointer-events-none object-cover opacity-[0.03]'
+            />
+
+            <div className='relative z-10 mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16'>
                 <Reveal>
                     <div className='relative aspect-[3/2] overflow-hidden'>
                         <Image

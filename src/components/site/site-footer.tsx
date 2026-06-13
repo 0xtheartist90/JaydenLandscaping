@@ -40,8 +40,8 @@ const SiteFooter = () => {
                     </nav>
 
                     <div className='text-center text-sm md:text-right'>
-                        <a href='tel:+14165550123' className='text-cream/75 hover:text-cream block transition-colors'>
-                            (416) 555-0123
+                        <a href='tel:+16476214219' className='text-cream/75 hover:text-cream block transition-colors'>
+                            +1 647-621-4219
                         </a>
                         <a
                             href='mailto:info@jaydenslandscaping.ca'

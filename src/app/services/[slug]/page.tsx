@@ -52,7 +52,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
             '@type': 'LocalBusiness',
             name: "Jayden's Landscaping",
             email: 'info@jaydenslandscaping.ca',
-            telephone: '+1-416-555-0123',
+            telephone: '+1-647-621-4219',
             address: {
                 '@type': 'PostalAddress',
                 addressLocality: 'Toronto',

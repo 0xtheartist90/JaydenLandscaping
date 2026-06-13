@@ -91,7 +91,7 @@ const FeaturedProjects = () => {
                                 href='/projects'
                                 onMouseEnter={() => setActive(index)}
                                 onFocus={() => setActive(index)}
-                                className={`group relative min-w-0 overflow-hidden transition-all duration-700 ease-out ${
+                                className={`group relative min-w-[8rem] overflow-hidden transition-all duration-700 ease-out lg:min-w-[11rem] ${
                                     isActive ? 'flex-[5]' : 'flex-[1]'
                                 }`}>
                                 <Image
@@ -128,8 +128,8 @@ const FeaturedProjects = () => {
                                     </AnimatePresence>
 
                                     <h3
-                                        className={`font-display text-cream leading-[1.05] [text-shadow:0_2px_20px_rgba(0,0,0,0.45)] transition-all duration-500 ${
-                                            isActive ? 'text-4xl lg:text-5xl' : 'text-base lg:text-lg'
+                                        className={`font-display text-cream leading-[1.05] whitespace-nowrap [text-shadow:0_2px_20px_rgba(0,0,0,0.45)] transition-all duration-500 ${
+                                            isActive ? 'text-4xl lg:text-5xl' : 'text-sm lg:text-base'
                                         }`}>
                                         {project.name}
                                     </h3>
