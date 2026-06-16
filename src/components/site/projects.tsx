@@ -15,10 +15,10 @@ const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 // these placeholders later (project.gallery); for now we fall back to the project
 // set so the click-to-change-background interaction is demonstrable.
 const imagesFor = (name: string, primary: string, gallery?: string[]) => {
-    if (gallery && gallery.length) return [primary, ...gallery].slice(0, 4);
-    const others = PROJECTS.filter((p) => p.name !== name).map((p) => p.image);
+    // Real gallery images first, then other projects' images as placeholders to fill 4.
+    const placeholders = PROJECTS.filter((p) => p.name !== name).map((p) => p.image);
 
-    return [primary, ...others].slice(0, 4);
+    return [primary, ...(gallery ?? []), ...placeholders].slice(0, 4);
 };
 
 const Projects = () => {

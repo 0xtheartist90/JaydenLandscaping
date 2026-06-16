@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import Faq from '@/components/site/faq';
 import Marquee from '@/components/site/marquee';
 import OtherServices from '@/components/site/other-services';
 import Reveal from '@/components/site/reveal';
@@ -176,6 +177,8 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                     </Reveal>
                 </div>
             </section>
+
+            <Faq />
         </>
     );
 };
