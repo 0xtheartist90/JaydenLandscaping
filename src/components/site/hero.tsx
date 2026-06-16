@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import QuoteButton from '@/components/site/quote-button';
+
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
@@ -121,11 +123,9 @@ const Hero = () => {
                         <motion.div
                             {...fadeUp(0.7)}
                             className='mt-9 flex flex-col gap-4 sm:flex-row sm:items-center'>
-                            <Link
-                                href='/contact'
-                                className='bg-beige text-forest hover:bg-beige/85 px-8 py-3 text-center text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
+                            <QuoteButton className='bg-beige text-forest hover:bg-beige/85 px-8 py-3 text-center text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
                                 Get A Free Quote
-                            </Link>
+                            </QuoteButton>
                             <Link
                                 href='/projects'
                                 className='border-cream/70 text-cream hover:bg-cream/10 border px-8 py-3 text-center text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300'>

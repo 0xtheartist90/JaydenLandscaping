@@ -11,32 +11,29 @@ import {
     ArrowUpRight,
     BrickWall,
     ChevronDown,
-    Fence,
     PencilRuler,
-    Shovel,
+    Snowflake,
     Sprout,
-    Waves,
+    Trees,
     type LucideIcon
 } from 'lucide-react';
 
 // Small editorial category labels for the index — presentational, paired by slug.
 const CATEGORY_LABELS: Record<string, string> = {
     'landscape-design': 'Vision & Planning',
-    hardscaping: 'Structure & Stone',
-    'outdoor-structures': 'Build & Carpentry',
-    'water-features': 'Water & Atmosphere',
-    softscaping: 'Planting & Greenery',
-    'property-maintenance': 'Care & Upkeep'
+    'interlocking-driveways': 'Structure & Stone',
+    'tree-shrub-planting': 'Planting & Greenery',
+    'lawn-maintenance': 'Care & Upkeep',
+    'snow-removal': 'Winter & Safety'
 };
 
 // Minimal line icon per service, keyed by slug.
 const SERVICE_ICONS: Record<string, LucideIcon> = {
     'landscape-design': PencilRuler,
-    hardscaping: BrickWall,
-    'outdoor-structures': Fence,
-    'water-features': Waves,
-    softscaping: Sprout,
-    'property-maintenance': Shovel
+    'interlocking-driveways': BrickWall,
+    'tree-shrub-planting': Trees,
+    'lawn-maintenance': Sprout,
+    'snow-removal': Snowflake
 };
 
 const EASE = [0.21, 0.47, 0.32, 0.98] as const;

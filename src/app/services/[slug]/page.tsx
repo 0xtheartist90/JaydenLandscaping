@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import Faq from '@/components/site/faq';
 import Marquee from '@/components/site/marquee';
 import OtherServices from '@/components/site/other-services';
+import QuoteButton from '@/components/site/quote-button';
 import Reveal from '@/components/site/reveal';
 import { SERVICE_CATEGORIES, getServiceBySlug } from '@/lib/services';
 
@@ -52,12 +52,14 @@ const ServicePage = async ({ params }: ServicePageProps) => {
         provider: {
             '@type': 'LocalBusiness',
             name: "Jayden's Landscaping",
-            email: 'info@jaydenslandscaping.ca',
+            email: 'jaydenlandscaping@yahoo.com',
             telephone: '+1-647-621-4219',
             address: {
                 '@type': 'PostalAddress',
-                addressLocality: 'Toronto',
+                streetAddress: '5357 19th Ave',
+                addressLocality: 'Markham',
                 addressRegion: 'ON',
+                postalCode: 'L3P 3J3',
                 addressCountry: 'CA'
             }
         },
@@ -93,11 +95,11 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                     <h1 className='font-display text-cream text-4xl leading-[1.15] sm:text-5xl lg:text-6xl'>
                         {category.title}
                     </h1>
-                    <Link
-                        href='/contact'
+                    <QuoteButton
+                        service={category.slug}
                         className='bg-cream text-forest hover:bg-beige mt-10 inline-block px-10 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
                         Get A Free Quote
-                    </Link>
+                    </QuoteButton>
                 </div>
             </section>
 
@@ -169,16 +171,16 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                         </ul>
                     </Reveal>
                     <Reveal delay={0.25} className='mt-14 text-center'>
-                        <Link
-                            href='/contact'
+                        <QuoteButton
+                            service={category.slug}
                             className='bg-cream text-forest hover:bg-beige inline-block px-10 py-4 text-sm font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
                             Get A Free Quote
-                        </Link>
+                        </QuoteButton>
                     </Reveal>
                 </div>
             </section>
 
-            <Faq />
+            <Faq items={category.faqs} title={`${category.title} — FAQ`} />
         </>
     );
 };

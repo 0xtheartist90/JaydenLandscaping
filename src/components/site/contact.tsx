@@ -4,7 +4,7 @@ import Reveal from '@/components/site/reveal';
 
 import { Mail, MapPin, Phone } from 'lucide-react';
 
-const MAP_QUERY = 'Unit 3, 115 Commander Blvd, Scarborough, ON M1S 3M7, Canada';
+const MAP_QUERY = '5357 19th Ave, Markham, ON L3P 3J3, Canada';
 const MAP_SRC = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`;
 const MAP_LINK = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}`;
 
@@ -18,13 +18,13 @@ const CONTACT_DETAILS = [
     {
         icon: Mail,
         label: 'Email',
-        value: 'info@jaydenslandscaping.ca',
-        href: 'mailto:info@jaydenslandscaping.ca'
+        value: 'jaydenlandscaping@yahoo.com',
+        href: 'mailto:jaydenlandscaping@yahoo.com'
     },
     {
         icon: MapPin,
         label: 'Address',
-        value: 'Unit 3, 115 Commander Blvd, Scarborough, ON M1S 3M7',
+        value: '5357 19th Ave, Markham, ON L3P 3J3',
         href: MAP_LINK
     }
 ];
@@ -77,7 +77,7 @@ const Contact = () => {
                 <Reveal delay={0.15} className='lg:col-span-3'>
                     <div className='border-sand h-full min-h-[360px] overflow-hidden border lg:min-h-[460px]'>
                         <iframe
-                            title="Jayden's Landscaping — Scarborough location"
+                            title="Jayden's Landscaping — Markham location"
                             src={MAP_SRC}
                             className='h-full min-h-[360px] w-full border-0 lg:min-h-[460px]'
                             loading='lazy'

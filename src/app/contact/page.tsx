@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import Contact from '@/components/site/contact';
+import Faq from '@/components/site/faq';
 import PageHero from '@/components/site/page-hero';
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ const ContactPage = () => {
                 imageAlt='A lush garden with layered planting'
             />
             <Contact />
+            <Faq />
         </>
     );
 };

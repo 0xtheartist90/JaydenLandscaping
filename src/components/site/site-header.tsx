@@ -6,14 +6,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import QuoteButton from '@/components/site/quote-button';
 import { SERVICE_CATEGORIES } from '@/lib/services';
 
 import { ChevronDown } from 'lucide-react';
 
 const NAV_LINKS = [
-    { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/services/landscape-design', label: 'Services', dropdown: true },
+    { href: '/services', label: 'Services', dropdown: true },
+    { href: '/service-areas', label: 'Service Areas' },
     { href: '/projects', label: 'Projects' },
     { href: '/contact', label: 'Contact' }
 ];
@@ -116,11 +117,9 @@ const SiteHeader = () => {
                             </Link>
                         )
                     )}
-                    <Link
-                        href='/contact'
-                        className='bg-beige text-forest hover:bg-beige/85 ml-1 px-4 py-2 text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300'>
+                    <QuoteButton className='bg-beige text-forest hover:bg-beige/85 ml-1 px-4 py-2 text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300'>
                         Get A Free Quote
-                    </Link>
+                    </QuoteButton>
                 </nav>
 
                 <button
@@ -148,12 +147,6 @@ const SiteHeader = () => {
                     aria-label='Mobile navigation'>
                     <div className='flex flex-col px-6 py-5'>
                         <Link
-                            href='/'
-                            onClick={closeAll}
-                            className='text-ink hover:text-moss border-sand/50 border-b py-3.5 text-[13px] font-medium tracking-[0.2em] uppercase'>
-                            Home
-                        </Link>
-                        <Link
                             href='/about'
                             onClick={closeAll}
                             className='text-ink hover:text-moss border-sand/50 border-b py-3.5 text-[13px] font-medium tracking-[0.2em] uppercase'>
@@ -161,7 +154,7 @@ const SiteHeader = () => {
                         </Link>
                         <div className='border-sand/50 border-b py-3.5'>
                             <Link
-                                href='/services/landscape-design'
+                                href='/services'
                                 onClick={closeAll}
                                 className='text-ink hover:text-moss text-[13px] font-medium tracking-[0.2em] uppercase'>
                                 Services
@@ -189,12 +182,11 @@ const SiteHeader = () => {
                                 {link.label}
                             </Link>
                         ))}
-                        <Link
-                            href='/contact'
+                        <QuoteButton
                             onClick={closeAll}
-                            className='bg-beige text-forest hover:bg-beige/85 mt-4 px-6 py-3.5 text-center text-[13px] font-medium tracking-[0.2em] uppercase transition-colors duration-300'>
+                            className='bg-beige text-forest hover:bg-beige/85 mt-4 w-full px-6 py-3.5 text-center text-[13px] font-medium tracking-[0.2em] uppercase transition-colors duration-300'>
                             Get A Free Quote
-                        </Link>
+                        </QuoteButton>
                     </div>
                 </nav>
             )}

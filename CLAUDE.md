@@ -1,101 +1,92 @@
 # Jayden's Landscaping — Project Guide
 
-Premium marketing website for **Jayden's Landscaping** (Toronto / Greater Toronto Area).
+Premium marketing website for **Jayden's Landscaping** — based in **Markham**, serving the GTA & York Region.
 Built to feel like a luxury landscape-architecture studio — elegant, editorial, restrained.
 **Do not** make it look like a typical contractor site.
 
 ## Stack
 
 - **Next.js 15** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS v4** (config-less; theme tokens live in `src/app/globals.css` under `@theme inline`)
-- **shadcn/ui** (components in `src/registry/new-york-v4/ui`, imported via `@/registry/...`)
-- **Framer Motion** for subtle scroll/reveal animation
+- **Tailwind CSS v4** (config-less; theme tokens in `src/app/globals.css` under `@theme inline`)
+- **shadcn/ui** starter remnants live in `src/registry/**` + `src/components/*-demo.tsx` — **unused by the site** (safe to ignore/prune)
+- **Framer Motion** for scroll/reveal + the scroll-driven sections
 - **lucide-react** for icons
 
 Commands: `npm run dev` · `npm run build` · `npm run lint` · `npx tsc --noEmit`
 
-> ⚠️ Don't run `npm run build` while `npm run dev` is running — they share `.next` and it breaks the dev server. Use `tsc --noEmit` + `lint` to verify while dev is up.
+> ⚠️ Don't run `npm run build` while `npm run dev` is running — they share `.next`. Verify with `tsc --noEmit` + `lint` while dev is up. If styles/CSS act stale after many edits, restart dev and clear `.next`.
 
 ## Brand System — do not change the visual identity
 
-**Fonts**
-- Headlines: **Aboreto** → `font-display` (loaded in `src/app/layout.tsx`)
-- Body / UI: **Inter** → `font-sans`
+**Fonts:** Headlines **Aboreto** → `font-display`; body **Inter** → `font-sans`.
 
-**Colors** (Tailwind tokens, defined in `src/app/globals.css`)
-| Token | Hex | Use |
-|-------|-----|-----|
-| `forest` | `#38412C` | primary dark green |
-| `moss` | `#677C69` | secondary green / eyebrows |
-| `beige` | `#D6BC97` | warm accent |
-| `sand` | `#E3D9BF` | light sand / section bg |
-| `cream` | `#FAF7F0` | page background |
-| `ink` | `#20251A` | body text |
+**Colors** (tokens in `globals.css`): `forest #38412C`, `moss #677C69`, `beige #D6BC97`, `sand #E3D9BF`, `cream #FAF7F0`, `ink #20251A`. Warm beige section bg uses arbitrary `bg-[#F1E9D6]`. Earthy/natural — avoid bright greens & gradients.
 
-Use them with Tailwind utilities, e.g. `bg-forest`, `text-moss`, `border-sand`.
-Avoid bright greens, gradients, flashy color. Earthy, natural, timeless.
+**Conventions:**
+- Eyebrows: `text-[11px] tracking-[0.35em] uppercase` in moss/beige
+- **No rounded corners** on rectangular elements (cards/buttons/panels) — keep them square. (Circular arrow badges / pill tags in Featured Projects are deliberate exceptions.)
+- Primary CTA = **beige button** (`bg-beige text-forest`); the quote CTA opens the **quote modal** (see below)
+- `Reveal` = fade-up on scroll (respects reduced-motion); premium easing curve `cubic-bezier(0.22,1,0.36,1)`
+- Light textured sections layer `BGbeige.webp` at `opacity-[0.03]`; dark (forest) sections layer `leafbg.webp` at `opacity-[0.05]`
 
-**Style conventions**
-- Eyebrows: `text-xs tracking-[0.35em] uppercase` in moss/beige
-- Headings: `font-display`, generous leading
-- Buttons: solid forest or outline; `tracking-[0.18em] uppercase`
-- Lots of whitespace; large imagery; `Reveal` for fade-up on scroll (respects reduced-motion)
+## Brand assets (`public/images/`, all WebP)
 
-## Brand assets (`public/images/`)
-
-- `logo-dark.png` — dark logo (used on cream/scrolled header)
-- `logo-white.png` — white logo (used over hero / in footer)
-- `icon-round.png` — round "J" icon (hero, also source of favicon)
-- `src/app/icon.png` — favicon (generated from the round icon)
+- `logo-dark.webp` / `logo-white.webp` — header (dark on scroll) / footer + hero
+- `icon-round.webp` — round "J" icon (hero); `src/app/icon.png` is the favicon
+- Service photos: `landscape-design`, `hardscaping`, `softscaping` (real); lawn & snow use Unsplash placeholders
+- Projects: `newmarket/64/woolbridge/oakville.webp` + `-01/-02/-03` galleries
+- `aboutjayden.webp` (founder), `caroussel-101…107.webp` (About marquee), `BGbeige.webp` & `leafbg.webp` (textures)
+- `public/videos/hero.webm` — homepage hero background (~4.9 MB)
 
 ## Routes
 
-| Route | File | Notes |
-|-------|------|-------|
-| `/` | `src/app/page.tsx` | Homepage |
-| `/services` | `src/app/services/page.tsx` | Hub: 6 service cards → dedicated pages |
-| `/services/[slug]` | `src/app/services/[slug]/page.tsx` | 6 service pages, statically generated, unique SEO + JSON-LD |
-| `/projects` | `src/app/projects/page.tsx` | Portfolio gallery |
-| `/about` | `src/app/about/page.tsx` | Founder story + milestones + process |
-| `/contact` | `src/app/contact/page.tsx` | Contact form + details |
+| Route | Notes |
+|-------|-------|
+| `/` | Homepage |
+| `/about` | Founder story + milestones + image marquee + process |
+| `/services` | Hub: grid of the 5 service cards |
+| `/services/[slug]` | 5 service pages — static, per-service SEO + JSON-LD + FAQ |
+| `/service-areas` | Service-areas hub → 6 city pages |
+| `/landscaping-<city>` | 6 city landing pages (markham, vaughan, north-york, richmond-hill, newmarket, aurora) |
+| `/projects` | Pinned scroll-driven project gallery (thumbnails swap the bg) |
+| `/blog` + `/blog/[slug]` | Journal listing + posts |
+| `/contact` | Conversion page: details + Google map (Markham) |
+| `/location` | Local-SEO page: NAP + `LocalBusiness` JSON-LD + map + hours |
+| `/thank-you` | Post-submit confirmation (noindex) |
+| `/privacy` `/terms` `/accessibility` `/licenses` | Legal (shared `LegalLayout`) |
+| `/sitemap` (HTML) · `/sitemap.xml` (route handler) · `/robots.txt` | — |
 
-**Homepage section order** (`src/app/page.tsx`): Hero → ValueProps (compact banner → /about) → Services → Projects → AboutTeaser → CtaBanner → Contact.
+**Homepage order** (`src/app/page.tsx`): Hero → ValueProps → AboutTeaser → Services → FeaturedProjects → ServiceAreasHome → FromTheBlog → CtaBanner → Contact.
 
-## Components (`src/components/site/`)
+**Nav** (`site-header.tsx`): About · Services ▾ · Service Areas · Projects · Contact + Quote button (logo = Home). Active link keeps a persistent underline.
 
-- `site-header.tsx` — fixed nav, transparent over hero → cream on scroll. Order: **Home · About · Services ▼ · Projects · Contact**. Services dropdown links to `/services/<slug>`. Mobile menu included.
-- `site-footer.tsx` — minimal footer
-- `hero.tsx` — fullscreen hero with round icon, eyebrow, Aboreto headline, two CTAs
-- `value-props.tsx` — compact forest banner of 4 USP icons; whole banner links to `/about`
-- `services.tsx` — homepage 6-card grid → `/services/<slug>`
-- `projects.tsx` — gallery (`showHeading` prop toggles the section heading)
-- `about.tsx` — full founder story + milestone timeline (used on /about)
-- `about-teaser.tsx` — compact story teaser on homepage → /about
-- `process.tsx` — 4-step process timeline (used on /about)
-- `cta-banner.tsx` — full-width "Ready To Transform…" CTA
-- `contact.tsx` — contact form (see TODO) + phone/email/service area
-- `page-hero.tsx` — reusable inner-page hero banner
-- `reveal.tsx` — Framer Motion fade-up wrapper
-- `section-heading.tsx` — eyebrow + title + description block
+## Data — single sources of truth (`src/lib/`)
 
-## Service data — single source of truth
+- `services.ts` — 5 services: `landscape-design`, `interlocking-driveways`, `tree-shrub-planting`, `lawn-maintenance`, `snow-removal`. Each has `title`, descriptions, `benefits`, `subservices`, `image`, `seo`, **`faqs`**. Edit content here.
+- `projects.ts` — 4 featured projects (`image` + `gallery[]`), used by homepage + `/projects`.
+- `cities.ts` — 6 service-area cities (drives `/landscaping-*` + service-areas).
+- `blog.ts` — blog posts.
 
-`src/lib/services.ts` holds all 6 categories: `slug`, `title`, descriptions, `benefits`, `subservices`, `image`, and `seo` (title/description/keywords). Helpers: `getServiceBySlug`, `getRelatedServices`. Nav dropdown, homepage cards, hub page, and the `[slug]` template all read from here — **edit content here, not in the components.**
+## Quote modal
 
-The 6 slugs: `landscape-design`, `hardscaping`, `outdoor-structures`, `water-features`, `softscaping`, `property-maintenance`.
+`quote-modal.tsx` (`QuoteModalProvider` in `layout.tsx`) renders a global modal; `quote-button.tsx` (`<QuoteButton service?>`) opens it from anywhere. Has a service preselector (defaults to Landscape Design; service pages preselect their own). **Not wired to a backend** — submit routes to `/thank-you`.
 
 ## SEO
 
-- Per-page `metadata` (title, description, keywords, Open Graph) targeting GTA keywords
-- `Service` JSON-LD structured data on each `/services/[slug]` page
-- Service-page SEO copy lives in the `seo` field in `src/lib/services.ts`
+- `metadataBase` + per-page `metadata`; OG/Twitter image set in `layout.tsx`
+- `Service` JSON-LD on `/services/[slug]`; `LocalBusiness` JSON-LD on `/location`
+- `robots.ts` + `sitemap.xml` route + HTML `/sitemap` — all reference `BASE_URL` constants
 
-## ⚠️ Open TODOs / placeholders
+## Contact info (canonical)
 
-1. **Images are Unsplash placeholders** — swap for real Jayden's project photos and a real founder portrait. URLs are in `src/lib/services.ts` and the section components. `next.config.ts` allows `images.unsplash.com`; add your image host or use local `public/images/`.
-2. **Contact info is placeholder** — `(416) 555-0123` and `info@jaydenslandscaping.ca` appear in `contact.tsx`, `site-footer.tsx`, and the JSON-LD in `services/[slug]/page.tsx`. Replace everywhere when real details are known.
-3. **Contact form is not wired up** — `contact.tsx` only shows a success toast. Connect to a real endpoint (Resend, Formspree, or a Next.js API route).
-4. **Rotate the GitHub token** — a Personal Access Token was pasted in chat to enable the first push. Rotate it at github.com/settings/tokens when convenient.
+Phone **+1 647-621-4219** · Email **jaydenlandscaping@yahoo.com** · Address **5357 19th Ave, Markham, ON L3P 3J3**. Nursery: **Z Force Farm** (Markham).
+
+## ⚠️ Open TODOs
+
+1. **Forms aren't wired** — quote modal just routes to `/thank-you`. Connect Resend/Formspree/API route.
+2. **Confirm production domain** — `https://jaydenslandscaping.ca` is assumed in `layout.tsx` metadataBase, `robots.ts`, and `sitemap.xml/route.ts`. Update all three if different.
+3. **Social links are placeholders** (`site-footer.tsx`) — add real Instagram/Facebook URLs.
+4. **Placeholder photos** — Lawn Maintenance & Snow Removal service images, contact-page hero, CTA-banner bg are Unsplash.
 
 ## Git
 

@@ -10,7 +10,7 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
     {
-        name: 'New Market',
+        name: 'Newmarket',
         location: 'Greater Toronto Area',
         tags: ['Landscape Design', 'Natural Stone', 'Lighting'],
         description: 'A formal courtyard reimagined with natural stone, layered planting and architectural lighting.',

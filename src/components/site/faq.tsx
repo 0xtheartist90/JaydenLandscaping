@@ -5,14 +5,16 @@ import { useState } from 'react';
 
 import { ChevronDown } from 'lucide-react';
 
-const FAQS = [
+type FaqItem = { question: string; answer: string };
+
+export const GENERAL_FAQS: FaqItem[] = [
     {
         question: 'Do you offer free consultations and estimates?',
         answer: 'Yes. Every project starts with a no-obligation consultation where we walk your property, talk through your vision, and provide a clear, transparent estimate.'
     },
     {
         question: 'Which areas do you serve?',
-        answer: 'We work throughout the Greater Toronto Area — including Toronto, Markham, Richmond Hill, Vaughan, Newmarket and Oakville.'
+        answer: 'We work throughout the Greater Toronto Area and York Region — including Markham, Vaughan, North York, Richmond Hill, Newmarket, Aurora and beyond.'
     },
     {
         question: 'How long does a project take?',
@@ -28,7 +30,13 @@ const FAQS = [
     }
 ];
 
-const Faq = () => {
+type FaqProps = {
+    items?: FaqItem[];
+    eyebrow?: string;
+    title?: string;
+};
+
+const Faq = ({ items = GENERAL_FAQS, eyebrow = 'Questions', title = 'Frequently Asked' }: FaqProps) => {
     const [open, setOpen] = useState<number | null>(0);
 
     return (
@@ -44,11 +52,11 @@ const Faq = () => {
             />
 
             <div className='relative z-10 mx-auto max-w-3xl'>
-                <p className='text-moss mb-4 text-xs font-medium tracking-[0.35em] uppercase'>Questions</p>
-                <h2 className='font-display text-forest text-2xl leading-snug sm:text-3xl'>Frequently Asked</h2>
+                <p className='text-moss mb-4 text-xs font-medium tracking-[0.35em] uppercase'>{eyebrow}</p>
+                <h2 className='font-display text-forest text-2xl leading-snug sm:text-3xl'>{title}</h2>
 
                 <div className='border-forest/15 mt-10 border-t'>
-                    {FAQS.map((item, index) => {
+                    {items.map((item, index) => {
                         const isOpen = open === index;
 
                         return (

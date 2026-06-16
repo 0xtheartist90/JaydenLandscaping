@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
+import QuoteButton from '@/components/site/quote-button';
 import Reveal from '@/components/site/reveal';
 
 import { ArrowUpRight } from 'lucide-react';
@@ -26,12 +26,10 @@ const CtaBanner = () => {
                 <p className='text-cream/80 mx-auto mt-5 max-w-lg text-sm leading-relaxed font-light'>
                     Tell us about your project and we&apos;ll walk your property with you — no pressure, no obligation.
                 </p>
-                <Link
-                    href='/contact'
-                    className='text-cream hover:text-cream/80 relative mt-8 inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100'>
+                <QuoteButton className='text-cream hover:text-cream/80 relative mt-8 inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100'>
                     Request A Free Estimate
                     <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
-                </Link>
+                </QuoteButton>
             </Reveal>
         </section>
     );
