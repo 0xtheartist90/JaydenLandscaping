@@ -40,6 +40,15 @@ const Projects = () => {
         setSelected(0);
     }, [active]);
 
+    // Scroll the window so the chosen panel becomes the active one.
+    const goTo = (index: number) => {
+        const el = ref.current;
+        if (!el) return;
+        const start = window.scrollY + el.getBoundingClientRect().top;
+        const range = el.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: start + ((index + 0.5) / total) * range, behavior: 'smooth' });
+    };
+
     const current = PROJECTS[active];
     const images = imagesFor(current.name, current.image, current.gallery);
     const bgSrc = images[Math.min(selected, images.length - 1)];
@@ -72,15 +81,17 @@ const Projects = () => {
                             <p className='text-beige text-sm font-medium tracking-[0.35em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.5)] lg:text-base'>
                                 Selected Work
                             </p>
-                            <div className='mt-6 hidden flex-col gap-3 lg:flex'>
+                            <div className='mt-6 hidden flex-col items-start gap-3 lg:flex'>
                                 {PROJECTS.map((project, index) => (
-                                    <span
+                                    <button
                                         key={project.name}
-                                        className={`font-display text-sm transition-colors duration-500 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)] ${
-                                            active === index ? 'text-cream' : 'text-cream/35'
+                                        type='button'
+                                        onClick={() => goTo(index)}
+                                        className={`font-display text-left text-sm transition-colors duration-500 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)] ${
+                                            active === index ? 'text-cream' : 'text-cream/35 hover:text-cream/70'
                                         }`}>
                                         {project.name}
-                                    </span>
+                                    </button>
                                 ))}
                             </div>
                         </div>

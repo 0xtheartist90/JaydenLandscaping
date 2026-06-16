@@ -57,6 +57,15 @@ const Services = () => {
     const current = SERVICE_CATEGORIES[active];
     const Icon = SERVICE_ICONS[current.slug];
 
+    // Scroll the window so the chosen panel becomes the active one.
+    const goTo = (index: number) => {
+        const el = ref.current;
+        if (!el) return;
+        const start = window.scrollY + el.getBoundingClientRect().top;
+        const range = el.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: start + ((index + 0.5) / total) * range, behavior: 'smooth' });
+    };
+
     return (
         <section
             ref={ref}
@@ -105,20 +114,24 @@ const Services = () => {
                                     const ItemIcon = SERVICE_ICONS[category.slug];
 
                                     return (
-                                        <div key={category.slug} className='flex items-center gap-2.5'>
+                                        <button
+                                            key={category.slug}
+                                            type='button'
+                                            onClick={() => goTo(index)}
+                                            className='group flex items-center gap-2.5 text-left'>
                                             <ItemIcon
                                                 className={`h-4 w-4 shrink-0 transition-colors duration-500 ${
-                                                    active === index ? 'text-beige' : 'text-cream/30'
+                                                    active === index ? 'text-beige' : 'text-cream/30 group-hover:text-cream/60'
                                                 }`}
                                                 strokeWidth={1.25}
                                             />
                                             <span
                                                 className={`font-display text-sm transition-colors duration-500 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)] ${
-                                                    active === index ? 'text-cream' : 'text-cream/35'
+                                                    active === index ? 'text-cream' : 'text-cream/35 group-hover:text-cream/70'
                                                 }`}>
                                                 {category.title}
                                             </span>
-                                        </div>
+                                        </button>
                                     );
                                 })}
                             </div>
