@@ -9,7 +9,7 @@ const EXPLORE_LINKS = [
     { href: '/services', label: 'Services' },
     { href: '/service-areas', label: 'Service Areas' },
     { href: '/projects', label: 'Projects' },
-    { href: '/blog', label: 'Journal' },
+    { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
     { href: '/location', label: 'Location' },
     { href: '/contact', label: 'Contact' }

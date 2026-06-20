@@ -13,6 +13,7 @@ import {
     ChevronDown,
     PencilRuler,
     Snowflake,
+    Sofa,
     Sprout,
     Trees,
     type LucideIcon
@@ -21,6 +22,7 @@ import {
 // Small editorial category labels for the index — presentational, paired by slug.
 const CATEGORY_LABELS: Record<string, string> = {
     'landscape-design': 'Vision & Planning',
+    'backyard-design': 'Outdoor Living',
     'interlocking-driveways': 'Structure & Stone',
     'tree-shrub-planting': 'Planting & Greenery',
     'lawn-maintenance': 'Care & Upkeep',
@@ -30,6 +32,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 // Minimal line icon per service, keyed by slug.
 const SERVICE_ICONS: Record<string, LucideIcon> = {
     'landscape-design': PencilRuler,
+    'backyard-design': Sofa,
     'interlocking-driveways': BrickWall,
     'tree-shrub-planting': Trees,
     'lawn-maintenance': Sprout,

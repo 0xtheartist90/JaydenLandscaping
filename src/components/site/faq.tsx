@@ -34,22 +34,27 @@ type FaqProps = {
     items?: FaqItem[];
     eyebrow?: string;
     title?: string;
+    surface?: 'beige' | 'cream';
 };
 
-const Faq = ({ items = GENERAL_FAQS, eyebrow = 'Questions', title = 'Frequently Asked' }: FaqProps) => {
+const Faq = ({ items = GENERAL_FAQS, eyebrow = 'Questions', title = 'Frequently Asked', surface = 'beige' }: FaqProps) => {
     const [open, setOpen] = useState<number | null>(0);
+    const beige = surface === 'beige';
 
     return (
-        <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-20 lg:px-10 lg:py-28'>
-            {/* Subtle BGbeige texture */}
-            <Image
-                src='/images/BGbeige.webp'
-                alt=''
-                aria-hidden
-                fill
-                sizes='100vw'
-                className='pointer-events-none object-cover opacity-[0.03]'
-            />
+        <section
+            className={`relative overflow-hidden px-6 py-20 lg:px-10 lg:py-28 ${beige ? 'bg-[#F1E9D6]' : 'bg-cream'}`}>
+            {/* Subtle BGbeige texture (beige surface only) */}
+            {beige && (
+                <Image
+                    src='/images/BGbeige.webp'
+                    alt=''
+                    aria-hidden
+                    fill
+                    sizes='100vw'
+                    className='pointer-events-none object-cover opacity-[0.03]'
+                />
+            )}
 
             <div className='relative z-10 mx-auto max-w-3xl'>
                 <p className='text-moss mb-4 text-xs font-medium tracking-[0.35em] uppercase'>{eyebrow}</p>

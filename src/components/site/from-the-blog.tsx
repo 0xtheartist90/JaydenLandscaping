@@ -14,7 +14,7 @@ const FromTheBlog = () => {
             <div className='mx-auto max-w-7xl'>
                 <div className='flex items-end justify-between gap-6'>
                     <div>
-                        <p className='text-moss text-[11px] font-medium tracking-[0.35em] uppercase'>Journal</p>
+                        <p className='text-moss text-[11px] font-medium tracking-[0.35em] uppercase'>Blog</p>
                         <h2 className='font-display text-forest mt-3 text-3xl leading-tight lg:text-4xl'>
                             Landscaping Tips
                         </h2>
@@ -22,7 +22,7 @@ const FromTheBlog = () => {
                     <Link
                         href='/blog'
                         className='text-forest hover:text-moss group relative inline-flex shrink-0 items-center gap-1.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100'>
-                        Read The Journal
+                        Read The Blog
                         <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
                     </Link>
                 </div>

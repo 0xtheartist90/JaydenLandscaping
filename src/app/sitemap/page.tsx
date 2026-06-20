@@ -20,7 +20,7 @@ const GROUPS = [
             { href: '/services', label: 'Services' },
             { href: '/service-areas', label: 'Service Areas' },
             { href: '/projects', label: 'Projects' },
-            { href: '/blog', label: 'Journal' },
+            { href: '/blog', label: 'Blog' },
             { href: '/location', label: 'Location' },
             { href: '/contact', label: 'Contact' }
         ]
@@ -37,7 +37,7 @@ const GROUPS = [
         links: CITIES.map((city) => ({ href: `/${city.slug}`, label: city.name }))
     },
     {
-        heading: 'Journal',
+        heading: 'Blog',
         links: BLOG_POSTS.map((post) => ({ href: `/blog/${post.slug}`, label: post.title }))
     },
     {

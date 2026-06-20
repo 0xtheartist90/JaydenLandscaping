@@ -5,6 +5,7 @@ import CtaBanner from '@/components/site/cta-banner';
 import Marquee from '@/components/site/marquee';
 import PageHero from '@/components/site/page-hero';
 import Process from '@/components/site/process';
+import Values from '@/components/site/values';
 
 export const metadata: Metadata = {
     title: "About | Jayden's Landscaping",
@@ -26,6 +27,7 @@ const AboutPage = () => {
             <About />
             <Marquee />
             <Process />
+            <Values />
             <CtaBanner />
         </>
     );

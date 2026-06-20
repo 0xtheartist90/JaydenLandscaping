@@ -20,7 +20,7 @@ const ContactPage = () => {
                 imageAlt='A lush garden with layered planting'
             />
             <Contact />
-            <Faq />
+            <Faq surface='cream' />
         </>
     );
 };
