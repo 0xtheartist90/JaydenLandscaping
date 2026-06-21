@@ -12,6 +12,7 @@ import { SERVICE_CATEGORIES } from '@/lib/services';
 import { ChevronDown } from 'lucide-react';
 
 const NAV_LINKS = [
+    { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services', dropdown: true },
     { href: '/service-areas', label: 'Service Areas' },
@@ -56,7 +57,7 @@ const SiteHeader = () => {
                 }`}>
                 <Link href='/' aria-label="Jayden's Landscaping — Home" onClick={closeAll}>
                     <Image
-                        src={solid ? '/images/logo-dark.webp' : '/images/logo-white.webp'}
+                        src={solid ? '/images/brand/logo-dark.webp' : '/images/brand/logo-white.webp'}
                         alt="Jayden's Landscaping"
                         width={177}
                         height={60}
@@ -146,6 +147,12 @@ const SiteHeader = () => {
                     className='bg-cream/95 border-sand max-h-[calc(100svh-3rem)] overflow-y-auto border-t backdrop-blur-md lg:hidden'
                     aria-label='Mobile navigation'>
                     <div className='flex flex-col px-6 py-5'>
+                        <Link
+                            href='/'
+                            onClick={closeAll}
+                            className='text-ink hover:text-moss border-sand/50 border-b py-3.5 text-[13px] font-medium tracking-[0.2em] uppercase'>
+                            Home
+                        </Link>
                         <Link
                             href='/about'
                             onClick={closeAll}

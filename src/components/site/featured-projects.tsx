@@ -4,9 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { PROJECTS as FEATURED } from '@/lib/projects';
+import { PROJECTS, projectSlug } from '@/lib/projects';
 
 import { ArrowUpRight } from 'lucide-react';
+
+// The homepage accordion shows a curated four; the full set lives on /projects.
+const FEATURED = PROJECTS.filter((project) => project.name !== '64').slice(0, 4);
 
 const ArrowBadge = () => (
     <span className='border-cream/50 text-cream absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur-sm transition-colors duration-300'>
@@ -21,7 +24,7 @@ const FeaturedProjects = () => {
         <section id='projects' className='relative scroll-mt-20 overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-28'>
             {/* Subtle BGbeige texture */}
             <Image
-                src='/images/BGbeige.webp'
+                src='/images/brand/BGbeige.webp'
                 alt=''
                 aria-hidden
                 fill
@@ -56,7 +59,7 @@ const FeaturedProjects = () => {
                         return (
                             <Link
                                 key={project.name}
-                                href='/projects'
+                                href={`/projects#${projectSlug(project.name)}`}
                                 onMouseEnter={() => setActive(index)}
                                 onFocus={() => setActive(index)}
                                 className={`group relative min-w-[8rem] overflow-hidden transition-all duration-[850ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:min-w-[11rem] ${
@@ -120,7 +123,10 @@ const FeaturedProjects = () => {
                 {/* Stacked — mobile */}
                 <div className='mt-10 flex flex-col gap-4 md:hidden'>
                     {FEATURED.map((project) => (
-                        <Link key={project.name} href='/projects' className='group relative block aspect-[4/5] overflow-hidden'>
+                        <Link
+                            key={project.name}
+                            href={`/projects#${projectSlug(project.name)}`}
+                            className='group relative block aspect-[4/5] overflow-hidden'>
                             <Image
                                 src={project.image}
                                 alt={`${project.name} — landscaping project in ${project.location}`}

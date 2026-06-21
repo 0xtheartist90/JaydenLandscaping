@@ -38,14 +38,14 @@ export const metadata: Metadata = {
             'Custom landscape design, construction and maintenance services throughout the Greater Toronto Area.',
         type: 'website',
         locale: 'en_CA',
-        images: [{ url: '/images/landscape-design.webp', width: 1920, height: 1080 }]
+        images: [{ url: '/images/services/landscape-design.webp', width: 1920, height: 1080 }]
     },
     twitter: {
         card: 'summary_large_image',
         title: "Jayden's Landscaping | Exceptional Outdoor Spaces Designed To Last",
         description:
             'Custom landscape design, construction and maintenance services throughout the Greater Toronto Area.',
-        images: ['/images/landscape-design.webp']
+        images: ['/images/services/landscape-design.webp']
     }
 };
 

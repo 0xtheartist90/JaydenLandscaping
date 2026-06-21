@@ -37,7 +37,7 @@ const Process = () => {
         <section className='bg-forest relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32'>
             {/* LeafBG texture blended into the green */}
             <Image
-                src='/images/leafbg.webp'
+                src='/images/brand/leafbg.webp'
                 alt=''
                 aria-hidden
                 fill

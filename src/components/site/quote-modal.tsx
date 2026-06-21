@@ -74,7 +74,7 @@ const QuoteModalPanel = ({ service, onClose }: { service: string; onClose: () =>
                 {/* Header band */}
                 <div className='bg-forest relative overflow-hidden px-7 py-7 lg:px-9'>
                     <Image
-                        src='/images/leafbg.webp'
+                        src='/images/brand/leafbg.webp'
                         alt=''
                         aria-hidden
                         fill

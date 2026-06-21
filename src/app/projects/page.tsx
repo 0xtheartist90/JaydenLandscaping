@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const ProjectsPage = () => {
     return (
         <>
-            <PageHero eyebrow='Our Work' title='Projects' image='/images/newmarket.webp' />
+            <PageHero eyebrow='Our Work' title='Projects' image='/images/projects/newmarket.webp' />
             <Projects />
             <CtaBanner />
         </>

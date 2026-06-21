@@ -20,37 +20,37 @@ const CITIES = [
     {
         name: 'Markham',
         href: '/landscaping-markham',
-        image: '/images/64.webp',
+        image: '/images/plants/tree-28.webp',
         blurb: 'Our home turf — interlocking driveways, front-yard makeovers and full backyard builds. Our nursery, Z Force Farm, is here too, for faster turnarounds and fresher plants.'
     },
     {
         name: 'Vaughan',
         href: '/landscaping-vaughan',
-        image: '/images/hardscaping.webp',
+        image: '/images/projects/briji-01.webp',
         blurb: 'Custom landscaping at the scale of the homes it surrounds — sweeping driveways, retaining walls and layered gardens, from front-yard statements to private retreats.'
     },
     {
         name: 'North York',
         href: '/landscaping-north-york',
-        image: '/images/softscaping.webp',
+        image: '/images/services/outdoor-structures.webp',
         blurb: 'Driveways, walkways, planting and complete transformations — making the most of city-lot dimensions and turning compact spaces into polished outdoor rooms.'
     },
     {
         name: 'Richmond Hill',
         href: '/landscaping-richmond-hill',
-        image: '/images/water-features.webp',
+        image: '/images/projects/newmarket-01.webp',
         blurb: 'Premium hardscaping for a resort feel at home — natural-stone pool surrounds, patios and gardens with durable materials, clean lines and careful detailing.'
     },
     {
         name: 'Newmarket',
         href: '/landscaping-newmarket',
-        image: '/images/newmarket.webp',
+        image: '/images/projects/oakville-01.webp',
         blurb: 'Backyard renovations, decks, fencing and new lawns that make the most of your property — whether a full overhaul or a single standout feature.'
     },
     {
         name: 'Aurora',
         href: '/landscaping-aurora',
-        image: '/images/woolbridge.webp',
+        image: '/images/lawn/lawn-result.webp',
         blurb: 'Design, planting, lawn care and year-round maintenance — as comfortable building something new as keeping an established property at its very best.'
     }
 ];
@@ -106,7 +106,7 @@ const ServiceAreasPage = () => {
         <>
             {/* Hero */}
             <section className='relative flex min-h-[55svh] items-center justify-center overflow-hidden'>
-                <Image src='/images/hardscaping.webp' alt='' aria-hidden fill priority sizes='100vw' className='object-cover' />
+                <Image src='/images/services/hardscaping.webp' alt='' aria-hidden fill priority sizes='100vw' className='object-cover' />
                 <div className='absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60' />
                 <div className='relative z-10 mx-auto max-w-3xl px-6 pt-24 text-center'>
                     <p className='text-beige mb-6 text-[11px] font-medium tracking-[0.35em] uppercase sm:text-sm'>
@@ -164,7 +164,7 @@ const ServiceAreasPage = () => {
             {/* Local expertise + stats + image */}
             <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-20 lg:px-10 lg:py-28'>
                 <Image
-                    src='/images/BGbeige.webp'
+                    src='/images/brand/BGbeige.webp'
                     alt=''
                     aria-hidden
                     fill
@@ -199,7 +199,7 @@ const ServiceAreasPage = () => {
                     <Reveal direction='right' blur delay={0.1}>
                         <div className='relative aspect-[4/5] overflow-hidden lg:aspect-[4/4.6]'>
                             <Image
-                                src='/images/landscape-design.webp'
+                                src='/images/services/landscape-design.webp'
                                 alt="Jayden's Landscaping work across the GTA"
                                 fill
                                 sizes='(max-width: 1024px) 100vw, 50vw'
@@ -213,7 +213,7 @@ const ServiceAreasPage = () => {
             {/* The full range, everywhere */}
             <section className='bg-forest relative overflow-hidden px-6 py-20 lg:px-10 lg:py-28'>
                 <Image
-                    src='/images/leafbg.webp'
+                    src='/images/brand/leafbg.webp'
                     alt=''
                     aria-hidden
                     fill
@@ -248,6 +248,18 @@ const ServiceAreasPage = () => {
                         <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
                     </Link>
                 </div>
+            </section>
+
+            {/* Full-width image break */}
+            <section className='relative h-[44svh] min-h-[300px] w-full overflow-hidden'>
+                <Image
+                    src='/images/projects/briji.webp'
+                    alt='A landscaped estate in the Greater Toronto Area'
+                    fill
+                    sizes='100vw'
+                    className='object-cover'
+                />
+                <div className='absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/15' />
             </section>
 
             <Faq items={SERVICE_AREA_FAQS} eyebrow='Good To Know' title='Service Area Questions' surface='cream' />

@@ -10,7 +10,7 @@ const ServiceAreasHome = () => {
         <section className='bg-forest relative overflow-hidden px-6 py-24 lg:px-10 lg:py-28'>
             {/* LeafBG texture */}
             <Image
-                src='/images/leafbg.webp'
+                src='/images/brand/leafbg.webp'
                 alt=''
                 aria-hidden
                 fill

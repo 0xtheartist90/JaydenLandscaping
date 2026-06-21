@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import Reveal from '@/components/site/reveal';
-import { PROJECTS, type Project } from '@/lib/projects';
+import { PROJECTS, projectSlug, type Project } from '@/lib/projects';
 
 const ZOOM = 'object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105';
 
@@ -15,7 +15,9 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
     const reverse = index % 2 === 1;
 
     return (
-        <article className='grid items-center gap-8 lg:grid-cols-12 lg:gap-14'>
+        <article
+            id={projectSlug(project.name)}
+            className='scroll-mt-24 grid items-center gap-8 lg:grid-cols-12 lg:gap-14'>
             {/* Large featured image — cross-fades between selected images */}
             <Reveal
                 direction={reverse ? 'right' : 'left'}
@@ -86,7 +88,7 @@ const Projects = () => {
         <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
             {/* Subtle BGbeige texture — matches the homepage */}
             <Image
-                src='/images/BGbeige.webp'
+                src='/images/brand/BGbeige.webp'
                 alt=''
                 aria-hidden
                 fill

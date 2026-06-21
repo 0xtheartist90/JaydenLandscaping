@@ -25,7 +25,7 @@ const About = () => {
     return (
         <section id='about' className='relative scroll-mt-20 overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
             <Image
-                src='/images/BGbeige.webp'
+                src='/images/brand/BGbeige.webp'
                 alt=''
                 aria-hidden
                 fill
@@ -36,7 +36,7 @@ const About = () => {
                 <Reveal className='lg:sticky lg:top-32'>
                     <div className='relative aspect-[3/2] overflow-hidden'>
                         <Image
-                            src='/images/aboutjayden.webp'
+                            src='/images/brand/aboutjayden.webp'
                             alt='Jayden, founder of Jayden&apos;s Landscaping'
                             fill
                             sizes='(max-width: 1024px) 100vw, 50vw'

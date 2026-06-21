@@ -155,7 +155,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
             {/* Overview */}
             <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
                 <Image
-                    src='/images/BGbeige.webp'
+                    src='/images/brand/BGbeige.webp'
                     alt=''
                     aria-hidden
                     fill
@@ -237,14 +237,93 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                 </div>
             </section>
 
+            {/* Deep dive — compact detail band, shown only when provided */}
+            {category.deepDive && (
+                <section className='bg-forest relative overflow-hidden px-6 py-16 lg:px-10 lg:py-20'>
+                    <Image
+                        src='/images/brand/leafbg.webp'
+                        alt=''
+                        aria-hidden
+                        fill
+                        sizes='100vw'
+                        className='pointer-events-none object-cover opacity-[0.05]'
+                    />
+                    <div className='relative z-10 mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16'>
+                        {category.deepDive.image && (
+                            <Reveal
+                                blur
+                                direction='left'
+                                className='relative aspect-[4/3] overflow-hidden lg:aspect-[5/6]'>
+                                <Image
+                                    src={category.deepDive.image}
+                                    alt={`${category.title} — design visual`}
+                                    fill
+                                    sizes='(max-width: 1024px) 100vw, 50vw'
+                                    className='object-cover'
+                                />
+                            </Reveal>
+                        )}
+
+                        <Reveal blur direction='right'>
+                            {category.deepDive.eyebrow && (
+                                <p className='text-beige text-[11px] font-medium tracking-[0.35em] uppercase'>
+                                    {category.deepDive.eyebrow}
+                                </p>
+                            )}
+                            <h2 className='font-display text-cream mt-3 text-2xl leading-tight sm:text-3xl'>
+                                {category.deepDive.title}
+                            </h2>
+                            {category.deepDive.lead && (
+                                <p className='text-cream/70 mt-4 text-sm leading-relaxed font-light'>
+                                    {category.deepDive.lead}
+                                </p>
+                            )}
+
+                            <div className='mt-8 space-y-7'>
+                                {category.deepDive.blocks.map((block, blockIndex) => (
+                                    <div key={block.heading ?? blockIndex}>
+                                        {block.heading && (
+                                            <h3 className='text-beige text-[11px] font-medium tracking-[0.25em] uppercase'>
+                                                {block.heading}
+                                            </h3>
+                                        )}
+                                        {block.text && (
+                                            <p className='text-cream/75 mt-3 text-sm leading-relaxed font-light'>
+                                                {block.text}
+                                            </p>
+                                        )}
+                                        {block.points && (
+                                            <div className='grid gap-x-8 gap-y-5 sm:grid-cols-2'>
+                                                {block.points.map((point) => (
+                                                    <div key={point.title} className='border-cream/15 border-t pt-3'>
+                                                        <h4 className='text-cream text-[13px] font-medium'>
+                                                            {point.title}
+                                                        </h4>
+                                                        <p className='text-cream/65 mt-1 text-[13px] leading-snug font-light'>
+                                                            {point.text}
+                                                        </p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </Reveal>
+                    </div>
+                </section>
+            )}
+
             {/* Gallery */}
             {category.gallery && category.gallery.length > 0 && (
                 <section className='bg-cream px-6 py-24 lg:px-10 lg:py-32'>
                     <div className='mx-auto max-w-7xl'>
                         <Reveal blur className='text-center'>
-                            <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>Recent Work</p>
+                            <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>
+                                {category.galleryEyebrow ?? 'Recent Work'}
+                            </p>
                             <h2 className='font-display text-forest text-3xl leading-snug sm:text-4xl'>
-                                A Look At What We Build
+                                {category.galleryTitle ?? 'A Look At What We Build'}
                             </h2>
                         </Reveal>
                         <div className='mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4'>
@@ -294,7 +373,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
             {category.process && (
                 <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
                     <Image
-                        src='/images/BGbeige.webp'
+                        src='/images/brand/BGbeige.webp'
                         alt=''
                         aria-hidden
                         fill
@@ -327,13 +406,13 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                 </section>
             )}
 
-            <Marquee />
+            <Marquee images={category.marquee} />
 
             {/* Included services */}
             <section className='bg-forest relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32'>
                 {/* LeafBG texture blended into the green */}
                 <Image
-                    src='/images/leafbg.webp'
+                    src='/images/brand/leafbg.webp'
                     alt=''
                     aria-hidden
                     fill

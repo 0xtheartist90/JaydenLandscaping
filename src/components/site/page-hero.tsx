@@ -24,6 +24,7 @@ const PageHero = ({ eyebrow, title, image, imageAlt = '', video = true, imagePos
                     poster={image}
                     aria-hidden
                     className='absolute inset-0 h-full w-full object-cover motion-reduce:hidden'>
+                    <source src='/videos/hero.mp4' type='video/mp4' />
                     <source src='/videos/hero.webm' type='video/webm' />
                 </video>
             )}

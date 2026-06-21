@@ -47,7 +47,7 @@ const Faq = ({ items = GENERAL_FAQS, eyebrow = 'Questions', title = 'Frequently 
             {/* Subtle BGbeige texture (beige surface only) */}
             {beige && (
                 <Image
-                    src='/images/BGbeige.webp'
+                    src='/images/brand/BGbeige.webp'
                     alt=''
                     aria-hidden
                     fill

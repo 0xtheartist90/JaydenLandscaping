@@ -6,7 +6,7 @@ import PageHero from '@/components/site/page-hero';
 import Reveal from '@/components/site/reveal';
 import { BLOG_POSTS } from '@/lib/blog';
 
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: "Landscaping Tips & Ideas | Jayden's Landscaping",
@@ -14,16 +14,29 @@ export const metadata: Metadata = {
         'Practical landscaping tips, seasonal advice and design ideas for homeowners across the Greater Toronto Area.'
 };
 
-const BlogPage = () => {
-    const [featured, ...rest] = BLOG_POSTS;
+const PER_PAGE = 6;
+
+type BlogPageProps = { searchParams: Promise<{ page?: string }> };
+
+const BlogPage = async ({ searchParams }: BlogPageProps) => {
+    const { page: pageParam } = await searchParams;
+    const totalPages = Math.max(1, Math.ceil(BLOG_POSTS.length / PER_PAGE));
+    const page = Math.min(Math.max(Number(pageParam) || 1, 1), totalPages);
+
+    const start = (page - 1) * PER_PAGE;
+    const pagePosts = BLOG_POSTS.slice(start, start + PER_PAGE);
+
+    // The newest post leads page one with a large feature; everything else is a grid card.
+    const featured = page === 1 ? pagePosts[0] : undefined;
+    const gridPosts = featured ? pagePosts.slice(1) : pagePosts;
 
     return (
         <>
-            <PageHero eyebrow='Blog' title='Landscaping Tips & Ideas' image='/images/softscaping.webp' video={false} />
+            <PageHero eyebrow='Blog' title='Landscaping Tips & Ideas' image='/images/services/softscaping.webp' video={false} />
 
             <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-20 lg:px-10 lg:py-28'>
                 <Image
-                    src='/images/BGbeige.webp'
+                    src='/images/brand/BGbeige.webp'
                     alt=''
                     aria-hidden
                     fill
@@ -41,7 +54,7 @@ const BlogPage = () => {
                         </p>
                     </Reveal>
 
-                    {/* Featured post */}
+                    {/* Featured post — page one only */}
                     {featured && (
                         <Reveal blur className='mt-14'>
                             <Link
@@ -76,10 +89,13 @@ const BlogPage = () => {
                         </Reveal>
                     )}
 
-                    {/* Remaining posts */}
-                    {rest.length > 0 && (
-                        <div className='border-forest/15 mt-16 grid gap-x-8 gap-y-14 border-t pt-16 sm:grid-cols-2 lg:grid-cols-3'>
-                            {rest.map((post, index) => (
+                    {/* Grid of remaining posts */}
+                    {gridPosts.length > 0 && (
+                        <div
+                            className={`grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 ${
+                                featured ? 'border-forest/15 mt-16 border-t pt-16' : 'mt-14'
+                            }`}>
+                            {gridPosts.map((post, index) => (
                                 <Reveal key={post.slug} blur delay={(index % 3) * 0.1}>
                                     <Link href={`/blog/${post.slug}`} className='group block'>
                                         <div className='relative aspect-[4/3] overflow-hidden'>
@@ -106,6 +122,57 @@ const BlogPage = () => {
                                 </Reveal>
                             ))}
                         </div>
+                    )}
+
+                    {/* Pagination */}
+                    {totalPages > 1 && (
+                        <nav
+                            aria-label='Blog pages'
+                            className='border-forest/15 mt-20 flex items-center justify-between border-t pt-10'>
+                            {page > 1 ? (
+                                <Link
+                                    href={page - 1 === 1 ? '/blog' : `/blog?page=${page - 1}`}
+                                    className='text-forest hover:text-moss inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors'>
+                                    <ArrowLeft className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                    Newer
+                                </Link>
+                            ) : (
+                                <span className='text-ink/30 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.22em] uppercase'>
+                                    <ArrowLeft className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                    Newer
+                                </span>
+                            )}
+
+                            <div className='flex items-center gap-2'>
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+                                    <Link
+                                        key={number}
+                                        href={number === 1 ? '/blog' : `/blog?page=${number}`}
+                                        aria-current={number === page ? 'page' : undefined}
+                                        className={`flex h-9 w-9 items-center justify-center text-xs font-medium transition-colors ${
+                                            number === page
+                                                ? 'bg-forest text-cream'
+                                                : 'text-forest/70 hover:bg-forest/10'
+                                        }`}>
+                                        {number}
+                                    </Link>
+                                ))}
+                            </div>
+
+                            {page < totalPages ? (
+                                <Link
+                                    href={`/blog?page=${page + 1}`}
+                                    className='text-forest hover:text-moss inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors'>
+                                    Older
+                                    <ArrowRight className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                </Link>
+                            ) : (
+                                <span className='text-ink/30 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.22em] uppercase'>
+                                    Older
+                                    <ArrowRight className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                </span>
+                            )}
+                        </nav>
                     )}
                 </div>
             </section>

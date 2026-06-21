@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import About from '@/components/site/about';
 import CtaBanner from '@/components/site/cta-banner';
+import ImageBanner from '@/components/site/image-banner';
 import Marquee from '@/components/site/marquee';
 import PageHero from '@/components/site/page-hero';
 import Process from '@/components/site/process';
@@ -19,7 +20,7 @@ const AboutPage = () => {
             <PageHero
                 eyebrow='About Us'
                 title='Built On Dedication & Craftsmanship'
-                image='/images/about-hero.webp'
+                image='/images/brand/about-hero.webp'
                 video={false}
                 imagePosition='object-top'
                 imageAlt='A custom home with landscaped grounds at sunset'
@@ -27,6 +28,7 @@ const AboutPage = () => {
             <About />
             <Marquee />
             <Process />
+            <ImageBanner />
             <Values />
             <CtaBanner />
         </>

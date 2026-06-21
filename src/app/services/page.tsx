@@ -28,13 +28,13 @@ const ServicesPage = () => {
             <PageHero
                 eyebrow='What We Do'
                 title='Our Services'
-                image='/images/landscape-design.webp'
+                image='/images/services/landscape-design.webp'
                 imageAlt='A landscaped property in the Greater Toronto Area'
             />
 
             <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
                 <Image
-                    src='/images/BGbeige.webp'
+                    src='/images/brand/BGbeige.webp'
                     alt=''
                     aria-hidden
                     fill

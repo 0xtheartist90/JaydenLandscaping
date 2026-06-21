@@ -8,9 +8,11 @@ import QuoteButton from '@/components/site/quote-button';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
+// H.264 MP4 first — hardware-decoded on every browser/device, so playback stays smooth
+// (Safari/iOS use this). WebM (VP9) is a lighter fallback for browsers that prefer it.
+const HERO_VIDEO_MP4 = '/videos/hero.mp4';
 const HERO_VIDEO_WEBM = '/videos/hero.webm';
-const HERO_POSTER =
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2400&auto=format&fit=crop';
+const HERO_POSTER = '/images/brand/hero-poster.webp';
 
 const Hero = () => {
     const reduceMotion = useReducedMotion();
@@ -48,6 +50,7 @@ const Hero = () => {
                         preload='auto'
                         poster={HERO_POSTER}
                         aria-hidden>
+                        <source src={HERO_VIDEO_MP4} type='video/mp4' />
                         <source src={HERO_VIDEO_WEBM} type='video/webm' />
                     </video>
                 )}
@@ -63,7 +66,7 @@ const Hero = () => {
                 <div className='flex flex-col items-center'>
                     <motion.div {...fadeUp(0.3)}>
                         <Image
-                            src='/images/icon-round.webp'
+                            src='/images/brand/icon-round.webp'
                             alt="Jayden's Landscaping"
                             width={256}
                             height={256}
@@ -91,7 +94,7 @@ const Hero = () => {
                 {/* Brand icon — top center on mobile (right-side group takes over on desktop) */}
                 <motion.div {...fadeUp(0.25)} className='flex justify-center lg:hidden'>
                     <Image
-                        src='/images/icon-round.webp'
+                        src='/images/brand/icon-round.webp'
                         alt="Jayden's Landscaping"
                         width={256}
                         height={256}

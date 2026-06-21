@@ -2,9 +2,21 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Marquee from '@/components/site/marquee';
 import QuoteButton from '@/components/site/quote-button';
 
 import { ArrowUpRight, Clock, Mail, MapPin, Phone } from 'lucide-react';
+
+const SHOWROOM_IMAGES = [
+    '/images/projects/showroom.webp',
+    '/images/projects/showroom-01.webp',
+    '/images/projects/showroom-02.webp',
+    '/images/projects/showroom-03.webp',
+    '/images/projects/showroom-04.webp',
+    '/images/projects/showroom-05.webp',
+    '/images/projects/showroom-06.webp',
+    '/images/projects/showroom-07.webp'
+];
 
 export const metadata: Metadata = {
     title: "Our Location — Markham | Jayden's Landscaping",
@@ -21,7 +33,7 @@ const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: "Jayden's Landscaping",
-    image: 'https://jaydenslandscaping.ca/images/landscape-design.webp',
+    image: 'https://jaydenslandscaping.ca/images/services/landscape-design.webp',
     url: 'https://jaydenslandscaping.ca',
     telephone: '+1-647-621-4219',
     email: 'jaydenlandscaping@yahoo.com',
@@ -51,7 +63,7 @@ const LocationPage = () => {
             {/* Hero */}
             <section className='relative flex min-h-[55svh] items-center justify-center overflow-hidden'>
                 <Image
-                    src='/images/landscape-design.webp'
+                    src='/images/services/landscape-design.webp'
                     alt=''
                     aria-hidden
                     fill
@@ -75,7 +87,7 @@ const LocationPage = () => {
             {/* Details + map */}
             <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-20 lg:px-10 lg:py-28'>
                 <Image
-                    src='/images/BGbeige.webp'
+                    src='/images/brand/BGbeige.webp'
                     alt=''
                     aria-hidden
                     fill
@@ -143,9 +155,19 @@ const LocationPage = () => {
                 </div>
             </section>
 
+            <Marquee images={SHOWROOM_IMAGES} />
+
             {/* Service areas note */}
-            <section className='bg-forest px-6 py-16 lg:px-10 lg:py-20'>
-                <div className='mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left'>
+            <section className='bg-forest relative overflow-hidden px-6 py-16 lg:px-10 lg:py-20'>
+                <Image
+                    src='/images/brand/leafbg.webp'
+                    alt=''
+                    aria-hidden
+                    fill
+                    sizes='100vw'
+                    className='pointer-events-none object-cover opacity-[0.05]'
+                />
+                <div className='relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left'>
                     <div>
                         <p className='text-beige text-[11px] font-medium tracking-[0.35em] uppercase'>Service Areas</p>
                         <h2 className='font-display text-cream mt-3 text-2xl leading-snug sm:text-3xl'>

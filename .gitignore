@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local original source images (not web assets)
+
+# Original source images — kept locally for reference, not committed/deployed
+public/images/OG Images/

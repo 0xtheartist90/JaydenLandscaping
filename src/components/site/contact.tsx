@@ -34,7 +34,7 @@ const Contact = () => {
         <section id='contact' className='relative scroll-mt-20 overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
             {/* Subtle BGbeige texture */}
             <Image
-                src='/images/BGbeige.webp'
+                src='/images/brand/BGbeige.webp'
                 alt=''
                 aria-hidden
                 fill

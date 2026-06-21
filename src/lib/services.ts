@@ -14,8 +14,22 @@ export type ServiceCategory = {
     overviewImage?: string;
     process?: { title: string; text: string }[];
     gallery?: string[];
+    // Optional overrides for the gallery section heading (defaults to "Recent Work" / "A Look At What We Build").
+    galleryEyebrow?: string;
+    galleryTitle?: string;
+    // Optional per-service images for the looping marquee (defaults to the brand carousel set).
+    marquee?: string[];
     // A centered statement band shown in place of the gallery when a service has no project photos.
     highlight?: { eyebrow?: string; title: string; text: string };
+    // Optional in-depth section shown directly under the overview on flagship pages.
+    // Each block is a sub-heading with either prose (`text`) or a list of `points`.
+    deepDive?: {
+        eyebrow?: string;
+        title: string;
+        lead?: string;
+        image?: string;
+        blocks: { heading?: string; text?: string; points?: { title: string; text: string }[] }[];
+    };
 };
 
 export const getServiceBySlug = (slug: string) => SERVICE_CATEGORIES.find((category) => category.slug === slug);
@@ -37,7 +51,23 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         intro: [
             'Every great landscape begins on paper. Our design process turns your property and your ambitions into a clear, buildable vision — balancing architecture, planting, materials and budget so there are no surprises once construction begins. Because our designers and build crews are one team, the plan you fall in love with is the plan we actually build.'
         ],
-        overviewImage: '/images/woolbridge.webp',
+        deepDive: {
+            eyebrow: 'Why Start With A Design',
+            title: 'Great landscapes start on paper',
+            lead: 'A clear plan is the difference between a yard you settle for and one you fall in love with — and it’s where your budget does its most important work.',
+            image: '/images/renders/design-08.webp',
+            blocks: [
+                {
+                    points: [
+                        { title: 'See it before you build', text: 'Decide on materials and layout from a 3D rendering.' },
+                        { title: 'Avoid costly mistakes', text: 'Changes are far cheaper on a drawing than mid-build.' },
+                        { title: 'One cohesive space', text: 'Hardscaping, planting and lighting planned as one.' },
+                        { title: 'Build in stages', text: 'Phase the work over seasons without losing the vision.' }
+                    ]
+                }
+            ]
+        },
+        overviewImage: '/images/renders/design-01.webp',
         benefits: [
             {
                 title: 'A Vision You Can See',
@@ -87,11 +117,19 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             }
         ],
         gallery: [
-            '/images/newmarket-01.webp',
-            '/images/oakville-01.webp',
-            '/images/woolbridge-01.webp',
-            '/images/64-01.webp'
+            '/images/renders/design-05.webp',
+            '/images/renders/design-04.webp',
+            '/images/renders/design-09.webp',
+            '/images/renders/design-02.webp'
         ],
+        marquee: [
+            '/images/renders/design-01.webp',
+            '/images/renders/design-03.webp',
+            '/images/renders/design-10.webp',
+            '/images/renders/design-06.webp'
+        ],
+        galleryEyebrow: 'Selected Designs',
+        galleryTitle: 'Designs Made To Be Built',
         subservices: [
             'Design Consultation',
             'Site Planning',
@@ -99,7 +137,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Material Selection',
             'Project Planning'
         ],
-        image: '/images/landscape-design.webp',
+        image: '/images/services/landscape-design.webp',
         seo: {
             title: "Landscape Design Toronto & GTA | Jayden's Landscaping",
             description:
@@ -134,7 +172,24 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         intro: [
             'Your backyard should feel like an extension of your home. We design and build complete backyards as a single, cohesive space — bringing decks, ponds and water features, patios and planting together into an outdoor retreat made for how you actually live. Designing it all as one means everything works together, instead of looking added on piece by piece.'
         ],
-        overviewImage: '/images/64.webp',
+        overviewImage: '/images/backyards/backyard-06.webp',
+        deepDive: {
+            eyebrow: 'Why Design It As One',
+            title: 'A backyard that works as one space',
+            lead: 'Designing the whole yard at once is what makes it feel effortless — every zone connected, nothing added on as an afterthought.',
+            image: '/images/plants/tree-02.webp',
+            blocks: [
+                {
+                    points: [
+                        { title: 'Zoned for how you live', text: 'Dining, lounging and play, each with its own place.' },
+                        { title: 'Everything flows', text: 'Decks, patios and planting tied together, not piecemeal.' },
+                        { title: 'Built for the seasons', text: 'Materials and planting chosen to last our winters.' },
+                        { title: 'One team start to finish', text: 'The crew that designs it is the crew that builds it.' }
+                    ]
+                }
+            ]
+        },
+
         benefits: [
             {
                 title: 'Designed As One Space',
@@ -184,10 +239,20 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             }
         ],
         gallery: [
-            '/images/64-02.webp',
-            '/images/oakville-02.webp',
-            '/images/woolbridge-02.webp',
-            '/images/newmarket-02.webp'
+            '/images/projects/woolbridge-04.webp',
+            '/images/projects/oakville-01.webp',
+            '/images/projects/newmarket-01.webp',
+            '/images/backyards/backyard-08.webp'
+        ],
+        marquee: [
+            '/images/projects/oakville-02.webp',
+            '/images/backyards/backyard-01.webp',
+            '/images/projects/woolbridge-02.webp',
+            '/images/backyards/backyard-09.webp',
+            '/images/projects/newmarket-03.webp',
+            '/images/backyards/backyard-13.webp',
+            '/images/projects/oakville-03.webp',
+            '/images/backyards/backyard-05.webp'
         ],
         subservices: [
             'Backyard Design & Build',
@@ -197,7 +262,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Privacy & Fencing',
             'Outdoor Living Spaces'
         ],
-        image: '/images/water-features.webp',
+        image: '/images/services/water-features.webp',
         seo: {
             title: "Backyard Design & Build Toronto | Jayden's Landscaping",
             description:
@@ -239,7 +304,24 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         intro: [
             'Your driveway is one of the largest, most visible surfaces on your property — and a beautifully built interlocking driveway transforms your curb appeal while standing up to Ontario’s freeze-thaw winters far better than poured concrete or asphalt. With more than ten years installing driveways across Markham and the GTA, we build every one on a properly engineered base, because a driveway is only as good as what’s underneath it.'
         ],
-        overviewImage: '/images/hardscaping.webp',
+        overviewImage: '/images/projects/64.webp',
+        deepDive: {
+            eyebrow: 'Why Interlocking',
+            title: 'Built to outlast concrete and asphalt',
+            lead: 'There’s a reason interlocking has become the standard for premium driveways in our climate — it comes down to four things.',
+            image: '/images/backyards/backyard-04.webp',
+            blocks: [
+                {
+                    points: [
+                        { title: 'Moves with the frost', text: 'Pavers flex through freeze-thaw instead of cracking.' },
+                        { title: 'Repaired in minutes', text: 'Lift and replace one paver, no patchwork scar.' },
+                        { title: 'Endless design options', text: 'Colours, patterns and borders to suit your home.' },
+                        { title: 'Adds real value', text: 'Curb appeal that buyers and appraisers notice.' }
+                    ]
+                }
+            ]
+        },
+
         benefits: [
             {
                 title: 'Lasting Durability',
@@ -288,7 +370,17 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
                 text: 'The surface is compacted and finished, leaving you with a driveway that’s level, solid and ready to enjoy.'
             }
         ],
-        gallery: ['/images/64.webp', '/images/newmarket.webp', '/images/woolbridge.webp', '/images/oakville.webp'],
+        gallery: ['/images/projects/64-01.webp', '/images/projects/briji-01.webp', '/images/projects/markham-01.webp', '/images/projects/scarborough.webp'],
+        marquee: [
+            '/images/projects/briji.webp',
+            '/images/projects/markham.webp',
+            '/images/projects/briji-02.webp',
+            '/images/projects/markham-02.webp',
+            '/images/projects/markham-04.webp',
+            '/images/projects/briji-03.webp',
+            '/images/projects/scarborough-03.webp',
+            '/images/projects/markham-05.webp'
+        ],
         subservices: [
             'Interlocking Driveways',
             'Walkways & Pathways',
@@ -297,7 +389,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Retaining Walls',
             'Steps & Edging'
         ],
-        image: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?q=80&w=1800&auto=format&fit=crop',
+        image: '/images/projects/briji.webp',
         seo: {
             title: "Interlocking Driveways Markham & GTA | Jayden's Landscaping",
             description:
@@ -342,7 +434,24 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         intro: [
             'Planting is what brings a landscape to life. We plant trees, shrubs and perennials and build garden beds composed for your soil, your light and the look you love — chosen to mature gracefully and give colour, texture and structure in every season. Much of our stock is grown at our own Markham nursery, so it’s fresh, locally acclimatised and ready for our conditions.'
         ],
-        overviewImage: '/images/oakville.webp',
+        overviewImage: '/images/plants/tree-22.webp',
+        deepDive: {
+            eyebrow: 'Why Plant With Us',
+            title: 'The right plant in the right place',
+            lead: 'A garden that thrives instead of just surviving comes down to choosing plants for your conditions and planting them to last.',
+            image: '/images/plants/tree-10.webp',
+            blocks: [
+                {
+                    points: [
+                        { title: 'Matched to your site', text: 'Sun, soil and zone guide every selection.' },
+                        { title: 'Grown at our nursery', text: 'Locally acclimatised stock from Z Force Farm.' },
+                        { title: 'Four-season interest', text: 'Blooms, foliage, colour and winter structure.' },
+                        { title: 'Planted to thrive', text: 'Proper prep and placement for healthy roots.' }
+                    ]
+                }
+            ]
+        },
+
         benefits: [
             {
                 title: 'Right Plant, Right Place',
@@ -392,10 +501,20 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             }
         ],
         gallery: [
-            '/images/woolbridge-03.webp',
-            '/images/oakville-03.webp',
-            '/images/64-03.webp',
-            '/images/newmarket-03.webp'
+            '/images/plants/tree-06.webp',
+            '/images/plants/tree-26.webp',
+            '/images/plants/tree-14.webp',
+            '/images/plants/tree-19.webp'
+        ],
+        marquee: [
+            '/images/plants/tree-25.webp',
+            '/images/plants/tree-18.webp',
+            '/images/plants/tree-13.webp',
+            '/images/plants/tree-27.webp',
+            '/images/plants/tree-07.webp',
+            '/images/plants/tree-23.webp',
+            '/images/plants/tree-17.webp',
+            '/images/plants/tree-15.webp'
         ],
         subservices: [
             'Tree Planting',
@@ -405,7 +524,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Sod & New Lawns',
             'Seasonal Planting'
         ],
-        image: '/images/softscaping.webp',
+        image: '/images/services/softscaping.webp',
         seo: {
             title: "Tree & Shrub Planting Toronto | Jayden's Landscaping",
             description:
@@ -445,7 +564,24 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         intro: [
             'A landscape is an investment — maintenance protects it. Our crews keep your lawn and gardens looking their best with scheduled mowing, fertilization, aeration and seasonal cleanups, so your property looks the way it did on handover day, all season long. The same people who build landscapes maintain them, on a reliable program you never have to chase.'
         ],
-        overviewImage: '/images/softscaping.webp',
+        overviewImage: '/images/lawn/lawn-overview.webp',
+        deepDive: {
+            eyebrow: 'Why A Care Plan',
+            title: 'A lawn that stays its best, year-round',
+            lead: 'A great lawn isn’t a one-time job — a simple seasonal plan keeps it healthy and sharp without you lifting a finger.',
+            image: '/images/lawn/lawn-result.webp',
+            blocks: [
+                {
+                    points: [
+                        { title: 'One trusted team', text: 'The people who built it are the ones who care for it.' },
+                        { title: 'Scheduled and reliable', text: 'Consistent visits, no chasing or reminders.' },
+                        { title: 'A healthier lawn', text: 'Mowing, feeding and aeration that build resilience.' },
+                        { title: 'Tidy every season', text: 'Spring and fall cleanups keep it sharp.' }
+                    ]
+                }
+            ]
+        },
+
         benefits: [
             {
                 title: 'One Trusted Team',
@@ -495,10 +631,18 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             }
         ],
         gallery: [
-            '/images/woolbridge.webp',
-            '/images/newmarket.webp',
-            '/images/oakville.webp',
-            '/images/64.webp'
+            '/images/lawn/lawn-result.webp',
+            '/images/lawn/lawn-tree.webp',
+            '/images/lawn/lawn-striped.webp',
+            '/images/lawn/lawn-aerial.webp'
+        ],
+        marquee: [
+            '/images/lawn/lawn-mowing.webp',
+            '/images/lawn/lawn-sod.webp',
+            '/images/lawn/lawn-edging.webp',
+            '/images/lawn/lawn-path.webp',
+            '/images/lawn/lawn-slope.webp',
+            '/images/lawn/lawn-park.webp'
         ],
         subservices: [
             'Lawn Mowing',
@@ -508,7 +652,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Garden Maintenance',
             'Seasonal Programs'
         ],
-        image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=1800&auto=format&fit=crop',
+        image: '/images/lawn/lawn-care.webp',
         seo: {
             title: "Lawn Maintenance & Lawn Care Toronto | Jayden's Landscaping",
             description:
@@ -548,7 +692,24 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         intro: [
             'When winter arrives, dependable snow removal keeps your property safe and accessible. We provide reliable residential and commercial snow clearing, salting and de-icing on seasonal contracts — we watch the forecast so you don’t have to. Book before the season and you’re on our route when the first storm hits.'
         ],
-        overviewImage: 'https://images.unsplash.com/photo-1483664852095-d6cc6870702d?q=80&w=1600&auto=format&fit=crop',
+        overviewImage: '/images/snow/snow-04.webp',
+        deepDive: {
+            eyebrow: 'Why A Seasonal Contract',
+            title: 'Cleared before you wake up',
+            lead: 'When the storm hits, the last thing you want is to be out shovelling — a seasonal contract takes it off your plate entirely.',
+            image: '/images/snow/snow-09.webp',
+            blocks: [
+                {
+                    points: [
+                        { title: 'First on the route', text: 'Reliable clearing, storm after storm.' },
+                        { title: 'Paver-safe methods', text: 'Ice melt and sand that won’t pit your stone.' },
+                        { title: 'No watching the forecast', text: 'Seasonal coverage handles it for you.' },
+                        { title: 'Safe and accessible', text: 'Driveways and walkways clear all winter.' }
+                    ]
+                }
+            ]
+        },
+
         highlight: {
             eyebrow: 'Seasonal Contracts',
             title: 'We watch the forecast so you don’t have to',
@@ -602,6 +763,21 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
                 text: 'We keep it up storm after storm, right through the season.'
             }
         ],
+        gallery: [
+            '/images/snow/snow-01.webp',
+            '/images/snow/snow-02.webp',
+            '/images/snow/snow-09.webp',
+            '/images/snow/snow-07.webp'
+        ],
+        galleryEyebrow: 'Out In The Snow',
+        galleryTitle: 'Keeping The GTA Moving All Winter',
+        marquee: [
+            '/images/snow/snow-03.webp',
+            '/images/snow/snow-04.webp',
+            '/images/snow/snow-05.webp',
+            '/images/snow/snow-08.webp',
+            '/images/snow/snow-10.webp'
+        ],
         subservices: [
             'Residential Snow Removal',
             'Commercial Snow Removal',
@@ -609,7 +785,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             'Salting & De-Icing',
             'Seasonal Contracts'
         ],
-        image: '/images/snow-removal.webp',
+        image: '/images/services/snow-removal.webp',
         seo: {
             title: "Snow Removal Toronto & GTA | Jayden's Landscaping",
             description:

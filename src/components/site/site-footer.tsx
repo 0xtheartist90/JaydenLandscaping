@@ -39,7 +39,7 @@ const SiteFooter = () => {
                     <div>
                         <Link href='/' aria-label="Jayden's Landscaping — Home">
                             <Image
-                                src='/images/logo-white.webp'
+                                src='/images/brand/logo-white.webp'
                                 alt="Jayden's Landscaping"
                                 width={177}
                                 height={60}

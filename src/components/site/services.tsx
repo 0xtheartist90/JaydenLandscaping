@@ -167,9 +167,9 @@ const Services = () => {
                                 </p>
                                 <Link
                                     href={`/services/${current.slug}`}
-                                    className='text-cream hover:text-beige relative mt-7 inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100'>
+                                    className='bg-beige text-forest hover:bg-cream mt-8 inline-flex items-center gap-2 px-7 py-3.5 text-[11px] font-medium tracking-[0.18em] uppercase shadow-[0_6px_24px_rgba(0,0,0,0.3)] transition-colors duration-300'>
                                     Explore {current.title}
-                                    <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                    <ArrowUpRight className='h-4 w-4' strokeWidth={1.5} />
                                 </Link>
                             </motion.div>
                         </AnimatePresence>

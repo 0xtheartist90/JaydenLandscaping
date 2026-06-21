@@ -1,18 +1,19 @@
 import Image from 'next/image';
 
-const IMAGES = [
-    '/images/caroussel-101.webp',
-    '/images/caroussel-102.webp',
-    '/images/caroussel-103.webp',
-    '/images/caroussel-104.webp',
-    '/images/caroussel-105.webp',
-    '/images/caroussel-106.webp',
-    '/images/caroussel-107.webp'
+const DEFAULT_IMAGES = [
+    '/images/brand/caroussel-101.webp',
+    '/images/brand/caroussel-102.webp',
+    '/images/brand/caroussel-103.webp',
+    '/images/brand/caroussel-104.webp',
+    '/images/brand/caroussel-105.webp',
+    '/images/brand/caroussel-106.webp',
+    '/images/brand/caroussel-107.webp'
 ];
 
-const Marquee = () => {
+const Marquee = ({ images }: { images?: string[] }) => {
+    const source = images && images.length > 0 ? images : DEFAULT_IMAGES;
     // Duplicate the set so the -50% translate loops seamlessly.
-    const items = [...IMAGES, ...IMAGES];
+    const items = [...source, ...source];
 
     return (
         <section className='bg-forest overflow-hidden py-3 lg:py-4'>

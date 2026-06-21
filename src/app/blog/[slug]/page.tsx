@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Fragment } from 'react';
 
 import CtaBanner from '@/components/site/cta-banner';
 import Reveal from '@/components/site/reveal';
@@ -51,7 +52,7 @@ const BlogPostPage = async ({ params }: BlogPostProps) => {
             {/* Article */}
             <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-24'>
                 <Image
-                    src='/images/BGbeige.webp'
+                    src='/images/brand/BGbeige.webp'
                     alt=''
                     aria-hidden
                     fill
@@ -68,21 +69,36 @@ const BlogPostPage = async ({ params }: BlogPostProps) => {
                     </Link>
 
                     <article>
-                        {post.content.map((section) => (
-                            <div key={section.heading ?? section.paragraphs[0].slice(0, 24)}>
-                                {section.heading && (
-                                    <h2 className='font-display text-forest mt-10 mb-3 text-xl first:mt-0'>
-                                        {section.heading}
-                                    </h2>
+                        {post.content.map((section, index) => (
+                            <Fragment key={section.heading ?? section.paragraphs[0].slice(0, 24)}>
+                                <div>
+                                    {section.heading && (
+                                        <h2 className='font-display text-forest mt-10 mb-3 text-xl first:mt-0'>
+                                            {section.heading}
+                                        </h2>
+                                    )}
+                                    {section.paragraphs.map((paragraph) => (
+                                        <p
+                                            key={paragraph.slice(0, 24)}
+                                            className='text-ink/75 mb-4 text-[15px] leading-relaxed font-light sm:text-base'>
+                                            {paragraph}
+                                        </p>
+                                    ))}
+                                </div>
+
+                                {/* In-article image, after the opening section */}
+                                {index === 0 && post.inlineImage && (
+                                    <figure className='relative my-10 aspect-[16/10] overflow-hidden'>
+                                        <Image
+                                            src={post.inlineImage}
+                                            alt={post.title}
+                                            fill
+                                            sizes='(max-width: 1024px) 100vw, 768px'
+                                            className='object-cover'
+                                        />
+                                    </figure>
                                 )}
-                                {section.paragraphs.map((paragraph) => (
-                                    <p
-                                        key={paragraph.slice(0, 24)}
-                                        className='text-ink/75 mb-4 text-[15px] leading-relaxed font-light sm:text-base'>
-                                        {paragraph}
-                                    </p>
-                                ))}
-                            </div>
+                            </Fragment>
                         ))}
                     </article>
                 </div>
