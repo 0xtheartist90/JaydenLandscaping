@@ -25,12 +25,8 @@ const Hero = () => {
 
     return (
         <section className='relative flex min-h-svh flex-col overflow-hidden'>
-            {/* Background video */}
-            <motion.div
-                className='absolute inset-0'
-                initial={reduceMotion ? false : { scale: 1.08 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 2.4, ease: 'easeOut' }}>
+            {/* Background video — no transform animation; scaling a decoding <video> glitches the first seconds */}
+            <div className='absolute inset-0'>
                 {reduceMotion ? (
                     <Image
                         src={HERO_POSTER}
@@ -54,7 +50,7 @@ const Hero = () => {
                         <source src={HERO_VIDEO_WEBM} type='video/webm' />
                     </video>
                 )}
-            </motion.div>
+            </div>
 
             {/* Light edge gradients — keep the footage visible, only darken edges for legibility */}
             <div className='absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/35' />
