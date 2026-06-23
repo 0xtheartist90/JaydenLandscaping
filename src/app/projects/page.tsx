@@ -7,7 +7,7 @@ import Projects from '@/components/site/projects';
 export const metadata: Metadata = {
     title: "Projects | Jayden's Landscaping",
     description:
-        'A portfolio of landscape design and construction projects across the Greater Toronto Area — Newmarket, Woolbridge, Oakville and beyond.'
+        'A portfolio of landscape design and construction projects across the Greater Toronto Area — Newmarket, Woodbridge, Oakville and beyond.'
 };
 
 const ProjectsPage = () => {

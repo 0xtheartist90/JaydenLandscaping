@@ -196,7 +196,7 @@ export const BLOG_POSTS: BlogPost[] = [
         date: 'January 2026',
         readTime: '5 min read',
         image: '/images/backyards/backyard-05.webp',
-        inlineImage: '/images/projects/woolbridge-04.webp',
+        inlineImage: '/images/projects/woodbridge-04.webp',
         content: [
             {
                 paragraphs: [
@@ -230,7 +230,7 @@ export const BLOG_POSTS: BlogPost[] = [
         date: 'December 2025',
         readTime: '5 min read',
         image: '/images/projects/newmarket-01.webp',
-        inlineImage: '/images/projects/woolbridge-02.webp',
+        inlineImage: '/images/projects/woodbridge-02.webp',
         content: [
             {
                 paragraphs: [
@@ -603,7 +603,7 @@ export const BLOG_POSTS: BlogPost[] = [
         excerpt: 'Done right, an outdoor kitchen becomes the heart of the backyard — here’s how to plan one that works.',
         date: 'January 2025',
         readTime: '5 min read',
-        image: '/images/projects/woolbridge-04.webp',
+        image: '/images/projects/woodbridge-04.webp',
         inlineImage: '/images/projects/oakville-02.webp',
         content: [
             {
@@ -638,7 +638,7 @@ export const BLOG_POSTS: BlogPost[] = [
         date: 'December 2024',
         readTime: '4 min read',
         image: '/images/projects/scarborough-03.webp',
-        inlineImage: '/images/projects/woolbridge-06.webp',
+        inlineImage: '/images/projects/woodbridge-06.webp',
         content: [
             {
                 paragraphs: [

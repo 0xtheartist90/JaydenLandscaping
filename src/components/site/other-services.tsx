@@ -2,15 +2,26 @@ import Link from 'next/link';
 
 import { SERVICE_CATEGORIES } from '@/lib/services';
 
-import { ArrowUpRight, BrickWall, PencilRuler, Snowflake, Sofa, Sprout, Trees, type LucideIcon } from 'lucide-react';
+import {
+    ArrowUpRight,
+    BrickWall,
+    PencilRuler,
+    Shovel,
+    Snowflake,
+    Sofa,
+    Sprout,
+    Trees,
+    type LucideIcon
+} from 'lucide-react';
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
     'landscape-design': PencilRuler,
-    'backyard-design': Sofa,
+    'backyard-construction': Sofa,
     'interlocking-driveways': BrickWall,
     'tree-shrub-planting': Trees,
     'lawn-maintenance': Sprout,
-    'snow-removal': Snowflake
+    'snow-removal': Snowflake,
+    'excavation-land-development': Shovel
 };
 
 // USP-style banner that links to the other services (everything except the current one).

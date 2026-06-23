@@ -12,6 +12,7 @@ import {
     BrickWall,
     ChevronDown,
     PencilRuler,
+    Shovel,
     Snowflake,
     Sofa,
     Sprout,
@@ -22,21 +23,23 @@ import {
 // Small editorial category labels for the index — presentational, paired by slug.
 const CATEGORY_LABELS: Record<string, string> = {
     'landscape-design': 'Vision & Planning',
-    'backyard-design': 'Outdoor Living',
+    'backyard-construction': 'Outdoor Living',
     'interlocking-driveways': 'Structure & Stone',
     'tree-shrub-planting': 'Planting & Greenery',
     'lawn-maintenance': 'Care & Upkeep',
-    'snow-removal': 'Winter & Safety'
+    'snow-removal': 'Winter & Safety',
+    'excavation-land-development': 'Site & Groundwork'
 };
 
 // Minimal line icon per service, keyed by slug.
 const SERVICE_ICONS: Record<string, LucideIcon> = {
     'landscape-design': PencilRuler,
-    'backyard-design': Sofa,
+    'backyard-construction': Sofa,
     'interlocking-driveways': BrickWall,
     'tree-shrub-planting': Trees,
     'lawn-maintenance': Sprout,
-    'snow-removal': Snowflake
+    'snow-removal': Snowflake,
+    'excavation-land-development': Shovel
 };
 
 const EASE = [0.21, 0.47, 0.32, 0.98] as const;

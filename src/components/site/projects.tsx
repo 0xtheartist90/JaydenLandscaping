@@ -1,16 +1,19 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import Reveal from '@/components/site/reveal';
-import { PROJECTS, projectSlug, type Project } from '@/lib/projects';
+import { PROJECTS, projectSlug, type Project, type ProjectMedia } from '@/lib/projects';
+
+import { Play } from 'lucide-react';
 
 const ZOOM = 'object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105';
 
 const ProjectRow = ({ project, index }: { project: Project; index: number }) => {
-    // Main image + gallery; clicking a thumbnail swaps the large image.
-    const images = [project.image, ...(project.gallery ?? [])];
+    // Mixed media (images + videos); clicking a thumbnail swaps the large slot.
+    const media: ProjectMedia[] =
+        project.media ?? [project.image, ...(project.gallery ?? [])].map((src) => ({ type: 'image', src }));
     const [active, setActive] = useState(0);
     const reverse = index % 2 === 1;
 
@@ -18,23 +21,55 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
         <article
             id={projectSlug(project.name)}
             className='scroll-mt-24 grid items-center gap-8 lg:grid-cols-12 lg:gap-14'>
-            {/* Large featured image — cross-fades between selected images */}
+            {/* Large featured slot — cross-fades between images; plays the active video */}
             <Reveal
                 direction={reverse ? 'right' : 'left'}
                 blur
                 className={`group relative aspect-[4/3] overflow-hidden lg:col-span-7 ${reverse ? 'lg:order-2' : ''}`}>
-                {images.map((src, imageIndex) => (
-                    <Image
-                        key={imageIndex}
-                        src={src}
-                        alt={`${project.name} — landscaping project in ${project.location}`}
-                        fill
-                        priority={index === 0 && imageIndex === 0}
-                        sizes='(max-width: 1024px) 100vw, 60vw'
-                        className={`${ZOOM} transition-opacity duration-700 ${active === imageIndex ? 'opacity-100' : 'opacity-0'}`}
-                    />
-                ))}
-                <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
+                {media.map((item, mediaIndex) => {
+                    const visible = active === mediaIndex ? 'opacity-100' : 'opacity-0';
+
+                    if (item.type === 'video') {
+                        return (
+                            <Fragment key={mediaIndex}>
+                                {/* poster keeps the cross-fade smooth */}
+                                <Image
+                                    src={item.poster}
+                                    alt={`${project.name} — ${project.location}`}
+                                    fill
+                                    sizes='(max-width: 1024px) 100vw, 60vw'
+                                    className={`${ZOOM} transition-opacity duration-700 ${visible}`}
+                                />
+                                {/* only mount/play the active video */}
+                                {active === mediaIndex && (
+                                    <video
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        poster={item.poster}
+                                        aria-label={`${project.name} construction footage`}
+                                        className='absolute inset-0 z-[1] h-full w-full object-cover'>
+                                        <source src={item.src} type='video/mp4' />
+                                    </video>
+                                )}
+                            </Fragment>
+                        );
+                    }
+
+                    return (
+                        <Image
+                            key={mediaIndex}
+                            src={item.src}
+                            alt={`${project.name} — project in ${project.location}`}
+                            fill
+                            priority={index === 0 && mediaIndex === 0}
+                            sizes='(max-width: 1024px) 100vw, 60vw'
+                            className={`${ZOOM} transition-opacity duration-700 ${visible}`}
+                        />
+                    );
+                })}
+                <div className='pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-black/20 to-transparent' />
             </Reveal>
 
             {/* Text + thumbnails */}
@@ -61,20 +96,33 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
                     ))}
                 </div>
 
-                {/* Thumbnails — click to swap the large image */}
+                {/* Thumbnails — click to swap the large slot; videos show a play badge */}
                 <div className='mt-8 grid grid-cols-4 gap-3'>
-                    {images.map((src, imageIndex) => (
+                    {media.map((item, mediaIndex) => (
                         <button
-                            key={imageIndex}
+                            key={mediaIndex}
                             type='button'
-                            onClick={() => setActive(imageIndex)}
-                            aria-label={`View image ${imageIndex + 1} of ${project.name}`}
+                            onClick={() => setActive(mediaIndex)}
+                            aria-label={`View ${item.type === 'video' ? 'video' : 'image'} ${mediaIndex + 1} of ${project.name}`}
                             className={`relative aspect-square overflow-hidden border transition-all duration-300 ${
-                                active === imageIndex
+                                active === mediaIndex
                                     ? 'border-forest opacity-100'
                                     : 'border-transparent opacity-55 hover:opacity-90'
                             }`}>
-                            <Image src={src} alt='' fill sizes='120px' className='object-cover' />
+                            <Image
+                                src={item.type === 'video' ? item.poster : item.src}
+                                alt=''
+                                fill
+                                sizes='120px'
+                                className='object-cover'
+                            />
+                            {item.type === 'video' && (
+                                <span className='absolute inset-0 flex items-center justify-center'>
+                                    <span className='bg-black/45 text-cream flex h-6 w-6 items-center justify-center rounded-full backdrop-blur-sm'>
+                                        <Play className='h-3 w-3 translate-x-[1px] fill-current' strokeWidth={0} />
+                                    </span>
+                                </span>
+                            )}
                         </button>
                     ))}
                 </div>

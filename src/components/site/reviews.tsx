@@ -65,6 +65,34 @@ const Reviews = () => {
 
     return (
         <>
+            {/* Trusted by Techo-Pro — above the testimonials */}
+            <section className='bg-forest relative overflow-hidden px-6 py-14 lg:py-16'>
+                <Image
+                    src='/images/brand/leafbg.webp'
+                    alt=''
+                    aria-hidden
+                    fill
+                    sizes='100vw'
+                    className='pointer-events-none object-cover opacity-[0.05]'
+                />
+                <Reveal blur className='relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-5 text-center'>
+                    <p className='text-beige text-[11px] font-medium tracking-[0.35em] uppercase'>Trusted & Certified</p>
+                    <div className='relative h-16 w-48 sm:h-20 sm:w-60'>
+                        <Image
+                            src='/images/brand/techo-pro.webp'
+                            alt='Techo-Pro Certified Installer'
+                            fill
+                            sizes='240px'
+                            className='object-contain'
+                        />
+                    </div>
+                    <p className='text-cream/70 max-w-md text-sm leading-relaxed font-light'>
+                        A certified Techo-Pro installer — held to the highest standards in hardscape design and
+                        installation.
+                    </p>
+                </Reveal>
+            </section>
+
             <section className='bg-cream px-6 py-24 lg:px-10 lg:py-32'>
                 <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
@@ -105,7 +133,7 @@ const Reviews = () => {
             {/* Full-width image under the testimonials */}
             <section className='relative h-[44svh] min-h-[300px] w-full overflow-hidden'>
                 <Image
-                    src='/images/projects/woolbridge-02.webp'
+                    src='/images/projects/woodbridge-02.webp'
                     alt='A finished pool landscape in the Greater Toronto Area'
                     fill
                     sizes='100vw'

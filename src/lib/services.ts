@@ -29,6 +29,7 @@ export type ServiceCategory = {
         lead?: string;
         image?: string;
         blocks: { heading?: string; text?: string; points?: { title: string; text: string }[] }[];
+        cta?: { label: string; href: string };
     };
 };
 
@@ -164,13 +165,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         ]
     },
     {
-        slug: 'backyard-design',
-        title: 'Backyard Design',
-        shortDescription: 'Complete backyards — decks, ponds, patios and planting, designed as one.',
+        slug: 'backyard-construction',
+        title: 'Backyard Construction',
+        shortDescription: 'Complete backyards built as one — interlock patios, pool landscaping, outdoor kitchens and more.',
         description:
-            'Your backyard should feel like an extension of your home. We design and build complete backyards as a single, cohesive space — bringing together decks, ponds and water features, patios and planting into an outdoor retreat made for how you actually live.',
+            'Your backyard should feel like an extension of your home. We design and build complete backyards as a single, cohesive space — interlock patios and walkways, pool landscaping, outdoor kitchens, decks, ponds and planting brought together into an outdoor retreat made for how you actually live.',
         intro: [
-            'Your backyard should feel like an extension of your home. We design and build complete backyards as a single, cohesive space — bringing decks, ponds and water features, patios and planting together into an outdoor retreat made for how you actually live. Designing it all as one means everything works together, instead of looking added on piece by piece.'
+            'Your backyard should feel like an extension of your home. We design and build complete backyards as a single, cohesive space — interlock patios and walkways, pool landscaping, outdoor kitchens, decks, ponds and planting brought together into an outdoor retreat made for how you actually live. Designing it all as one means everything works together, instead of looking added on piece by piece.'
         ],
         overviewImage: '/images/backyards/backyard-06.webp',
         deepDive: {
@@ -239,7 +240,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             }
         ],
         gallery: [
-            '/images/projects/woolbridge-04.webp',
+            '/images/projects/woodbridge-04.webp',
             '/images/projects/oakville-01.webp',
             '/images/projects/newmarket-01.webp',
             '/images/backyards/backyard-08.webp'
@@ -247,31 +248,32 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         marquee: [
             '/images/projects/oakville-02.webp',
             '/images/backyards/backyard-01.webp',
-            '/images/projects/woolbridge-02.webp',
+            '/images/projects/woodbridge-02.webp',
             '/images/backyards/backyard-09.webp',
             '/images/projects/newmarket-03.webp',
             '/images/backyards/backyard-13.webp',
             '/images/projects/oakville-03.webp',
-            '/images/backyards/backyard-05.webp'
+            '/images/backyards/backyard-05.webp',
+            '/images/projects/scarborough-01.webp'
         ],
         subservices: [
-            'Backyard Design & Build',
-            'Decks',
+            'Interlock Patios & Walkways',
+            'Pool Landscaping',
+            'Outdoor Kitchens',
+            'Decks & Pergolas',
             'Ponds & Water Features',
-            'Patios',
-            'Privacy & Fencing',
-            'Outdoor Living Spaces'
+            'Privacy & Fencing'
         ],
         image: '/images/services/water-features.webp',
         seo: {
-            title: "Backyard Design & Build Toronto | Jayden's Landscaping",
+            title: "Backyard Construction Toronto | Jayden's Landscaping",
             description:
-                'Complete backyard design and build in Toronto and the GTA — decks, ponds and water features, patios and planting designed as one cohesive outdoor retreat.',
+                'Complete backyard construction in Toronto and the GTA — interlock patios and walkways, pool landscaping, outdoor kitchens, decks, ponds and planting built as one cohesive outdoor retreat.',
             keywords: [
-                'Backyard Design Toronto',
-                'Backyard Landscaping GTA',
-                'Deck Builder Toronto',
-                'Pond Installation Toronto'
+                'Backyard Construction Toronto',
+                'Interlock Patios Toronto',
+                'Pool Landscaping GTA',
+                'Outdoor Kitchens Toronto'
             ]
         },
         faqs: [
@@ -304,12 +306,12 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         intro: [
             'Your driveway is one of the largest, most visible surfaces on your property — and a beautifully built interlocking driveway transforms your curb appeal while standing up to Ontario’s freeze-thaw winters far better than poured concrete or asphalt. With more than ten years installing driveways across Markham and the GTA, we build every one on a properly engineered base, because a driveway is only as good as what’s underneath it.'
         ],
-        overviewImage: '/images/projects/64.webp',
+        overviewImage: '/images/projects/richmondhill.webp',
         deepDive: {
             eyebrow: 'Why Interlocking',
             title: 'Built to outlast concrete and asphalt',
             lead: 'There’s a reason interlocking has become the standard for premium driveways in our climate — it comes down to four things.',
-            image: '/images/backyards/backyard-04.webp',
+            image: '/images/projects/richmondhill-04.webp',
             blocks: [
                 {
                     points: [
@@ -808,6 +810,151 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             {
                 question: 'When should I book snow removal?',
                 answer: 'Book before winter. Securing a contract early ensures you’re on our route when the first storm arrives.'
+            }
+        ]
+    },
+    {
+        slug: 'excavation-land-development',
+        title: 'Excavation, Grading & Land Development',
+        shortDescription: 'Site prep, grading, land clearing and excavation for residential, commercial and agricultural projects.',
+        description:
+            'Every successful build starts below the surface. We provide professional excavation, grading and land development across the GTA — clearing, levelling and shaping properties so whatever gets built on top has the strongest possible base.',
+        intro: [
+            'Every successful construction, landscaping, agricultural or development project starts with proper site preparation. Before foundations are poured, driveways installed, drainage systems added or landscapes transformed, the land itself must be prepared correctly — and that takes the right equipment, experienced operators and a clear understanding of grading, drainage, excavation and site development.',
+            'At Jayden’s Landscaping we provide professional excavation and land development throughout Markham, Vaughan, Richmond Hill, Aurora, Newmarket, North York and surrounding GTA communities — whether you’re preparing a residential lot for a new home, developing farmland, excavating for drainage, clearing land or reshaping a property.',
+            'With over a decade of experience on residential, commercial and agricultural properties, we know every project begins below the surface. Proper excavation and grading don’t just make construction possible — they prevent future drainage issues, foundation problems and costly corrections. We get the groundwork right from day one.'
+        ],
+        deepDive: {
+            eyebrow: 'Why Grading Matters',
+            title: 'Get the groundwork right',
+            lead: 'Many property problems trace back to bad grading — water that isn’t directed correctly leads to foundation damage, flooded yards and erosion.',
+            image: '/images/projects/exc-04.webp',
+            cta: { label: 'See Our Work', href: '/projects' },
+            blocks: [
+                {
+                    points: [
+                        { title: 'Protects your foundation', text: 'Water directed away from structures and footings.' },
+                        { title: 'Drains the whole property', text: 'No standing water, flooded yards or erosion.' },
+                        { title: 'Build-ready surfaces', text: 'Level, compacted ground ready for what’s next.' },
+                        { title: 'Lower upkeep', text: 'Fewer washouts and costly corrections down the road.' }
+                    ]
+                }
+            ]
+        },
+        overviewImage: '/images/projects/exc-01.webp',
+        benefits: [
+            {
+                title: 'Proper Drainage From Day One',
+                text: 'Grading that moves water away from foundations and structures, preventing costly issues later.',
+                icon: 'droplets'
+            },
+            {
+                title: 'Build-Ready Sites',
+                text: 'Cleared, graded and compacted ground ready for foundations, paving or planting.',
+                icon: 'layers'
+            },
+            {
+                title: 'The Right Equipment',
+                text: 'Professional-grade machinery and experienced operators for projects of any scale.',
+                icon: 'truck'
+            },
+            {
+                title: 'One Trusted Contractor',
+                text: 'Excavation, landscaping and property improvements under one roof, start to finish.',
+                icon: 'shield'
+            }
+        ],
+        process: [
+            {
+                title: 'Site Consultation',
+                text: 'We visit your property, review your goals, assess existing conditions and develop the best approach.'
+            },
+            {
+                title: 'Planning & Layout',
+                text: 'Utilities, elevations, drainage requirements and excavation limits are reviewed before work begins.'
+            },
+            {
+                title: 'Land Clearing',
+                text: 'Brush, vegetation, debris, stumps and obstacles are removed to prepare the site.'
+            },
+            {
+                title: 'Excavation',
+                text: 'Using professional-grade equipment, we complete the excavation to project specifications.'
+            },
+            {
+                title: 'Grading & Drainage',
+                text: 'The site is shaped and graded to achieve proper elevations, drainage patterns and functionality.'
+            },
+            {
+                title: 'Final Preparation',
+                text: 'The property is prepared for construction, landscaping or agricultural use — whatever comes next.'
+            }
+        ],
+        gallery: [
+            '/images/projects/exc-02.webp',
+            '/images/projects/exc-03.webp',
+            '/images/projects/parking-v2-poster.webp',
+            '/images/projects/parking-v3-poster.webp'
+        ],
+        marquee: [
+            '/images/projects/exc-05.webp',
+            '/images/projects/parking-v1-poster.webp',
+            '/images/projects/exc-06.webp',
+            '/images/projects/parking-v4-poster.webp',
+            '/images/projects/exc-07.webp',
+            '/images/projects/parking-v5-poster.webp'
+        ],
+        galleryEyebrow: 'On Site',
+        galleryTitle: 'Groundwork In Progress',
+        subservices: [
+            'Site Preparation',
+            'Land Clearing',
+            'Grading & Leveling',
+            'Trenching & Drainage',
+            'Foundation Excavation',
+            'Farm Land Development'
+        ],
+        image: '/images/projects/exc-hero.webp',
+        seo: {
+            title: "Excavation, Grading & Land Development — Markham & GTA | Jayden's Landscaping",
+            description:
+                'Professional excavation, grading and land development across the GTA — site preparation, land clearing, drainage, foundation excavation, trenching and farm land development.',
+            keywords: [
+                'Excavation Markham',
+                'Grading Services GTA',
+                'Land Development Toronto',
+                'Site Preparation GTA',
+                'Drainage Excavation Toronto'
+            ]
+        },
+        faqs: [
+            {
+                question: 'How much does excavation cost?',
+                answer: 'It varies with site conditions, project size, accessibility, soil and the amount of material moved. We provide free on-site estimates for accurate pricing.'
+            },
+            {
+                question: 'Do you provide grading for drainage problems?',
+                answer: 'Yes. Proper grading is one of the most effective ways to correct drainage issues and direct water away from structures and landscaped areas.'
+            },
+            {
+                question: 'Can you clear heavily overgrown properties?',
+                answer: 'Absolutely — we clear residential, commercial and agricultural properties, including brush, stump and vegetation removal.'
+            },
+            {
+                question: 'Do you excavate for foundations?',
+                answer: 'Yes. We perform foundation excavation for homes, garages, additions, shops, barns and commercial buildings.'
+            },
+            {
+                question: 'Do you provide utility trenching?',
+                answer: 'Yes — we excavate trenches for electrical, water, irrigation, communication and other underground utilities.'
+            },
+            {
+                question: 'Can you prepare farmland for agricultural use?',
+                answer: 'Yes. We help with farm land development, clearing, grading, drainage improvements and preparing fields for productive use.'
+            },
+            {
+                question: 'What areas do you serve?',
+                answer: 'Markham, Vaughan, Richmond Hill, Aurora, Newmarket, North York and surrounding GTA communities.'
             }
         ]
     }

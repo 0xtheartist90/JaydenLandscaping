@@ -15,8 +15,8 @@ export const CITIES: City[] = [
     {
         slug: 'landscaping-markham',
         name: 'Markham',
-        heroImage: '/images/plants/tree-28.webp',
-        aboutImage: '/images/projects/64.webp',
+        heroImage: '/images/projects/briji-01.webp',
+        aboutImage: '/images/projects/markham-01.webp',
         bannerImage: '/images/projects/markham.webp',
         intro: [
             'Markham is our home — and it shows. From our base here we’ve completed countless interlocking driveways, front-yard makeovers and full backyard transformations across the city, and our nursery, Z Force Farm, is right here in Markham too. That means faster turnarounds and fresher, locally grown plants for your project.',
@@ -26,7 +26,7 @@ export const CITIES: City[] = [
     {
         slug: 'landscaping-vaughan',
         name: 'Vaughan',
-        heroImage: '/images/projects/briji-01.webp',
+        heroImage: '/images/projects/oakville-01.webp',
         aboutImage: '/images/projects/briji.webp',
         bannerImage: '/images/projects/richmondhill.webp',
         intro: [
@@ -39,7 +39,7 @@ export const CITIES: City[] = [
         name: 'North York',
         heroImage: '/images/services/outdoor-structures.webp',
         aboutImage: '/images/projects/scarborough.webp',
-        bannerImage: '/images/projects/woolbridge.webp',
+        bannerImage: '/images/projects/woodbridge.webp',
         intro: [
             'North York’s city lots reward thoughtful design, and that’s exactly where we shine. We install driveways, walkways and planting and carry out complete property transformations that make the most of every square foot — turning compact spaces into polished, functional outdoor areas.',
             'From a crisp new front entrance to a fully reimagined backyard, our team handles the whole project start to finish.'
@@ -48,9 +48,9 @@ export const CITIES: City[] = [
     {
         slug: 'landscaping-richmond-hill',
         name: 'Richmond Hill',
-        heroImage: '/images/projects/newmarket-01.webp',
+        heroImage: '/images/plants/tree-28.webp',
         aboutImage: '/images/projects/newmarket.webp',
-        bannerImage: '/images/projects/woolbridge-01.webp',
+        bannerImage: '/images/projects/woodbridge-01.webp',
         intro: [
             'Richmond Hill homeowners who want a resort feel at home come to us for premium hardscaping — natural stone pool surrounds, patios and garden design with durable materials, clean lines and thoughtful detailing throughout.',
             'We design outdoor spaces that look as good in their tenth year as they did on day one, built by the same people who plan them.'
@@ -59,7 +59,7 @@ export const CITIES: City[] = [
     {
         slug: 'landscaping-newmarket',
         name: 'Newmarket',
-        heroImage: '/images/projects/oakville-01.webp',
+        heroImage: '/images/projects/newmarket-01.webp',
         aboutImage: '/images/projects/oakville.webp',
         bannerImage: '/images/projects/markham-05.webp',
         intro: [
@@ -70,7 +70,7 @@ export const CITIES: City[] = [
     {
         slug: 'landscaping-aurora',
         name: 'Aurora',
-        heroImage: '/images/lawn/lawn-result.webp',
+        heroImage: '/images/projects/aurora.webp',
         aboutImage: '/images/lawn/lawn-overview.webp',
         bannerImage: '/images/plants/tree-29.webp',
         intro: [

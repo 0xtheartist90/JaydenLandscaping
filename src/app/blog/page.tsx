@@ -20,15 +20,13 @@ type BlogPageProps = { searchParams: Promise<{ page?: string }> };
 
 const BlogPage = async ({ searchParams }: BlogPageProps) => {
     const { page: pageParam } = await searchParams;
-    const totalPages = Math.max(1, Math.ceil(BLOG_POSTS.length / PER_PAGE));
+    // Page one leads with a featured post on top, then a full grid of PER_PAGE; later pages are grids of PER_PAGE.
+    const totalPages = Math.max(1, Math.ceil((BLOG_POSTS.length - 1) / PER_PAGE));
     const page = Math.min(Math.max(Number(pageParam) || 1, 1), totalPages);
 
-    const start = (page - 1) * PER_PAGE;
-    const pagePosts = BLOG_POSTS.slice(start, start + PER_PAGE);
-
-    // The newest post leads page one with a large feature; everything else is a grid card.
-    const featured = page === 1 ? pagePosts[0] : undefined;
-    const gridPosts = featured ? pagePosts.slice(1) : pagePosts;
+    const featured = page === 1 ? BLOG_POSTS[0] : undefined;
+    const start = page === 1 ? 1 : (page - 1) * PER_PAGE + 1;
+    const gridPosts = BLOG_POSTS.slice(start, start + PER_PAGE);
 
     return (
         <>

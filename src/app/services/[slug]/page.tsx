@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import Faq from '@/components/site/faq';
@@ -10,6 +11,7 @@ import Reveal from '@/components/site/reveal';
 import { SERVICE_CATEGORIES, getServiceBySlug } from '@/lib/services';
 
 import {
+    ArrowUpRight,
     CalendarDays,
     Check,
     Droplets,
@@ -138,7 +140,16 @@ const ServicePage = async ({ params }: ServicePageProps) => {
 
             {/* Hero */}
             <section className='relative flex min-h-[65svh] items-center justify-center overflow-hidden'>
-                <Image src={category.image} alt={category.title} fill priority sizes='100vw' className='object-cover' />
+                <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    priority
+                    sizes='100vw'
+                    className={`object-cover ${
+                        category.slug === 'excavation-land-development' ? 'object-bottom' : 'object-center'
+                    }`}
+                />
                 <div className='absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/55' />
                 <div className='relative z-10 mx-auto max-w-4xl px-6 pt-20 text-center'>
                     <p className='text-beige mb-6 text-xs font-medium tracking-[0.35em] uppercase sm:text-sm'>
@@ -309,6 +320,14 @@ const ServicePage = async ({ params }: ServicePageProps) => {
                                     </div>
                                 ))}
                             </div>
+                            {category.deepDive.cta && (
+                                <Link
+                                    href={category.deepDive.cta.href}
+                                    className='border-cream/40 text-cream hover:bg-cream/10 mt-9 inline-flex items-center gap-2 border px-8 py-3.5 text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300'>
+                                    {category.deepDive.cta.label}
+                                    <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                </Link>
+                            )}
                         </Reveal>
                     </div>
                 </section>

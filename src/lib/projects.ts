@@ -1,3 +1,6 @@
+// A gallery item — either a still image or a looping video (with a poster still).
+export type ProjectMedia = { type: 'image'; src: string } | { type: 'video'; src: string; poster: string };
+
 export type Project = {
     name: string;
     location: string;
@@ -7,6 +10,9 @@ export type Project = {
     // Additional gallery images (up to ~8 per project). The main image + these become
     // the clickable thumbnail set that swaps the large image on the projects page.
     gallery?: string[];
+    // Optional mixed media (images + videos). When present, this drives the gallery
+    // instead of `image` + `gallery`.
+    media?: ProjectMedia[];
 };
 
 // Stable anchor id for a project — used to deep-link from the homepage to its
@@ -77,30 +83,30 @@ export const PROJECTS: Project[] = [
             'A flagship estate forecourt in wide-format pavers — a sweeping motor court, hexagon-stone banding and integrated lighting that turns the grounds into a scene after dark.',
         image: '/images/projects/markham.webp',
         gallery: [
-            '/images/projects/markham-01.webp',
-            '/images/projects/markham-02.webp',
-            '/images/projects/markham-03.webp',
-            '/images/projects/markham-04.webp',
-            '/images/projects/markham-05.webp',
             '/images/projects/markham-06.webp',
-            '/images/projects/markham-07.webp'
+            '/images/projects/markham-05.webp',
+            '/images/projects/markham-07.webp',
+            '/images/projects/markham-01.webp',
+            '/images/projects/markham-04.webp',
+            '/images/projects/markham-02.webp',
+            '/images/projects/markham-03.webp'
         ]
     },
     {
-        name: 'Woolbridge',
+        name: 'Woodbridge',
         location: 'Woodbridge, ON',
         tags: ['Pool & Patio', 'Pergola', 'Outdoor Living'],
         description:
             'A complete backyard build around a freeform pool — generous paver decking, a cedar pergola and flagstone walkways that turn the whole yard into living space.',
-        image: '/images/projects/woolbridge.webp',
+        image: '/images/projects/woodbridge.webp',
         gallery: [
-            '/images/projects/woolbridge-01.webp',
-            '/images/projects/woolbridge-02.webp',
-            '/images/projects/woolbridge-03.webp',
-            '/images/projects/woolbridge-04.webp',
-            '/images/projects/woolbridge-05.webp',
-            '/images/projects/woolbridge-06.webp',
-            '/images/projects/woolbridge-07.webp'
+            '/images/projects/woodbridge-01.webp',
+            '/images/projects/woodbridge-02.webp',
+            '/images/projects/woodbridge-03.webp',
+            '/images/projects/woodbridge-04.webp',
+            '/images/projects/woodbridge-05.webp',
+            '/images/projects/woodbridge-06.webp',
+            '/images/projects/woodbridge-07.webp'
         ]
     },
     {
@@ -155,6 +161,23 @@ export const PROJECTS: Project[] = [
         ]
     },
     {
+        name: 'Aurora',
+        location: 'Aurora, ON',
+        tags: ['Front-Yard Design', 'Stone Fountains', 'Interlock Driveway'],
+        description:
+            'A premium front-yard transformation — an interlocking driveway, tiered stone fountains and circular garden beds wrapped in lush, manicured planting that lifts the whole home’s curb appeal.',
+        image: '/images/projects/aurora-01.webp',
+        gallery: [
+            '/images/projects/aurora-02.webp',
+            '/images/projects/aurora-03.webp',
+            '/images/projects/aurora-04.webp',
+            '/images/projects/aurora-05.webp',
+            '/images/projects/aurora-06.webp',
+            '/images/projects/aurora-07.webp',
+            '/images/projects/aurora.webp'
+        ]
+    },
+    {
         name: 'The Showroom',
         location: 'Z Force Farm, Markham',
         tags: ['Paver Showroom', 'Design Display', 'Z Force Farm'],
@@ -169,6 +192,24 @@ export const PROJECTS: Project[] = [
             '/images/projects/showroom-05.webp',
             '/images/projects/showroom-06.webp',
             '/images/projects/showroom-07.webp'
+        ]
+    },
+    {
+        name: 'Commercial Parking Lot',
+        location: 'Greater Toronto Area',
+        tags: ['Excavation', 'Grading', 'Land Development'],
+        description:
+            'A full commercial site build — excavation, grading and land development that takes a raw field down to a level, compacted base ready for paving. Heavy machinery, precise grades, done to spec.',
+        image: '/images/projects/parking-01.webp',
+        media: [
+            { type: 'video', src: '/videos/parking-v1.mp4', poster: '/images/projects/parking-v1-poster.webp' },
+            { type: 'image', src: '/images/projects/parking-01.webp' },
+            { type: 'video', src: '/videos/parking-v2.mp4', poster: '/images/projects/parking-v2-poster.webp' },
+            { type: 'image', src: '/images/projects/parking-02.webp' },
+            { type: 'video', src: '/videos/parking-v3.mp4', poster: '/images/projects/parking-v3-poster.webp' },
+            { type: 'image', src: '/images/projects/parking-03.webp' },
+            { type: 'video', src: '/videos/parking-v4.mp4', poster: '/images/projects/parking-v4-poster.webp' },
+            { type: 'image', src: '/images/projects/parking-04.webp' }
         ]
     }
 ];

@@ -20,13 +20,13 @@ const CITIES = [
     {
         name: 'Markham',
         href: '/landscaping-markham',
-        image: '/images/plants/tree-28.webp',
+        image: '/images/projects/briji-01.webp',
         blurb: 'Our home turf — interlocking driveways, front-yard makeovers and full backyard builds. Our nursery, Z Force Farm, is here too, for faster turnarounds and fresher plants.'
     },
     {
         name: 'Vaughan',
         href: '/landscaping-vaughan',
-        image: '/images/projects/briji-01.webp',
+        image: '/images/projects/oakville-01.webp',
         blurb: 'Custom landscaping at the scale of the homes it surrounds — sweeping driveways, retaining walls and layered gardens, from front-yard statements to private retreats.'
     },
     {
@@ -38,19 +38,19 @@ const CITIES = [
     {
         name: 'Richmond Hill',
         href: '/landscaping-richmond-hill',
-        image: '/images/projects/newmarket-01.webp',
+        image: '/images/plants/tree-28.webp',
         blurb: 'Premium hardscaping for a resort feel at home — natural-stone pool surrounds, patios and gardens with durable materials, clean lines and careful detailing.'
     },
     {
         name: 'Newmarket',
         href: '/landscaping-newmarket',
-        image: '/images/projects/oakville-01.webp',
+        image: '/images/projects/newmarket-01.webp',
         blurb: 'Backyard renovations, decks, fencing and new lawns that make the most of your property — whether a full overhaul or a single standout feature.'
     },
     {
         name: 'Aurora',
         href: '/landscaping-aurora',
-        image: '/images/lawn/lawn-result.webp',
+        image: '/images/projects/aurora.webp',
         blurb: 'Design, planting, lawn care and year-round maintenance — as comfortable building something new as keeping an established property at its very best.'
     }
 ];
