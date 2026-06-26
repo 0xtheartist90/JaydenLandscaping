@@ -68,7 +68,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
                 }
             ]
         },
-        overviewImage: '/images/renders/design-01.webp',
+        overviewImage: '/images/renders/landscape-overview.webp',
         benefits: [
             {
                 title: 'A Vision You Can See',
@@ -306,12 +306,12 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         intro: [
             'Your driveway is one of the largest, most visible surfaces on your property — and a beautifully built interlocking driveway transforms your curb appeal while standing up to Ontario’s freeze-thaw winters far better than poured concrete or asphalt. With more than ten years installing driveways across Markham and the GTA, we build every one on a properly engineered base, because a driveway is only as good as what’s underneath it.'
         ],
-        overviewImage: '/images/projects/richmondhill.webp',
+        overviewImage: '/images/services/interlocking-overview.webp',
         deepDive: {
             eyebrow: 'Why Interlocking',
             title: 'Built to outlast concrete and asphalt',
             lead: 'There’s a reason interlocking has become the standard for premium driveways in our climate — it comes down to four things.',
-            image: '/images/projects/richmondhill-04.webp',
+            image: '/images/projects/interlocking-deepdive.webp',
             blocks: [
                 {
                     points: [
