@@ -164,7 +164,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
             <OtherServices currentSlug={category.slug} />
 
             {/* Overview */}
-            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
+            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-32'>
                 <Image
                     src='/images/brand/BGbeige.webp'
                     alt=''
@@ -335,7 +335,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
 
             {/* Gallery */}
             {category.gallery && category.gallery.length > 0 && (
-                <section className='bg-cream px-6 py-24 lg:px-10 lg:py-32'>
+                <section className='bg-cream px-6 py-16 lg:px-10 lg:py-32'>
                     <div className='mx-auto max-w-7xl'>
                         <Reveal blur className='text-center'>
                             <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>
@@ -366,7 +366,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
 
             {/* Statement band — shown in place of the gallery when there are no project photos */}
             {!(category.gallery && category.gallery.length > 0) && category.highlight && (
-                <section className='bg-cream px-6 py-24 lg:px-10 lg:py-32'>
+                <section className='bg-cream px-6 py-16 lg:px-10 lg:py-32'>
                     <Reveal blur className='mx-auto max-w-3xl text-center'>
                         {category.highlight.eyebrow && (
                             <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>
@@ -390,7 +390,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
 
             {/* Process */}
             {category.process && (
-                <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
+                <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-32'>
                     <Image
                         src='/images/brand/BGbeige.webp'
                         alt=''
@@ -428,7 +428,7 @@ const ServicePage = async ({ params }: ServicePageProps) => {
             <Marquee images={category.marquee} />
 
             {/* Included services */}
-            <section className='bg-forest relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32'>
+            <section className='bg-forest relative overflow-hidden px-6 py-16 lg:px-10 lg:py-32'>
                 {/* LeafBG texture blended into the green */}
                 <Image
                     src='/images/brand/leafbg.webp'

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Fragment } from 'react';
 
+import Carousel from '@/components/site/carousel';
 import CtaBanner from '@/components/site/cta-banner';
 import Reveal from '@/components/site/reveal';
 import { BLOG_POSTS, getPostBySlug } from '@/lib/blog';
@@ -106,7 +107,7 @@ const BlogPostPage = async ({ params }: BlogPostProps) => {
 
             {/* Related articles */}
             {related.length > 0 && (
-                <section className='bg-cream px-6 py-20 lg:px-10 lg:py-28'>
+                <section className='bg-cream px-6 py-16 lg:px-10 lg:py-28'>
                     <div className='mx-auto max-w-7xl'>
                         <Reveal blur>
                             <p className='text-moss text-[11px] font-medium tracking-[0.35em] uppercase'>Keep Reading</p>
@@ -114,34 +115,36 @@ const BlogPostPage = async ({ params }: BlogPostProps) => {
                                 Related Articles
                             </h2>
                         </Reveal>
-                        <div className='mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3'>
-                            {related.map((entry, index) => (
-                                <Reveal key={entry.slug} blur delay={(index % 3) * 0.1}>
-                                    <Link href={`/blog/${entry.slug}`} className='group block'>
-                                        <div className='relative aspect-[4/3] overflow-hidden'>
-                                            <Image
-                                                src={entry.image}
-                                                alt={entry.title}
-                                                fill
-                                                sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                                                className='object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105'
-                                            />
-                                        </div>
-                                        <p className='text-moss mt-5 text-[11px] tracking-[0.2em] uppercase'>
-                                            {entry.date} · {entry.readTime}
-                                        </p>
-                                        <h3 className='font-display text-forest group-hover:text-moss mt-2 text-xl leading-snug transition-colors'>
-                                            {entry.title}
-                                        </h3>
-                                        <p className='text-ink/65 mt-2 text-sm leading-relaxed'>{entry.excerpt}</p>
-                                        <span className='text-moss group-hover:text-forest mt-4 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase transition-colors'>
-                                            Read More
-                                            <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
-                                        </span>
-                                    </Link>
-                                </Reveal>
+                        <Carousel
+                            className='mt-12'
+                            theme='dark'
+                            desktop='sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-14 sm:overflow-visible lg:grid-cols-3'
+                            dotsHide='sm:hidden'>
+                            {related.map((entry) => (
+                                <Link key={entry.slug} href={`/blog/${entry.slug}`} className='group block'>
+                                    <div className='relative aspect-[4/3] overflow-hidden'>
+                                        <Image
+                                            src={entry.image}
+                                            alt={entry.title}
+                                            fill
+                                            sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+                                            className='object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105'
+                                        />
+                                    </div>
+                                    <p className='text-moss mt-5 text-[11px] tracking-[0.2em] uppercase'>
+                                        {entry.date} · {entry.readTime}
+                                    </p>
+                                    <h3 className='font-display text-forest group-hover:text-moss mt-2 text-xl leading-snug transition-colors'>
+                                        {entry.title}
+                                    </h3>
+                                    <p className='text-ink/65 mt-2 text-sm leading-relaxed'>{entry.excerpt}</p>
+                                    <span className='text-moss group-hover:text-forest mt-4 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase transition-colors'>
+                                        Read More
+                                        <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                    </span>
+                                </Link>
                             ))}
-                        </div>
+                        </Carousel>
                     </div>
                 </section>
             )}

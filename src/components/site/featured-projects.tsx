@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import Carousel from '@/components/site/carousel';
 import { PROJECTS, projectSlug } from '@/lib/projects';
 
 import { ArrowUpRight } from 'lucide-react';
@@ -120,13 +121,13 @@ const FeaturedProjects = () => {
                     })}
                 </div>
 
-                {/* Stacked — mobile */}
-                <div className='mt-10 flex flex-col gap-4 md:hidden'>
+                {/* Swipeable carousel — mobile */}
+                <Carousel className='mt-10 md:hidden' theme='dark'>
                     {FEATURED.map((project) => (
                         <Link
                             key={project.name}
                             href={`/projects#${projectSlug(project.name)}`}
-                            className='group relative block aspect-[4/5] overflow-hidden'>
+                            className='group relative block aspect-[4/5] w-full overflow-hidden'>
                             <Image
                                 src={project.image}
                                 alt={`${project.name} — landscaping project in ${project.location}`}
@@ -155,7 +156,7 @@ const FeaturedProjects = () => {
                             </div>
                         </Link>
                     ))}
-                </div>
+                </Carousel>
             </div>
         </section>
     );

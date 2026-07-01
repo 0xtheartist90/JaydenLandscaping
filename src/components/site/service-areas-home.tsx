@@ -7,7 +7,7 @@ import { ArrowUpRight, MapPin } from 'lucide-react';
 
 const ServiceAreasHome = () => {
     return (
-        <section className='bg-forest relative overflow-hidden px-6 py-24 lg:px-10 lg:py-28'>
+        <section className='bg-forest relative overflow-hidden px-6 py-16 lg:px-10 lg:py-28'>
             {/* LeafBG texture */}
             <Image
                 src='/images/brand/leafbg.webp'
@@ -34,7 +34,7 @@ const ServiceAreasHome = () => {
                     </Link>
                 </div>
 
-                <div className='mt-10 grid sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12'>
+                <div className='mt-10 grid grid-cols-2 gap-x-6 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-12'>
                     {CITIES.map((city) => (
                         <Link
                             key={city.slug}

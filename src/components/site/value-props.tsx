@@ -12,7 +12,7 @@ const VALUES = [
 const ValueProps = () => {
     return (
         <section className='bg-forest px-6 py-7 lg:px-10 lg:py-8'>
-            <div className='mx-auto grid max-w-7xl gap-y-7 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-4 lg:gap-0'>
+            <div className='mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-6 sm:gap-x-10 lg:grid-cols-4 lg:gap-0'>
                 {VALUES.map((value, index) => (
                     <Reveal key={value.title} delay={index * 0.08}>
                         <div

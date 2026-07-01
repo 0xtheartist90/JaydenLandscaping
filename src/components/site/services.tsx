@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 
+import Carousel from '@/components/site/carousel';
 import { SERVICE_CATEGORIES } from '@/lib/services';
 
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion';
@@ -70,12 +71,66 @@ const Services = () => {
     };
 
     return (
-        <section
-            ref={ref}
-            id='services'
-            className='bg-forest relative scroll-mt-20'
-            style={{ height: `${total * 100}svh` }}>
-            <div className='sticky top-0 h-svh overflow-hidden'>
+        <div id='services' className='scroll-mt-20'>
+            {/* Mobile: compact swipeable carousel of services */}
+            <section className='bg-forest relative overflow-hidden px-6 py-16 lg:hidden'>
+                <Image
+                    src='/images/brand/leafbg.webp'
+                    alt=''
+                    aria-hidden
+                    fill
+                    sizes='100vw'
+                    className='pointer-events-none object-cover opacity-[0.05]'
+                />
+                <div className='relative z-10'>
+                    <p className='text-beige text-[11px] font-medium tracking-[0.35em] uppercase'>What We Do</p>
+                    <h2 className='font-display text-cream mt-3 text-3xl leading-tight'>Our Services</h2>
+                    <Carousel className='mt-8' theme='light'>
+                        {SERVICE_CATEGORIES.map((category) => {
+                            const CardIcon = SERVICE_ICONS[category.slug];
+
+                            return (
+                                <Link key={category.slug} href={`/services/${category.slug}`} className='group block'>
+                                    <div className='relative aspect-[4/3] overflow-hidden'>
+                                        <Image
+                                            src={category.image}
+                                            alt={category.title}
+                                            fill
+                                            sizes='100vw'
+                                            className='object-cover'
+                                        />
+                                        <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent' />
+                                        <CardIcon
+                                            className='text-cream absolute top-5 left-5 h-7 w-7 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]'
+                                            strokeWidth={1}
+                                        />
+                                    </div>
+                                    <p className='text-beige mt-5 text-[11px] font-medium tracking-[0.3em] uppercase'>
+                                        {CATEGORY_LABELS[category.slug]}
+                                    </p>
+                                    <h3 className='font-display text-cream mt-2 text-2xl leading-snug'>
+                                        {category.title}
+                                    </h3>
+                                    <p className='text-cream/75 mt-3 text-sm leading-relaxed font-light'>
+                                        {category.shortDescription}
+                                    </p>
+                                    <span className='text-beige mt-4 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase'>
+                                        Explore
+                                        <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                    </span>
+                                </Link>
+                            );
+                        })}
+                    </Carousel>
+                </div>
+            </section>
+
+            {/* Desktop: pinned, scroll-driven experience */}
+            <section
+                ref={ref}
+                className='bg-forest relative hidden lg:block'
+                style={{ height: `${total * 100}svh` }}>
+                <div className='sticky top-0 h-svh overflow-hidden'>
                 {/* Cross-fading background images */}
                 {SERVICE_CATEGORIES.map((category, index) => (
                     <motion.div
@@ -188,6 +243,7 @@ const Services = () => {
                 </div>
             </div>
         </section>
+        </div>
     );
 };
 

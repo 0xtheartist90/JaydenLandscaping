@@ -1,10 +1,32 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Carousel from '@/components/site/carousel';
 import Reveal from '@/components/site/reveal';
 import { BLOG_POSTS } from '@/lib/blog';
 
 import { ArrowUpRight } from 'lucide-react';
+
+const BlogCard = ({ post }: { post: (typeof BLOG_POSTS)[number] }) => (
+    <Link href={`/blog/${post.slug}`} className='group block'>
+        <div className='relative aspect-[4/3] overflow-hidden'>
+            <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+                className='object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105'
+            />
+        </div>
+        <p className='text-moss mt-5 text-[11px] tracking-[0.2em] uppercase'>
+            {post.date} · {post.readTime}
+        </p>
+        <h3 className='font-display text-forest group-hover:text-moss mt-2 text-xl leading-snug transition-colors'>
+            {post.title}
+        </h3>
+        <p className='text-ink/65 mt-2 text-sm leading-relaxed'>{post.excerpt}</p>
+    </Link>
+);
 
 const FromTheBlog = () => {
     const posts = BLOG_POSTS.slice(0, 3);
@@ -27,27 +49,18 @@ const FromTheBlog = () => {
                     </Link>
                 </div>
 
-                <div className='mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3'>
+                {/* Mobile: swipeable carousel with dots */}
+                <Carousel className='mt-12 sm:hidden' theme='dark'>
+                    {posts.map((post) => (
+                        <BlogCard key={post.slug} post={post} />
+                    ))}
+                </Carousel>
+
+                {/* Desktop: grid */}
+                <div className='mt-12 hidden gap-x-8 gap-y-12 sm:grid sm:grid-cols-2 lg:grid-cols-3'>
                     {posts.map((post, index) => (
                         <Reveal key={post.slug} delay={(index % 3) * 0.1}>
-                            <Link href={`/blog/${post.slug}`} className='group block'>
-                                <div className='relative aspect-[4/3] overflow-hidden'>
-                                    <Image
-                                        src={post.image}
-                                        alt={post.title}
-                                        fill
-                                        sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                                        className='object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105'
-                                    />
-                                </div>
-                                <p className='text-moss mt-5 text-[11px] tracking-[0.2em] uppercase'>
-                                    {post.date} · {post.readTime}
-                                </p>
-                                <h3 className='font-display text-forest group-hover:text-moss mt-2 text-xl leading-snug transition-colors'>
-                                    {post.title}
-                                </h3>
-                                <p className='text-ink/65 mt-2 text-sm leading-relaxed'>{post.excerpt}</p>
-                            </Link>
+                            <BlogCard post={post} />
                         </Reveal>
                     ))}
                 </div>

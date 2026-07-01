@@ -27,7 +27,7 @@ const VALUES: { title: string; text: string; icon: LucideIcon }[] = [
 
 const Values = () => {
     return (
-        <section className='bg-cream px-6 py-24 lg:px-10 lg:py-32'>
+        <section className='bg-cream px-6 py-16 lg:px-10 lg:py-32'>
             <div className='mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20'>
                 {/* Left: editorial heading block */}
                 <Reveal direction='left' blur>

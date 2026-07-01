@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import Carousel from '@/components/site/carousel';
 import Reveal from '@/components/site/reveal';
 
 import { Star } from 'lucide-react';
@@ -41,6 +42,22 @@ const Stars = ({ count }: { count: number }) => (
                 strokeWidth={1.5}
             />
         ))}
+    </div>
+);
+
+type Review = (typeof REVIEWS)[number];
+
+const ReviewCard = ({ review }: { review: Review }) => (
+    <div className='border-forest/15 flex h-full flex-col border bg-white/40 p-7'>
+        <Stars count={review.rating} />
+        <p className='text-ink/75 mt-5 flex-1 text-[15px] leading-relaxed font-light'>“{review.quote}”</p>
+        <div className='border-forest/10 mt-6 flex items-center justify-between border-t pt-5'>
+            <div>
+                <p className='font-display text-forest text-base'>{review.name}</p>
+                <p className='text-moss text-xs tracking-[0.1em] uppercase'>{review.location}</p>
+            </div>
+            <span className='text-ink/40 text-[10px] font-medium tracking-[0.18em] uppercase'>via Google</span>
+        </div>
     </div>
 );
 
@@ -104,26 +121,18 @@ const Reviews = () => {
                     </h2>
                 </Reveal>
 
-                <div className='mt-14 grid gap-6 md:grid-cols-3'>
+                {/* Mobile: swipeable carousel with dots */}
+                <Carousel className='mt-14 md:hidden' theme='dark'>
+                    {REVIEWS.map((review) => (
+                        <ReviewCard key={review.name} review={review} />
+                    ))}
+                </Carousel>
+
+                {/* Desktop: three-up grid */}
+                <div className='mt-14 hidden gap-6 md:grid md:grid-cols-3'>
                     {REVIEWS.map((review, index) => (
-                        <Reveal
-                            key={review.name}
-                            blur
-                            delay={(index % 3) * 0.1}
-                            className='border-forest/15 flex flex-col border bg-white/40 p-7'>
-                            <Stars count={review.rating} />
-                            <p className='text-ink/75 mt-5 flex-1 text-[15px] leading-relaxed font-light'>
-                                “{review.quote}”
-                            </p>
-                            <div className='border-forest/10 mt-6 flex items-center justify-between border-t pt-5'>
-                                <div>
-                                    <p className='font-display text-forest text-base'>{review.name}</p>
-                                    <p className='text-moss text-xs tracking-[0.1em] uppercase'>{review.location}</p>
-                                </div>
-                                <span className='text-ink/40 text-[10px] font-medium tracking-[0.18em] uppercase'>
-                                    via Google
-                                </span>
-                            </div>
+                        <Reveal key={review.name} blur delay={(index % 3) * 0.1} className='h-full'>
+                            <ReviewCard review={review} />
                         </Reveal>
                     ))}
                 </div>

@@ -81,7 +81,7 @@ const CityLanding = ({ city }: { city: City }) => {
             </section>
 
             {/* Intro */}
-            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-20 lg:px-10 lg:py-28'>
+            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-28'>
                 <Image
                     src='/images/brand/BGbeige.webp'
                     alt=''
@@ -121,7 +121,7 @@ const CityLanding = ({ city }: { city: City }) => {
             </section>
 
             {/* Services available */}
-            <section className='bg-forest relative overflow-hidden px-6 py-20 lg:px-10 lg:py-28'>
+            <section className='bg-forest relative overflow-hidden px-6 py-16 lg:px-10 lg:py-28'>
                 <Image
                     src='/images/brand/leafbg.webp'
                     alt=''
@@ -175,7 +175,7 @@ const CityLanding = ({ city }: { city: City }) => {
             </section>
 
             {/* Why us */}
-            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-20 lg:px-10 lg:py-28'>
+            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-28'>
                 <Image
                     src='/images/brand/BGbeige.webp'
                     alt=''

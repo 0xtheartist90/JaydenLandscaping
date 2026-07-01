@@ -85,7 +85,7 @@ const LocationPage = () => {
             </section>
 
             {/* Details + map */}
-            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-20 lg:px-10 lg:py-28'>
+            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-28'>
                 <Image
                     src='/images/brand/BGbeige.webp'
                     alt=''
@@ -94,7 +94,7 @@ const LocationPage = () => {
                     sizes='100vw'
                     className='pointer-events-none object-cover opacity-[0.03]'
                 />
-                <div className='relative z-10 mx-auto grid max-w-7xl gap-14 lg:grid-cols-5 lg:gap-20'>
+                <div className='relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-5 lg:gap-20'>
                     <div className='lg:col-span-2'>
                         <p className='text-moss mb-5 text-xs font-medium tracking-[0.35em] uppercase'>Visit Us</p>
                         <h2 className='font-display text-forest text-3xl leading-snug sm:text-4xl'>

@@ -133,7 +133,7 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
 
 const Projects = () => {
     return (
-        <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-24 lg:px-10 lg:py-32'>
+        <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-32'>
             {/* Subtle BGbeige texture — matches the homepage */}
             <Image
                 src='/images/brand/BGbeige.webp'
@@ -156,7 +156,7 @@ const Projects = () => {
                     </p>
                 </Reveal>
 
-                <div className='mt-16 space-y-20 lg:mt-20 lg:space-y-28'>
+                <div className='mt-12 space-y-16 lg:mt-20 lg:space-y-28'>
                     {PROJECTS.map((project, index) => (
                         <ProjectRow key={project.name} project={project} index={index} />
                     ))}

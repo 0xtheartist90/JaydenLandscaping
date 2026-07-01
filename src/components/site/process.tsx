@@ -34,7 +34,7 @@ const STEPS = [
 
 const Process = () => {
     return (
-        <section className='bg-forest relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32'>
+        <section className='bg-forest relative overflow-hidden px-6 py-16 lg:px-10 lg:py-32'>
             {/* LeafBG texture blended into the green */}
             <Image
                 src='/images/brand/leafbg.webp'
@@ -51,7 +51,7 @@ const Process = () => {
                     tone='dark'
                 />
 
-                <div className='mt-16 grid gap-12 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4 lg:gap-8'>
+                <div className='mt-10 grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-12 lg:mt-24 lg:grid-cols-4 lg:gap-8'>
                     {STEPS.map((step, index) => (
                         <Reveal key={step.number} delay={index * 0.12}>
                             <div className='relative'>

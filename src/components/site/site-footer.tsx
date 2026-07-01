@@ -32,9 +32,9 @@ const columnLink = 'text-cream/65 hover:text-cream text-sm transition-colors';
 
 const SiteFooter = () => {
     return (
-        <footer className='bg-forest px-6 py-16 lg:px-10'>
+        <footer className='bg-forest px-6 py-12 lg:px-10 lg:py-16'>
             <div className='mx-auto max-w-7xl'>
-                <div className='grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr] lg:gap-14'>
+                <div className='grid gap-x-8 gap-y-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr] lg:gap-14'>
                     {/* Brand */}
                     <div>
                         <Link href='/' aria-label="Jayden's Landscaping — Home">
@@ -68,7 +68,7 @@ const SiteFooter = () => {
                     {/* Explore */}
                     <div>
                         <h3 className={columnHeading}>Explore</h3>
-                        <ul className='space-y-3'>
+                        <ul className='grid grid-cols-2 gap-x-4 gap-y-2.5 sm:grid-cols-1 sm:gap-y-3'>
                             {EXPLORE_LINKS.map((link) => (
                                 <li key={link.href}>
                                     <Link href={link.href} className={columnLink}>
@@ -82,7 +82,7 @@ const SiteFooter = () => {
                     {/* Services */}
                     <div>
                         <h3 className={columnHeading}>Services</h3>
-                        <ul className='space-y-3'>
+                        <ul className='grid grid-cols-2 gap-x-4 gap-y-2.5 sm:grid-cols-1 sm:gap-y-3'>
                             {SERVICE_CATEGORIES.map((category) => (
                                 <li key={category.slug}>
                                     <Link href={`/services/${category.slug}`} className={columnLink}>
@@ -117,7 +117,7 @@ const SiteFooter = () => {
                     </div>
                 </div>
 
-                <div className='border-cream/10 mt-14 flex flex-col items-center gap-4 border-t pt-8 text-xs md:flex-row md:justify-between'>
+                <div className='border-cream/10 mt-10 flex flex-col items-center gap-4 border-t pt-8 text-xs sm:mt-14 md:flex-row md:justify-between'>
                     <p className='text-cream/40 tracking-wide'>
                         © {new Date().getFullYear()} Jayden&apos;s Landscaping. All rights reserved.
                     </p>

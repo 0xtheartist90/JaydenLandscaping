@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Carousel from '@/components/site/carousel';
 import CtaBanner from '@/components/site/cta-banner';
 import Faq from '@/components/site/faq';
 import Reveal from '@/components/site/reveal';
@@ -119,7 +120,7 @@ const ServiceAreasPage = () => {
             </section>
 
             {/* Areas We Serve — directly under the hero */}
-            <section className='bg-cream px-6 py-20 lg:px-10 lg:py-28'>
+            <section className='bg-cream px-6 py-16 lg:px-10 lg:py-28'>
                 <div className='mx-auto max-w-7xl'>
                     <Reveal blur className='max-w-2xl'>
                         <p className='text-moss text-[11px] font-medium tracking-[0.35em] uppercase'>Areas We Serve</p>
@@ -131,38 +132,40 @@ const ServiceAreasPage = () => {
                         </p>
                     </Reveal>
 
-                    <div className='mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3'>
-                        {CITIES.map((city, index) => (
-                            <Reveal key={city.name} blur delay={(index % 3) * 0.1}>
-                                <Link href={city.href} className='group block'>
-                                    <div className='relative aspect-[4/3] overflow-hidden'>
-                                        <Image
-                                            src={city.image}
-                                            alt={`Landscaping in ${city.name}`}
-                                            fill
-                                            sizes='(max-width: 1024px) 100vw, 33vw'
-                                            className={ZOOM}
-                                        />
-                                        <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/20' />
-                                        <ArrowBadge />
-                                        <h3 className='font-display text-cream absolute bottom-0 left-0 p-6 text-2xl [text-shadow:0_2px_18px_rgba(0,0,0,0.5)]'>
-                                            {city.name}
-                                        </h3>
-                                    </div>
-                                    <p className='text-ink/70 mt-5 text-sm leading-relaxed'>{city.blurb}</p>
-                                    <span className='text-moss group-hover:text-forest mt-4 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase transition-colors'>
-                                        Landscaping in {city.name}
-                                        <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
-                                    </span>
-                                </Link>
-                            </Reveal>
+                    <Carousel
+                        className='mt-12'
+                        theme='dark'
+                        desktop='sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 sm:overflow-visible lg:grid-cols-3'
+                        dotsHide='sm:hidden'>
+                        {CITIES.map((city) => (
+                            <Link key={city.name} href={city.href} className='group block'>
+                                <div className='relative aspect-[4/3] overflow-hidden'>
+                                    <Image
+                                        src={city.image}
+                                        alt={`Landscaping in ${city.name}`}
+                                        fill
+                                        sizes='(max-width: 1024px) 100vw, 33vw'
+                                        className={ZOOM}
+                                    />
+                                    <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/20' />
+                                    <ArrowBadge />
+                                    <h3 className='font-display text-cream absolute bottom-0 left-0 p-6 text-2xl [text-shadow:0_2px_18px_rgba(0,0,0,0.5)]'>
+                                        {city.name}
+                                    </h3>
+                                </div>
+                                <p className='text-ink/70 mt-5 text-sm leading-relaxed'>{city.blurb}</p>
+                                <span className='text-moss group-hover:text-forest mt-4 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase transition-colors'>
+                                    Landscaping in {city.name}
+                                    <ArrowUpRight className='h-3.5 w-3.5' strokeWidth={1.5} />
+                                </span>
+                            </Link>
                         ))}
-                    </div>
+                    </Carousel>
                 </div>
             </section>
 
             {/* Local expertise + stats + image */}
-            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-20 lg:px-10 lg:py-28'>
+            <section className='relative overflow-hidden bg-[#F1E9D6] px-6 py-16 lg:px-10 lg:py-28'>
                 <Image
                     src='/images/brand/BGbeige.webp'
                     alt=''
@@ -211,7 +214,7 @@ const ServiceAreasPage = () => {
             </section>
 
             {/* The full range, everywhere */}
-            <section className='bg-forest relative overflow-hidden px-6 py-20 lg:px-10 lg:py-28'>
+            <section className='bg-forest relative overflow-hidden px-6 py-16 lg:px-10 lg:py-28'>
                 <Image
                     src='/images/brand/leafbg.webp'
                     alt=''
