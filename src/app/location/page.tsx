@@ -25,7 +25,10 @@ export const metadata: Metadata = {
 };
 
 const ADDRESS = '5357 19th Ave, Markham, ON L3P 3J3';
-const MAP_QUERY = `${ADDRESS}, Canada`;
+const BUSINESS = "Jayden's Landscaping Markham";
+// Actual Google Business Profile listing (share link) — opens the real place with reviews & hours.
+const LISTING = 'https://maps.app.goo.gl/6WSVcSJuSdmjcUK8A';
+const MAP_QUERY = `${BUSINESS}, ${ADDRESS}`;
 const MAP_SRC = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`;
 const DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(MAP_QUERY)}`;
 
@@ -45,11 +48,12 @@ const structuredData = {
         postalCode: 'L3P 3J3',
         addressCountry: 'CA'
     },
-    areaServed: ['Markham', 'Vaughan', 'North York', 'Richmond Hill', 'Newmarket', 'Aurora', 'Greater Toronto Area']
+    areaServed: ['Markham', 'Vaughan', 'North York', 'Richmond Hill', 'Newmarket', 'Aurora', 'Greater Toronto Area'],
+    hasMap: LISTING
 };
 
 const DETAILS = [
-    { Icon: MapPin, label: 'Address', value: ADDRESS, href: DIRECTIONS },
+    { Icon: MapPin, label: 'Address', value: ADDRESS, href: LISTING },
     { Icon: Phone, label: 'Phone', value: '+1 647-621-4219', href: 'tel:+16476214219' },
     { Icon: Mail, label: 'Email', value: 'jaydenlandscaping@yahoo.com', href: 'mailto:jaydenlandscaping@yahoo.com' },
     { Icon: Clock, label: 'Hours', value: 'By appointment — call or message anytime', href: undefined }

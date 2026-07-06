@@ -4,9 +4,10 @@ import Reveal from '@/components/site/reveal';
 
 import { Mail, MapPin, Phone } from 'lucide-react';
 
-const MAP_QUERY = '5357 19th Ave, Markham, ON L3P 3J3, Canada';
+const MAP_QUERY = "Jayden's Landscaping Markham, 5357 19th Ave, Markham, ON L3P 3J3";
 const MAP_SRC = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`;
-const MAP_LINK = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}`;
+// Actual Google Business Profile listing (share link).
+const MAP_LINK = 'https://maps.app.goo.gl/6WSVcSJuSdmjcUK8A';
 
 const CONTACT_DETAILS = [
     {

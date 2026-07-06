@@ -132,6 +132,17 @@ const SiteFooter = () => {
                         ))}
                     </nav>
                 </div>
+
+                <p className='text-cream/30 mt-6 text-center text-[11px] tracking-wide'>
+                    Made by{' '}
+                    <a
+                        href='https://wearevirtuo.com/'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='hover:text-cream/70 underline underline-offset-2 transition-colors'>
+                        We Are Virtuo
+                    </a>
+                </p>
             </div>
         </footer>
     );

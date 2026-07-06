@@ -16,8 +16,8 @@ const ValueProps = () => {
                 {VALUES.map((value, index) => (
                     <Reveal key={value.title} delay={index * 0.08}>
                         <div
-                            className={`flex items-center gap-3.5 lg:border-cream/15 lg:border-l lg:px-8 ${
-                                index === 0 ? 'lg:border-l-0 lg:pl-0' : ''
+                            className={`flex items-center justify-center gap-3.5 lg:border-cream/15 lg:border-l lg:px-8 ${
+                                index === 0 ? 'lg:border-l-0' : ''
                             }`}>
                             <value.icon className='text-beige h-5 w-5 shrink-0' strokeWidth={1} />
                             <h3 className='font-display text-cream text-sm leading-snug tracking-wide lg:text-[15px]'>
