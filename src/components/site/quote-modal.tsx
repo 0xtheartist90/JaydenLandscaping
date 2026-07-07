@@ -45,7 +45,10 @@ const QuoteModalPanel = ({ service, onClose }: { service: string; onClose: () =>
         const form = event.currentTarget;
         setSubmitting(true);
 
-        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+        // Web3Forms access key: a public alias to the delivery inbox (safe in
+        // client code by design). Env var overrides, e.g. when lead delivery
+        // moves to the client's own inbox with a fresh key.
+        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '94d8fa3e-63f2-4bc7-b91b-1d72413c2df5';
         try {
             if (accessKey) {
                 const data = new FormData(form);

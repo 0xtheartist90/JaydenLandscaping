@@ -12,7 +12,10 @@
  *   chat_started       visitor sends their first chat message (per session)
  *   quote_form_submit  quote modal submitted successfully (pushed by quote-modal)
  *
- * Env (set in Vercel):
+ * IDs: the GTM container id and Crisp website id are public client-side
+ * values (visible in page source by design), so they ship as defaults here.
+ * Env vars (Vercel) override them, e.g. when the chat moves to the client's
+ * own Crisp account:
  *   NEXT_PUBLIC_GTM_ID            GTM-XXXXXXX
  *   NEXT_PUBLIC_CRISP_WEBSITE_ID  Crisp website id (UUID)
  */
@@ -34,8 +37,8 @@ export const pushEvent = (event: string, data: Record<string, unknown> = {}) => 
     window.dataLayer.push({ event, ...data });
 };
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
-const CRISP_ID = process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID;
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? 'GTM-MHHCCZ8F';
+const CRISP_ID = process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID ?? '5b3c47a3-72e9-4f06-8475-ebde8dff72f9';
 
 const Tracking = () => {
     // tel: / mailto: click tracking — one delegated listener for the whole site.
