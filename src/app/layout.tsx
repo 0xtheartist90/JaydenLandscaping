@@ -54,6 +54,16 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
     return (
         <html lang='en' className='scroll-smooth'>
             <body className={`${aboreto.variable} ${inter.variable} bg-cream text-ink font-sans antialiased`}>
+                {/* GTM noscript MUST be the first element in <body> — Google's
+                    Search Console Tag Manager verification checks this position. */}
+                <noscript>
+                    <iframe
+                        src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID ?? 'GTM-MHHCCZ8F'}`}
+                        height='0'
+                        width='0'
+                        style={{ display: 'none', visibility: 'hidden' }}
+                    />
+                </noscript>
                 <QuoteModalProvider>
                     <SiteHeader />
                     <main>{children}</main>
