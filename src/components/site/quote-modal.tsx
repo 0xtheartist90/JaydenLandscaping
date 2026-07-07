@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 
 import { SERVICE_CATEGORIES } from '@/lib/services';
+import { pushEvent } from '@/components/site/tracking';
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { X } from 'lucide-react';
@@ -39,14 +40,36 @@ const QuoteModalPanel = ({ service, onClose }: { service: string; onClose: () =>
         };
     }, [onClose]);
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const form = event.currentTarget;
         setSubmitting(true);
-        // TODO: wire up to a real endpoint (Resend, Formspree or an API route)
-        setTimeout(() => {
+
+        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+        try {
+            if (accessKey) {
+                const data = new FormData(form);
+                data.append('access_key', accessKey);
+                data.append('subject', 'New quote request — jaydenslandscaping.ca');
+                data.append('from_name', "Jayden's Landscaping Website");
+                // Honeypot: bots fill it, Web3Forms silently discards those.
+                if (!data.has('botcheck')) data.append('botcheck', '');
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: data
+                });
+                if (!response.ok) throw new Error(`Submit failed (${response.status})`);
+            }
+            pushEvent('quote_form_submit', {
+                service: (form.elements.namedItem('service') as HTMLSelectElement | null)?.value
+            });
             onClose();
             router.push('/thank-you');
-        }, 700);
+        } catch {
+            setSubmitting(false);
+            // Graceful fallback: keep the modal open so the visitor can call instead.
+            alert('Something went wrong sending your request. Please call us at 647-621-4219.');
+        }
     };
 
     return (
@@ -102,6 +125,15 @@ const QuoteModalPanel = ({ service, onClose }: { service: string; onClose: () =>
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className='grid gap-4 px-7 py-7 sm:grid-cols-2 lg:px-9'>
+                    {/* Honeypot — hidden from humans, bots fill it and get discarded */}
+                    <input
+                        type='checkbox'
+                        name='botcheck'
+                        tabIndex={-1}
+                        autoComplete='off'
+                        className='hidden'
+                        aria-hidden='true'
+                    />
                     <div>
                         <label htmlFor='q-name' className='sr-only'>
                             Name

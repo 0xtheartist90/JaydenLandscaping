@@ -7,6 +7,7 @@ import '@/app/globals.css';
 import { QuoteModalProvider } from '@/components/site/quote-modal';
 import SiteFooter from '@/components/site/site-footer';
 import SiteHeader from '@/components/site/site-header';
+import Tracking from '@/components/site/tracking';
 
 const aboreto = Aboreto({
     subsets: ['latin'],
@@ -58,6 +59,7 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
                     <main>{children}</main>
                     <SiteFooter />
                 </QuoteModalProvider>
+                <Tracking />
             </body>
         </html>
     );
