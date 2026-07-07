@@ -22,6 +22,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://jaydenslandscaping.ca'),
+    // Google Search Console ownership verification (Site Verification API, META method)
+    verification: { google: 'vmg_F0JeLdUat2OptbmX91hP-S7AsgLVvYV-9e17yv0' },
     title: "Jayden's Landscaping | Custom Landscape Design & Build in the GTA",
     description:
         "Jayden's Landscaping designs, builds and maintains exceptional outdoor spaces throughout the Greater Toronto Area. Landscape design, interlocking driveways, planting, lawn maintenance and snow removal.",
