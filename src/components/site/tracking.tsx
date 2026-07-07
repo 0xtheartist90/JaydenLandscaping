@@ -38,7 +38,11 @@ export const pushEvent = (event: string, data: Record<string, unknown> = {}) => 
 };
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? 'GTM-MHHCCZ8F';
-const CRISP_ID = process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID ?? '5b3c47a3-72e9-4f06-8475-ebde8dff72f9';
+// Chat is OFF until the client registers his own Crisp account (the test
+// account's widget showed the test workspace name). Everything stays wired:
+// set NEXT_PUBLIC_CRISP_WEBSITE_ID in Vercel and redeploy to switch it on.
+// Test 2026-07-07 confirmed the chat_started conversion fires correctly.
+const CRISP_ID = process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID;
 
 const Tracking = () => {
     // tel: / mailto: click tracking — one delegated listener for the whole site.
