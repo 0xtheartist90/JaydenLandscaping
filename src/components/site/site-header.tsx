@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 import QuoteButton from '@/components/site/quote-button';
 import { SERVICE_CATEGORIES } from '@/lib/services';
 
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
 
 const NAV_LINKS = [
     { href: '/', label: 'Home' },
@@ -118,6 +118,14 @@ const SiteHeader = () => {
                             </Link>
                         )
                     )}
+                    <a
+                        href='tel:+16476214219'
+                        className={`relative flex items-center gap-1.5 text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 ${underline} ${
+                            solid ? 'text-ink/80 hover:text-ink' : 'text-cream/85 hover:text-cream'
+                        }`}>
+                        <Phone className='h-3 w-3' strokeWidth={1.5} />
+                        647-621-4219
+                    </a>
                     <QuoteButton className='bg-beige text-forest hover:bg-beige/85 ml-1 px-4 py-2 text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300'>
                         Get A Free Quote
                     </QuoteButton>

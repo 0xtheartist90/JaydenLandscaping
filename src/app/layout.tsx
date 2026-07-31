@@ -7,6 +7,7 @@ import '@/app/globals.css';
 import { QuoteModalProvider } from '@/components/site/quote-modal';
 import SiteFooter from '@/components/site/site-footer';
 import SiteHeader from '@/components/site/site-header';
+import StickyCallBar from '@/components/site/sticky-call-bar';
 import Tracking from '@/components/site/tracking';
 
 const aboreto = Aboreto({
@@ -70,6 +71,7 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
                     <SiteHeader />
                     <main>{children}</main>
                     <SiteFooter />
+                    <StickyCallBar />
                 </QuoteModalProvider>
                 <Tracking />
             </body>
